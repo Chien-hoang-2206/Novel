@@ -6,9 +6,16 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ContainerCard, ImageComicRecommended,NavLink,ContainerCardType, ContainerCardStar} from "./CardHomeRecomendedStyle";
-import { AuthName,Heading2,Content } from "../../TextField/Heading";
-function CardHomeRecomended() {
+import {
+  ContainerCard,
+  ImageComicRecommended,
+  NavLink,
+  ContainerCardType,
+  ContainerCardStar,
+  ContainerRowContent,
+} from "./CardHomeRecomendedStyle";
+import { AuthName, Heading2, Content } from "../../TextField/Heading";
+function CardHomeRecomended(props) {
   return (
     <div>
       <ContainerCard>
@@ -21,13 +28,13 @@ function CardHomeRecomended() {
               <Row>
                 <Col sm={4}>
                   <NavLink>
-                    <Heading2>Tiêu đề truyện</Heading2>
+                    <Heading2> {props.nameComic}</Heading2>
                   </NavLink>
                 </Col>
                 <Col sm={8}>
                   <ContainerCardType>
                     <Button size="small" variant="outlined" color="error">
-                      Thể loại 1
+                      {props.type1}
                     </Button>
                     <Button
                       size="small"
@@ -35,7 +42,7 @@ function CardHomeRecomended() {
                       color="error"
                       style={{ marginLeft: "10px" }}
                     >
-                      Thể loại 2
+                      {props.type2}
                     </Button>
                     <Button
                       size="small"
@@ -43,31 +50,33 @@ function CardHomeRecomended() {
                       style={{ marginLeft: "10px" }}
                       color="error"
                     >
-                      Thể loại 3
+                      {props.type3}
                     </Button>
                   </ContainerCardType>
                 </Col>
               </Row>
               <Row>
+              <ContainerRowContent>  
                 <Content>
-                  Description about the product: Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                 {props.content}
                 </Content>
+                </ContainerRowContent>
               </Row>
               <Row>
                 <Col>
-                  <AuthName>Tác giả</AuthName>
+                  <AuthName>  {props.auth}</AuthName>
                 </Col>
                 <Col>
                   <ContainerCardStar>
+                      {props.numStar}
                     <Icon icon="material-symbols:star" />
                     <Icon icon="material-symbols:star" />
                     <Icon icon="material-symbols:star" />
                     <Icon icon="material-symbols:star" />
                   </ContainerCardStar>
                 </Col>
+
+
               </Row>
             </Col>
           </Row>
@@ -76,4 +85,14 @@ function CardHomeRecomended() {
     </div>
   );
 }
+
+CardHomeRecomended.defaultProps = {
+  nameComic: "Tieu de truyen",
+  type1: "The loai 1",
+  type2: "The loai 2",
+  type3: "The loai 3",
+  content: "Description about the product: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ss",
+  auth: "Alibaba",
+  numStar: "4",
+};
 export default memo(CardHomeRecomended);

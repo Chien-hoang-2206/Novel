@@ -35,3 +35,7 @@ export const ContainerCardStar = styled.div`
   text-align: right;
   margin-right: 4px;
 `;
+export const ContainerRowContent = styled.div`
+  height: 80px;
+  margin-bottom: 5px;
+`;

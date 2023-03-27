@@ -29,12 +29,6 @@ export const ContainerCardType= styled.div`
   text-align: right;
   margin-right: 4px;
 `;
-export const ContainerRow4Row2= styled.div`
-  border: 2px solid #F7F7F9;
-  border-radius: 4px;
-  padding-top: 7px;
-  padding-bottom: 2px;
-`;
 export const ContainerUpdate= styled.div`
   padding-top: 30px;
   padding-bottom: 2px;
@@ -58,36 +52,4 @@ export const Card = styled.div`
     color: #15cdfc;
   }
 
-`;
-export const CardReading = styled.div`
-  width: 100%;  
-  height: 100px;
-  &.active {
-    color: #15cdfc;
-  }
-
-`;
-export const ImageComicRecommended = styled.img`
-  background: blue;
-  width:  170px;  
-  height: 150px;
-`;
-export const ImageComicReading = styled.img`
-  background: blue;
-  width:  80px;  
-  height: 80px;
-`;
-export const NavLink = styled.a`
-  color: #767C88;
-  display: flex;
-  margin-top: 2px;
-  align-items: left;
-  text-decoration: none;
-  font-weight: bold;
-  heigh: 100%;
-  curson: pointer;
-
-  &.active {
-    color: #15cdfc;
-  }
 `;

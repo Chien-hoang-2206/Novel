@@ -5,33 +5,21 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-  CardReading,
   ContainerRow,
   ContainerRow1Column1,
   ContainerRow1Column2,
   ContainerRow2,
   ContainerRow4,
-  ContainerRow4Row2,
   ContainerUpdate,
-  ContaineUpdate,
-  ImageComicReading,
-  ImageComicRecommended,
-  NavLink,
 } from "./styleHome";
-import {
-  AuthName,
-  ComicyName,
-  Content,
-  Heading1,
-  Heading2,
-} from "../../../components/TextField/Heading";
-import Button from "@mui/material/Button";
+import { AuthName, Heading1 } from "../../../components/TextField/Heading";
 import { Icon } from "@iconify/react";
 import NavBar from "../../../parts/user/navBar";
-import Footer from "../../../parts/user/footer";
 import CardHomeRecomended from "../../../components/card/CardRecommemded/CardHomeRecomended";
 import CardHomeReading from "../../../components/card/CardReading/CardHomeReading";
 import NewUpdateRowHomeStyle from "../../../components/NewUpdateRow/NewUpdateRowHome";
+import { Button } from "@mui/material";
+import Footer from "../../../parts/user/footer";
 export default function HomePage() {
   return (
     <>
@@ -63,7 +51,15 @@ export default function HomePage() {
             </Row>
             <Row>
               <ContainerRow2>
-                <CardHomeRecomended />
+                <CardHomeRecomended
+                  nameComic="Tieu de 1"
+                  type1="Loai 1 "
+                  type2="Loai 2 "
+                  type3="Loai 3 "
+                  content= "Description about thua.ss"
+                  auth= "Alibaba"
+                  numStar= "4"
+                />
                 <CardHomeRecomended />
                 <CardHomeRecomended />
                 <CardHomeRecomended />
@@ -90,51 +86,51 @@ export default function HomePage() {
         {/* Moi cap nhat */}
 
         <ContainerUpdate>
-        <Row>
-          <Col sm={10}>
-            <Heading1>Mới cập nhật</Heading1>
-          </Col>
-          <Col sm={2}>
-            <Button
-              size="small"
-              variant="contained"
-              color="inherit"
-              startIcon={<Icon icon="material-symbols:app-registration" />}
-            >
-              Xem tất cả
-            </Button>
-          </Col>
-        </Row>
+          <Row>
+            <Col sm={10}>
+              <Heading1>Mới cập nhật</Heading1>
+            </Col>
+            <Col sm={2}>
+              <Button
+                size="small"
+                variant="contained"
+                color="inherit"
+                startIcon={<Icon icon="material-symbols:app-registration" />}
+              >
+                Xem tất cả
+              </Button>
+            </Col>
+          </Row>
         </ContainerUpdate>
         {/* Cac truyen moi cap nhat */}
-          <ContainerRow4>
-            <Row>
-              <Col sm={2}>
-                <AuthName>Tên truyện</AuthName>
-              </Col>
-              <Col sm={2}>
-                <AuthName>Thể loại</AuthName>
-              </Col>
-              <Col sm={4}>
-                <AuthName>Chương mới nhất</AuthName>
-              </Col>
-              <Col>
-                <AuthName>Tác giả</AuthName>
-              </Col>
-              <Col sm={2}>
-                <AuthName>Thời gian</AuthName>
-              </Col>
-            </Row>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-            <NewUpdateRowHomeStyle/>
-          </ContainerRow4>
+        <ContainerRow4>
+          <Row>
+            <Col sm={2}>
+              <AuthName>Tên truyện</AuthName>
+            </Col>
+            <Col sm={2}>
+              <AuthName>Thể loại</AuthName>
+            </Col>
+            <Col sm={4}>
+              <AuthName>Chương mới nhất</AuthName>
+            </Col>
+            <Col>
+              <AuthName>Tác giả</AuthName>
+            </Col>
+            <Col sm={2}>
+              <AuthName>Thời gian</AuthName>
+            </Col>
+          </Row>
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+          <NewUpdateRowHomeStyle />
+        </ContainerRow4>
 
         {/* Phan tich 5 trang web */}
         <hr></hr>
