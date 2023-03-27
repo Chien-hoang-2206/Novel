@@ -35,6 +35,10 @@ export const ContainerRow4Row2= styled.div`
   padding-top: 7px;
   padding-bottom: 2px;
 `;
+export const ContainerUpdate= styled.div`
+  padding-top: 30px;
+  padding-bottom: 2px;
+`;
 export const Box = styled.div`
   background: ##404247;
   position: absolute;

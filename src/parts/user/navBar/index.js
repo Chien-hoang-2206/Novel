@@ -14,6 +14,7 @@ import {
   NavSearchBar,
 } from "./narBarElements";
 import { Icon } from '@iconify/react';
+import { Link } from "react-router-dom";
 function narBar() {
   return (
     <>
