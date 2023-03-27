@@ -1,22 +1,17 @@
-import { memo } from "react";
-import React from "react";
-function test2(){
+import React, { useState } from 'react';
+import { memo } from 'react';
+function Test2() {
+  const [count, setCount] = useState(0);
 
-  // const getData = () => {
-  //   console.log('getdata');
-  // };
-  return (
-    <>
-    <h1> 
-       Wattpad  
-    </h1>
-    {/* <button onClick={ () => this.getData()  } > Lay du lieu</button> */}
-    {/* <div>
-      {this.state.}
-    </div> */}
-    </>
-    )
-   
+  function handleClick() {
+    setCount(count + 1);
   }
-export default memo(test2);
 
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
+}
+export default memo(Test2);

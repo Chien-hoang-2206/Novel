@@ -12,13 +12,10 @@ import BG4 from "./bg4.jfif";
 import PC from "./pc1.png";
 import { Parallax } from "react-parallax";
 import "./type.css";
-import NavBar from "../../../parts/user/navBar";
 import { Link } from "react-router-dom";
-import Footer from "../../../parts/user/footer";
 function welcomePage() {
   return (
     <>
-      <NavBar />
       <Parallax strength={600} bgImage={BG3}>
         <div className="content">
           <div className="helleText">Hi, We're MeTruyenChu.</div>
@@ -107,7 +104,6 @@ function welcomePage() {
         </div>
       </Parallax>
       <Parallax strength={300} >
-      <Footer />
       </Parallax>
     </>
   );

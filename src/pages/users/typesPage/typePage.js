@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const Container = styled.div`
   padding-left: 180px;
+  height: 100vh;
   margin: 180px;
 `;
 export const Container2 = styled.div`

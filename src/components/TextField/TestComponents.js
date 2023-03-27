@@ -3,8 +3,8 @@ export const Heading1 = styled.p`
   font-size: 30px;
   color: ##404247;
   font-weight: bold;
+  margin-left: 10px;
   margin-bottom: 20px;
-
 `;
 export const Heading2 = styled.p`
   font-size: 20px;

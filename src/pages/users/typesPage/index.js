@@ -18,7 +18,6 @@ import { Link } from "react-router-dom";
 function typesPage() {
   return (
     <>
-     <NavBar/>
       <Parallax strength={600} bgImage={BG3}>
         <div className="content">
           <div className="helleText">Hi, We're MeTruyenChu.</div>

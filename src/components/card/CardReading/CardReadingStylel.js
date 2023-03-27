@@ -1,28 +1,22 @@
 import styled from 'styled-components';
-
+import { Heading2, Content } from "../../TextField/TestComponents";
 export const ImageComicReading = styled.img`
-  background: blue;
-  width:  80px;  
-  height: 80px;
+  width:  39px;  
+  height: 52px;
 `;
 export const CardReading = styled.div`
   width: 100%;  
-  height: 100px;
-  &.active {
-    color: #15cdfc;
-  }
+  height: 52px;
+  margin-left: 10px;
+  margin-bottom: 8px;
 `;
-export const NavLink = styled.a`
-  color: #767C88;
-  display: flex;
-  margin-top: 2px;
-  align-items: left;
-  text-decoration: none;
-  font-weight: bold;
-  heigh: 100%;
-  curson: pointer;
+export const ContainerRow = styled.div`
+  width: 100%;  
+  height: 50px;
+  margin-top: -5px;
+  margin-left: -10px;
+`;
+export const ContentCardHomeReading = styled(Content)`
+  margin-top: -14px;
 
-  &.active {
-    color: #15cdfc;
-  }
 `;

@@ -1,19 +1,22 @@
 import styled from 'styled-components';
-export const Box = styled.div`
-
-  background: ##404247;
-  position: absolute;
-  bottom: 0;
-  width: 100%;  
-  height:40%;
-  @media (max-width: 1000px) {
-    padding: 100px 100px;
-  }
+export const ImageFooter = styled.div`
+  background-image: url(image/footer-bg.png);
+  font-family: "Roboto", sans-serif;
+  background-size: cover;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
 `;
+export const TransparentBanner= styled.div`
+  height: 270px;
+  width: 100%;
+`
+export const ContainerFooter = styled.div`
+    padding-top: 30px;
+    padding-bottim: 10px;
+    min-height: 20vh;
+`
 export const ContainerFooterColumn = styled.div`
-    display: flex;
-    flex-direction: row;
-    background: blue;
 `
 export const FooterColumn = styled.div`
   flex-direction: column;
@@ -21,7 +24,6 @@ export const FooterColumn = styled.div`
   margin-left: 200px;
 `;
 export const FooterColumnIcon = styled.div`
-  flex-direction: column;
   margin-left: 200px;
 `;
 
@@ -61,5 +63,10 @@ export const FooterLogo = styled.img`
   weight: 180px;
   text-align: left;
   height: 210px;
-  padding-bottom: 60px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+`;
+export const FooterContainer = styled.div`
+  display: flex;
+  border: 1px solid rgba(91, 74, 75, 0.18);
 `;

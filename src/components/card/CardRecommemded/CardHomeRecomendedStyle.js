@@ -1,30 +1,16 @@
 import styled from 'styled-components';
 export const ContainerCard = styled.div`
-  width: 800px;  
+  width: 97%;  
   height: 150px;
   margin-top: 10px;
-  &.active {
-    color: #15cdfc;
-  }
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 30px;
+  height: 130px;
 `;
 export const ImageComicRecommended = styled.img`
-  background: blue;
-  width:  170px;  
-  height: 150px;
-`;
-export const NavLink = styled.a`
-  color: #767C88;
-  display: flex;
-  margin-top: 2px;
-  align-items: left;
-  text-decoration: none;
-  font-weight: bold;
-  heigh: 100%;
-  curson: pointer;
-
-  &.active {
-    color: #15cdfc;
-  }
+  width:  90px;  
+  height: 120px;
 `;
 export const ContainerCardType= styled.div`
   text-align: right;
@@ -34,4 +20,13 @@ export const ContainerCardStar = styled.div`
   margin-left: 10px;
   text-align: right;
   margin-right: 4px;
+`;
+export const ContainerRowContent = styled.div`
+  height: 60px;
+  margin-top: -15px;
+  margin-bottom: 5px;
+`;
+export const ContainerRowInfo = styled.div`
+  margin-left: -17px;
+
 `;

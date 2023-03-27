@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { ComicyName, Content } from "../TextField/Heading";
+import { ComicyName, Content } from "../TextField/TestComponents";
 import { ContainerRow, NavLink } from "./NewUpdateRowHomeStyle";
 
 const NewUpdateRowHomeStyle = () => {

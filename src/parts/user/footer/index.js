@@ -7,16 +7,21 @@ import {
   FooterLinkSmall,
   FooterColumn,
   FooterColumnIcon,
+  ContainerFooter,
+  FooterContainer,
+  TransparentBanner,
+  ImageFooter,
 } from "./footerElements";
 import { Icon } from '@iconify/react';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Footer()  {
   return (
     <>
-      <Container>
+      <ImageFooter>
+      <TransparentBanner>
+      <ContainerFooter>
         <Row >  
           <Col sm={3} >
             <FooterLogo src="image/LogoPage.png">
@@ -50,7 +55,7 @@ function Footer()  {
           </Col>
         </Row>
         <Row>
-          <hr />
+          <FooterContainer>
           <Col sm={8}>
             <FooterColumn>
             <FooterLinkSmall>2022 Brand,Inc.</FooterLinkSmall>
@@ -67,8 +72,12 @@ function Footer()  {
            <FooterLinkSmall><Icon icon="mdi:linkedin" width="30" height="30" /></FooterLinkSmall>
            </FooterColumnIcon>
           </Col>
+          </FooterContainer>
         </Row>
-      </Container>
+      </ContainerFooter>
+        </TransparentBanner>
+      </ImageFooter>
+
     </>
   );
 };
