@@ -1,16 +1,19 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom";
 
-export const Link = styled.a`
+export const LinkRoute = styled(Link)`
   color: #767C88;
+  heigh: 100%;
+  width: 80%;
   display: flex;
-  margin-top: 2px;
   align-items: left;
   text-decoration: none;
   font-weight: bold;
-  heigh: 100%;
   curson: pointer;
-
-  &.active {
+  &.hover {
+    color: #15cdfc;
+  }
+  &.hover {
     color: #15cdfc;
   }
 `;

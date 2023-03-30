@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Heading2 } from "../../TextField/TestComponents";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CardReading, ContainerRow, ContentCardHomeReading, ImageComicReading } from "./CardReadingStylel";
-import { Link } from "../../../utils/style";
+import { Link, LinkRoute } from "../../../utils/style";
 const CardHomeReading = (props) => {
   return (
     <div>
@@ -16,14 +16,14 @@ const CardHomeReading = (props) => {
           <Col sm={10}>
           <ContainerRow>
             <Row>
-              <Link>
+              <LinkRoute>
                 <Heading2>{props.nameComic}</Heading2>
-              </Link>
+              </LinkRoute>
             </Row>
             <Row>
-                <Link>
+                <LinkRoute>
                   <ContentCardHomeReading>Đã đọc chương:   {props.chaperReading}/{props.chaperNum}</ContentCardHomeReading>
-                </Link>
+                </LinkRoute>
             </Row>
           </ContainerRow>
           </Col>

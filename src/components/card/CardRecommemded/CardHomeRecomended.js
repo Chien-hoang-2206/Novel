@@ -13,9 +13,9 @@ import {
   ContainerCardStar,
   ContainerRowContent,
   ContainerRowInfo,
+  LinkRoute,
 } from "./CardHomeRecomendedStyle";
 import { AuthName, Heading2, Content } from "../../TextField/TestComponents";
-import { Link } from "../../../utils/style";
 function CardHomeRecomended(props) {
   return (
     <div>
@@ -29,21 +29,13 @@ function CardHomeRecomended(props) {
               <ContainerRowInfo>
               <Row>
                 <Col sm={4}>
-                  <Link>
+                  <LinkRoute to="/types">
                     <Heading2> {props.nameComic}</Heading2>
-                  </Link>
-                </Col>
+                  </LinkRoute>
+                  </Col>
                 <Col sm={8}>
                   <ContainerCardType>
                     <Button size="small" variant="outlined" color="error">
-                      {props.type1}
-                    </Button>
-                    <Button
-                      size="small"
-                      variant="outlined"
-                      color="error"
-                      style={{ marginLeft: "10px" }}
-                    >
                       {props.type2}
                     </Button>
                     <Button
