@@ -11,7 +11,7 @@ const CardHomeReading = (props) => {
       <CardReading>
         <Row>
           <Col sm={2}>
-            <ImageComicReading src="image/demoImg.webp" />
+            <ImageComicReading src="{props.image}" />
           </Col>
           <Col sm={10}>
           <ContainerRow>
@@ -36,6 +36,7 @@ const CardHomeReading = (props) => {
 CardHomeReading.defaultProps = {
   nameComic: "Tieu de truyen",
   chaperReading: "302",
+  image: "image/demoImg.webp",
   chaperNum: "2222",
 };
 export default CardHomeReading;

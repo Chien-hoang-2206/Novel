@@ -70,7 +70,7 @@ export const NavBtnLink = styled(Link)`
   color: #583f3f;
   display: flex;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   height: 80%;
   text-decoration: none;
   margin-top: 1vh;
@@ -86,6 +86,15 @@ export const NavBtnLink = styled(Link)`
     text-align: center;
 }
   @media screen and (max-width: 768px) {
+    color: #583f3f;
+    display: flex;
+    text-align: center;
+    font-size: 1.5rem;
+    height: 80%;
+    text-decoration: none;
+    margin-top: 1vh;
+    padding: 0.0px 0.5rem;
+    height: 100%;
     &:hover {
       border-left: 4px solid  rgb(97, 96, 95);
       font-weight: bold;
@@ -167,8 +176,8 @@ export const BtnSearch = styled(Button)`
   border-bottom-right-radius: 20px;
   &:hover {
     transition: all 0.2s ease-in-out;
-    border-left: 6px solid rgba(167, 165, 141, 1);
+    border-left: 15px solid rgba(167, 165, 141, 1);
     background: transparent;
-  color: #583f3f;
+    color: #583f3f;
   }
 `;

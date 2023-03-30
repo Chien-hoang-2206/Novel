@@ -11,6 +11,7 @@ import {
   FooterContainer,
   TransparentBanner,
   ImageFooter,
+  FooterBox,
 } from "./footerElements";
 import { Icon } from '@iconify/react';
 import Row from 'react-bootstrap/Row';
@@ -19,6 +20,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Footer()  {
   return (
     <>
+    <FooterBox>
       <ImageFooter>
       <TransparentBanner>
       <ContainerFooter>
@@ -77,6 +79,7 @@ function Footer()  {
       </ContainerFooter>
         </TransparentBanner>
       </ImageFooter>
+      </FooterBox>
 
     </>
   );

@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+export const FooterBox = styled.div`
+  width: 100%;
+`;
 export const ImageFooter = styled.div`
   background-image: url(image/footer-bg.png);
   font-family: "Roboto", sans-serif;

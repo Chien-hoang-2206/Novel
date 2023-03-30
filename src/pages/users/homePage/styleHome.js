@@ -1,8 +1,8 @@
 import styled from "styled-components";
+
 export const ImageBanner = styled.div`
-  background-image: url(image/bgBanner.jpg);
   font-family: "Roboto", sans-serif;
-  height: 500px;
+  height: 100vh;
   border: none;
   background-size: cover;
   box-sizing: border-box;
@@ -11,26 +11,29 @@ export const ImageBanner = styled.div`
 `;
 export const TransparentBanner= styled.div`
   margin-top: 100px;
-  height: 500px;
+  height: 100vh;
   border: none;
-  background-image: linear-gradient(0deg, #fff,70%, transparent);
+  background-image: linear-gradient(0deg, #fff,85%, transparent);
   width: 100%;
 `
 export const ContainerPageContent = styled.div`
-  min-height: 100vh;
-  margin: auto;
-  width: 80%;
-  
   border-radius: 15px;
-  height: 1450px;
-  background-color : #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  margin-top: 250px;
-  margin-bottom: 60px;
+  width: 80%;
+  margin-top: -90vh;
   padding-top: 25px;
   padding-left: 25px;
   padding-right: 10px;
+  background-color : #fff;
   border: 3px solid  gray;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 1370px) {
+    transform: translate(0%, -35%);
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    transform: translate(0%, -30%);
+  }
 `;
 
 export const ContainerRow1 = styled.div`
