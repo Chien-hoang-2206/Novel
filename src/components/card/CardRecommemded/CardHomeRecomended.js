@@ -32,18 +32,10 @@ function CardHomeRecomended(props) {
                   <Link>
                     <Heading2> {props.nameComic}</Heading2>
                   </Link>
-                </Col>
+                  </Col>
                 <Col sm={8}>
                   <ContainerCardType>
                     <Button size="small" variant="outlined" color="error">
-                      {props.type1}
-                    </Button>
-                    <Button
-                      size="small"
-                      variant="outlined"
-                      color="error"
-                      style={{ marginLeft: "10px" }}
-                    >
                       {props.type2}
                     </Button>
                     <Button
