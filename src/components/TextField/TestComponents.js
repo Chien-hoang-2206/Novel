@@ -14,6 +14,7 @@ export const NovelName = styled.p`
 `;
 export const Heading2 = styled.p`
   font-size: 20px;
+  max-height: 7%;
   font-weight: bold;
   text-align: left;
 `;
@@ -41,13 +42,13 @@ export const Introtext = styled.p`
 `;
 export const TextInfoNovel = styled.p`
   font-size: 1rem;
+  max-height: 15%;
   margin-top: 1vh;
   text-align: center;
   font-weight: bold;
 `;
 export const TextNumInfoNovel = styled.p`
   font-size: 1rem;
-  margin-top: -1vh;
   text-align: center;
   font-weight: bold;
 `;

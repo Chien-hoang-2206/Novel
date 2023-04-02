@@ -38,20 +38,6 @@ export const ContainerInfo = styled.div`
 export const ContainerTabs = styled(Col)`
   height: 140vh;
 `;
-export const ColAuthFixed = styled.div`
-position: sticky;
-top: 0;
-  z-index: 990;
-  left: 30;
-  
-  bottom: 20vh;
-  background: rgb(247, 245, 240);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-`;
-export const ContainerColAuth = styled(Col)`
-  padding-top: 12vh;
-`;
 
 export const ContainerTab1 = styled(Row)``;
 export const Col1 = styled(Col)``;
@@ -87,22 +73,9 @@ export const Col2 = styled(Col)`
   background: rgb(247, 245, 240);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 `;
-export const Col2Row2 = styled(Col)`
-  min-height: 15vh;
-  font-size: 15px;
-  align-items: center;
-  justify-content: center;
-  margin: 2vh auto;
-`;
+
 export const NewChapterLink = styled(Link)`
   margin-top: 1vh;
   text-decoration: none;
 `;
 
-export const InfoCol2 = styled.div`
-  border: 1px solid RGB(194 192 187);
-  background: rgb(247, 245, 240);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  height: 17vh;
-`;

@@ -43,7 +43,7 @@ function Novel() {
               <CardInfoNovel />
             </ContainerInfo>
             <Row>
-              <ContainerTabs sm={9}>
+              <ContainerTabs>
                 <div className="containerTabs">
                   <div className="bloc-tabs">
                     <buttonTabs
@@ -122,40 +122,6 @@ function Novel() {
                   </div>
                 </div>
               </ContainerTabs>
-              <ContainerColAuth sm={3}>
-                <ColAuthFixed>
-                <Avatar src="favicon.ico" />
-                <InfoCol2>
-                  <Row>
-                    <Col2Row2>
-                      <i
-                        class="fa-sharp fa-solid fa-book fa-2xl"
-                        style={{ paddingLeft: "4vh" }}
-                      ></i>
-                      <TextInfoNovel>Truyện</TextInfoNovel>
-                      <TextNumInfoNovel> 122</TextNumInfoNovel>
-                    </Col2Row2>
-                    <Col2Row2>
-                      <i
-                        class="fa-solid fa-list fa-2xl"
-                        style={{ paddingLeft: "4vh" }}
-                      ></i>
-                      <TextInfoNovel>Chương</TextInfoNovel>
-                      <TextNumInfoNovel> 122k</TextNumInfoNovel>
-                    </Col2Row2>
-                    <Col2Row2>
-                      <i
-                        class="fa-solid fa-crown fa-2xl"
-                        style={{ paddingLeft: "3vh" }}
-                      ></i>
-                      <TextInfoNovel>Cấp</TextInfoNovel>
-                      <TextNumInfoNovel> 12</TextNumInfoNovel>
-                    </Col2Row2>
-                  </Row>
-                </InfoCol2>
-                </ColAuthFixed>
-
-              </ContainerColAuth>
             </Row>
 
             <Carosel />
