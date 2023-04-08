@@ -8,7 +8,7 @@ import "./Carousel.css";
 
 import { EffectCoverflow, Pagination, Navigation } from "swiper";
 import { ContainerSlide, ContentCarousel, ImagCarousel } from "./CaroselStyle";
-import { Introtext, NovelName, NumFeeling } from "../TextField/TestComponents";
+import {  NovelName, NumFeeling } from "../TextField/TestComponents";
 import SimpleBar from "simplebar-react";
 
 function Carosel() {
@@ -37,14 +37,14 @@ function Carosel() {
         className="swiper_container"
       >
     
-    <SwiperSlide>
+      <SwiperSlide>
           <NovelName style={{ textAlign: "center", marginLeft: "10vh", color: "#C58940" }}>
             Meo moe Meo Meo
           </NovelName>
           <ContainerSlide>
             <ImagCarousel src="image/demoImg.webp" alt="slide_image" />
             <ContentCarousel>
-            <SimpleBar  autoHide={true}  style={{ maxHeight: "30vh" }}>
+            <SimpleBar  autoHide={true}  style={{ margin: "5vh", maxHeight: "30vh" }}>
               <NumFeeling>
                 Nomal Cầu tiến vào linh khí khôi phục thời đại, nhân loại mở ra
                 dị năng thức tỉnh! Giang Nam bắt đầu thức tỉnh mạnh nhất hàng

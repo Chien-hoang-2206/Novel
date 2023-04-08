@@ -1,0 +1,65 @@
+.box-page {
+    flex-direction: row;
+    display: flex;
+}
+
+.col-type {
+    flex-direction: column;
+    display: block;
+    width: 22%;
+}
+
+.col-sort-novel {
+    flex-direction: column;
+    display: flex;
+    width: 78%;
+    padding-left: 5vh;
+}
+
+.choose {
+    border-bottom: 1px solid #000;
+
+}
+.choosed-type {
+    min-height: 10vh;
+    padding-bottom: 1vh ;
+    display: inline-flex;
+    flex-wrap: wrap!important;
+
+}
+.type-choose{
+    min-height: 10vh;
+    border-bottom: 1px solid #000;
+}
+.type{
+    min-height: 10vh;
+    display: inline-flex;
+    flex-wrap: wrap!important;
+}
+.status{
+    min-height: 10vh;
+    border-bottom: 1px solid #000;
+}
+.view{
+    min-height: 10vh;
+    border-bottom: 1px solid #000;
+}
+.hot{
+    min-height: 10vh;
+    border-bottom: 1px solid #000;
+}
+.button {
+
+}
+.sort{
+    display: inline-flex;
+    flex-wrap: wrap!important;
+}
+.novel-info{
+    margin-top: 4vh;
+    margin-left: 2vh;
+    padding-bottom: 1vh ;
+    display: inline-flex;
+    width: 100%;
+    flex-wrap: wrap!important;
+}

@@ -18,35 +18,36 @@ import {
 import { AuthName, Heading2, Content } from "../../TextField/TestComponents";
 function CardHomeRecomended(props) {
   return (
-    <div>
       <ContainerCard>
-        <Container>
-          <Row>
+          <Row> 
             <Col sm={2}>
-              <ImageComicRecommended src="image/demoImg.webp" />
+              <ImageComicRecommended src= {props.image}/>
             </Col>
             <Col sm={10}>
               <ContainerRowInfo>
-              <Row>
-                <Col sm={4}>
-                  <LinkRoute to="/types">
+              <Row style={{ maxHeight:"5vh"}}>
+                <Col sm={6} style={{maxHeight:"4vh" }}>
+                  <LinkRoute to="/novel">
                     <Heading2> {props.nameComic}</Heading2>
                   </LinkRoute>
                   </Col>
-                <Col sm={8}>
-                  <ContainerCardType>
-                    <Button size="small" variant="outlined" color="error">
+                <Col sm={6} style={{ maxHeight:"5vh", justifyContent: "end" , display: "flex"}}    >
+                    <Button   size="small" variant="outlined" color="error" style={{ maxHeight:"4vh" , marginRight: "1vh"}} >
+                      {props.type1}
+                    </Button>
+                    <Button   size="small" variant="outlined" color="error" style={{ maxHeight:"4vh"}} >
                       {props.type2}
                     </Button>
-                    <Button
+                    {/* <Button
                       size="small"
                       variant="outlined"
-                      style={{ marginLeft: "10px" }}
+                      style={{ marginLeft: "10px" ,maxHeight:"3vh"}}
                       color="error"
+
                     >
                       {props.type3}
-                    </Button>
-                  </ContainerCardType>
+                    </Button> */}
+               
                 </Col>
               </Row>
               
@@ -76,13 +77,12 @@ function CardHomeRecomended(props) {
               </ContainerRowInfo>
             </Col>
           </Row>
-        </Container>
       </ContainerCard>
-    </div>
   );
 }
 
 CardHomeRecomended.defaultProps = {
+  image: "image/demoImg.webp",
   nameComic: "Tieu de truyen",
   type1: "The loai 1",
   type2: "The loai 2",

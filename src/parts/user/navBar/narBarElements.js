@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
-import { ColorsPage } from "../../../style/styleColor";
 import { Button } from "react-bootstrap";
 export const Navbar = styled.nav`
   background: linear-gradient(90deg, #FFFFFF 0%, rgb(237, 237, 222) 100%);
@@ -70,18 +68,14 @@ export const NavBtnLink = styled(Link)`
   color: #583f3f;
   display: flex;
   text-align: center;
-  font-size: 1.2rem;
-  height: 80%;
+  font-size: 1rem;
   text-decoration: none;
-  margin-top: 1vh;
-  padding: 0.0px 0.5rem;
-  height: 100%;
-  
+  margin-top: 2vh;
+  padding: 1vh 0.5rem;
   &:hover {
     transition: all 0.2s ease-out;
-    border-bottom: 4px solid rgba(79, 77, 72, 1);
+    border-bottom: 2px solid rgba(79, 77, 72, 1);
     font-weight: bold;
-    padding-bottom: 5px;
     color: rgba(0, 0, 0, 0.68);
     text-align: center;
 }
@@ -108,7 +102,6 @@ export const NavBtnLink = styled(Link)`
 `;
 
 export const NavSearchContainer = styled.div`
-  width: 86%;
   margin: 10vh;
   @media screen and (max-width: 1374px) {
     width: 40%;
@@ -151,7 +144,7 @@ export const NavSearchInput = styled.input`
   flex-grow: 3;
   font-size: 15px;
   height: 30px;
-  max-width: 80%;
+  width: 65vh;
   font-weight: bold;
   padding-left: 10px;
   border: none;
@@ -170,13 +163,15 @@ export const BtnSearch = styled(Button)`
   justify-content: center;
   align-iteams: center;
   border-top-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 0px;
   backgorund-color: #fffe2;
   border-left: 2px solid rgba(106, 102, 104, 0.55);
   background: transparent;
-  border-bottom-right-radius: 20px;
   &:hover {
-    transition: all 0.2s ease-in-out;
-    border-left: 15px solid rgba(167, 165, 141, 1);
+    transition: all 0.5s ease-in-out;
+    border-left: 1vh solid rgba(167, 165, 141, 1);
     background: transparent;
     color: #583f3f;
   }

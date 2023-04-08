@@ -1,0 +1,122 @@
+/* review Component */
+.review {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+  }
+  
+    
+  .star-date {
+    display: flex;
+    padding-left: 30px;
+  }
+  .review-header img {
+  width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+  
+  .review-header h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .review-header-stars {
+    font-size: 0.8rem;
+    color: #f1c40f;
+    margin-top: 2px;
+    margin-left: -5vh;
+  }
+  
+  .review-header-date {
+    font-size: 0.8rem;
+    margin-left: 30px;
+    color: #95a5a6;
+  }
+  
+  .review-body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .review-body-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .review-body-chapter {
+    font-size: 0.8rem;
+    margin-left: 30px;
+    color: #95a5a6;
+  }
+  
+  .review-body-content {
+    font-size: 1rem;
+    width: 125vh;
+    max-height: 15vh;
+  }
+  
+  .review-body-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .review-body-likes,
+  .review-body-reply,
+  .review-body-report {
+    font-size: 0.8rem;
+    padding-left: 4vh;
+    color: #95a5a6;
+  }
+  
+  .review-body-likes:hover,
+  .review-body-reply:hover,
+  .review-body-report:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .review-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .review-form-input {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .review-form-button {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .review-form-button:hover {
+    background-color: #1c5a8b;
+  }
+  

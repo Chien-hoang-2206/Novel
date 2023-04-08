@@ -8,9 +8,7 @@ import {
   RowType,
   RowTitle,
   RowInfo,
-  RowStar,
   RowNav,
-  ContainerInfo,
   ColInfo,
   ContainerStar,
   BtnRead,
@@ -20,21 +18,17 @@ import {
   RowIntro,
   RowAuth,
   ColAuth,
-  Scroll,
   ButtonContainer,
 } from "./CardInFoNovelStyle";
 import ImageNovel from "../../ImageNovel/ImageNovel";
 import {
   AuthName,
-  Content,
-  Heading2,
   Introtext,
   Nomal,
   NovelName,
   TextInfoNovel,
 } from "../../TextField/TestComponents";
 import TransparentButton from "./../../Button/TransparentButton/TransparentButton";
-import { ContentNovelTab } from "../../TextField/TestComponents";
 
 function CardInfoNovel(props) {
   return (

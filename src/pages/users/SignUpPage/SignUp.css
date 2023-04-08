@@ -1,0 +1,56 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height:  40%;
+    background: #ffffff;
+    word-break: break-all;
+  }
+.link-btn {
+    border: none;
+    word-break: break-all;
+    margin: 2vh 12%;
+    background: transparent;
+  }
+.Boxinput {
+    border: none;
+    height: 7vh;
+    padding-left:10px;
+    margin: 1vh  0vh;
+    background: rgb(227, 222, 222);
+  }
+.input {
+    border: none;
+    width: 91%;
+    height: 100%;
+    margin-left: 2vh;
+    padding-left: 10px;
+    background: transparent;
+  }
+.Sunmit {
+    border: none;
+    border-radius: 4px;
+    margin-top: 2vh;
+    height: 7vh;
+    color: white;
+    background: #00BDD6;
+  }
+.OR {
+    margin-top: -3vh;
+    height: 3vh;
+    font-size: 30px;
+    padding: 2% 38%;
+    background: #fff;
+  }
+.link-orther-su {
+    border: none;
+    margin-top: 5vh;
+    border-top: 1px solid gray;
+    font-size: 30px;
+    padding: 1% 20vh;
+    background: transparent;
+  }
+.icon-link-su{
+    margin-top: 0.3rem;
+    font-size: 5vh;
+}

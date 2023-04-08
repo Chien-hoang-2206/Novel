@@ -11,7 +11,6 @@ import {
 } from "./ListChapterTabStyle";
 import SimpleBar from "simplebar-react";
 import {
-  Nomal,
   TextInfoNovel,
   TextNumInfoNovel,
 } from "../../TextField/TestComponents";

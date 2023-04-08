@@ -1,34 +1,49 @@
 import React from "react";
-import { useState } from "react";
-import BannerImage from "../../../parts/user/BannerImage/BannerImage";
 import {
-  Col2,
-  Col2Row2,
-  ColAuthFixed,
-  ContainerColAuth,
   ContainerInfo,
   ContainerPageContent,
   ContainerTabs,
   ImageBanner,
-  InfoCol2,
   TransparentBanner,
 } from "./NovelElement";
+import {
+  TabName,
+} from "../../../components/TextField/TestComponents";
+
 import CardInfoNovel from "../../../components/card/CardInfoNovel/CardInfoNovel";
 import Footer from "../../../parts/user/footer";
 import "./Tabs.css";
-import {
-  TabName,
-  TextInfoNovel,
-  TextNumInfoNovel,
-} from "../../../components/TextField/TestComponents";
-import IntroduceTab from "../../../components/Tab/IntroduceTab/IntroduceTab";
+
 import ReviewTab from "../../../components/Tab/ReviewTab/ReviewTab";
 import ListChapterTab from "../../../components/Tab/ListChapterTab/ListChapterTab";
 import CommentTab from "../../../components/Tab/CommentTab/CommentTab";
 import Carosel from "./../../../components/Carosel/Carosel";
 import Row from "react-bootstrap/Row";
-import Avatar from "../../../components/Avatar/Avatar";
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const options = {
+  method: 'GET',
+  url: 'https://web-novel-api.p.rapidapi.com/novel/fa102782f605163ddc1b3341709fd70221b4e23b',
+  headers: {
+    'X-RapidAPI-Key': 'be4e2f28a7mshb59f609cd0a1af0p19977fjsnaf6acd1c335a',
+    'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
+  }
+};
+
 function Novel() {
+  const [novel, setNovel] = useState();
+
+  useEffect(() => {
+    axios.request(options).then(function (response) {
+      // console.log(response.data);
+      setNovel(response.data.novel)
+    }).catch(function (error) {
+      console.error(error);
+    });
+  }, []);
+  console.log(novel);
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -46,15 +61,15 @@ function Novel() {
               <ContainerTabs>
                 <div className="containerTabs">
                   <div className="bloc-tabs">
-                    <buttonTabs
+                    <div
                       className={
                         toggleState === 1 ? "tabs active-tabs" : "tabs"
                       }
                       onClick={() => toggleTab(1)}
                     >
                       <TabName>Danh sách chương</TabName>
-                    </buttonTabs>
-                    <buttonTabs
+                    </div>
+                    <div
                       className={
                         toggleState === 2 ? "tabs active-tabs" : "tabs"
                       }
@@ -62,8 +77,8 @@ function Novel() {
                     >
                       <TabName>Đánh giá</TabName>
                       <div className="number-border">25</div>
-                    </buttonTabs>
-                    <buttonTabs
+                    </div>
+                    <div
                       className={
                         toggleState === 3 ? "tabs active-tabs" : "tabs"
                       }
@@ -71,7 +86,7 @@ function Novel() {
                     >
                       <TabName>Bình luận</TabName>
                       <div className="number-border">3037</div>
-                    </buttonTabs>
+                    </div>
                   </div>
 
                   <div className="content-tabs">

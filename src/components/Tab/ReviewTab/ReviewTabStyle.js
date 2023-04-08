@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 export const Note = styled.div`
   padding: 2vh;
   border: 1px solid gray;
@@ -12,9 +11,11 @@ export const NoteText = styled.div`
   width: 90%;
 `;
 export const UserEditNote = styled.div`
-  border: 1px solid gray;
-  background: gray;
+  border: 1px solid rgb(250,234,177);
+  border-radius: 4px;
+  background: rgb(250,234,177);
   max-height: 33vh;
+  margin-bottom: 14vh;
   padding: 1.5vh 3vh;
 `;
 export const R1Note = styled(Row)`
@@ -33,12 +34,11 @@ export const ContainerInputText = styled.div`
   width: 105%;
   margin-left: -3vh;
   margin-top: 1vh;
-  border: 9px solid gray;
+  border: 9px solid  rgb(250,234,177);
 
 `;
 export const InputText = styled.div`
   padding-left: 3vh;
-  padding-top: 1vh;
 
 `;
 export const ButtonAdd = styled.div`

@@ -1,0 +1,23 @@
+.btn-types{
+    border-radius: 20px;
+    display: flex;
+    padding: 0px 7px;
+    padding-top: 3px;
+    border: 1px solid #000;
+    background-color: #c5955a;
+    color: #fff;
+    width: fit-content;
+    margin: 1vh 1vh;
+    height: 4vh;
+}
+.btn-types:hover{
+    background-color: #FAEAB1;
+}
+.btn-delete{
+    margin: 0px 2px;
+    height: max-content;
+    background: transparent;
+    border: none;
+    font-size: 19px;
+    margin-top: -3px;
+}

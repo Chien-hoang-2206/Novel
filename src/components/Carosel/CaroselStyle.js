@@ -4,7 +4,7 @@ export const ContainerSlide = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 110%;
+  width: 120%;
   height: 45%;
   background-color:#FAF8F1;
   margin-left: 5vh;

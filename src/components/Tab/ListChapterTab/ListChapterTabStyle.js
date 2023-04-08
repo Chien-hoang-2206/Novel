@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 export const Row1 = styled.div`
   position: relative;

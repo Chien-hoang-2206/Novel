@@ -1,18 +1,15 @@
 import { memo } from "react";
-import { Container, Container2 } from "./typePage";
+import {  Container2 } from "./typePage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "@mui/material/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
-import BG from "./BG.webp";
 import BG2 from "./bg2.jpg";
 import BG3 from "./bg3.jpg";
-import BG4 from "./bg4.jfif";
 import PC from "./pc1.png";
 import { Parallax } from "react-parallax";
 import "./type.css";
-import { Link } from "react-router-dom";
 function welcomePage() {
   return (
     <>
@@ -41,7 +38,7 @@ function welcomePage() {
             </Row>
           </div>
           <div className="ImagePC">
-            <img src={PC} width="350" height="200" />
+            <img src={PC} alt="avt" width="350" height="200" />
           </div>
         </div>
       </Parallax>

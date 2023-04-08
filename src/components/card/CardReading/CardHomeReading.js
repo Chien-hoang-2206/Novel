@@ -4,14 +4,14 @@ import Col from "react-bootstrap/Col";
 import { Heading2 } from "../../TextField/TestComponents";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CardReading, ContainerRow, ContentCardHomeReading, ImageComicReading } from "./CardReadingStylel";
-import { Link, LinkRoute } from "../../../utils/style";
+import {  LinkRoute } from "../../../utils/style";
 const CardHomeReading = (props) => {
   return (
     <div>
       <CardReading>
         <Row>
           <Col sm={2}>
-            <ImageComicReading src="{props.image}" />
+            <ImageComicReading src={props.image} />
           </Col>
           <Col sm={10}>
           <ContainerRow>

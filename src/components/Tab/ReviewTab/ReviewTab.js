@@ -3,15 +3,12 @@ import {
   AuthName,
   Content,
   Heading2,
-  Nomal,
   NumFeeling,
 } from "../../TextField/TestComponents";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "toolcool-range-slider";
 import {
-  BtnAddReview,
-  ButtonAdd,
   ContainerInputText,
   InputText,
   Note,
@@ -20,6 +17,8 @@ import {
   R1Note,
   UserEditNote,
 } from "./ReviewTabStyle";
+import Review from "../../card/Review/Review";
+import SimpleBar from "simplebar-react";
 function ReviewTab() {
   const [value, setValue] = useState(50);
   const [inputValue, setInputValue] = useState("");
@@ -86,6 +85,7 @@ function ReviewTab() {
                 min="-100"
                 max="100"
                 value="50"
+                style={{ overflow: "hidden", PointerEvent: "none" }}
               ></toolcool-range-slider>
               <NumverSlide>
                 <NumFeeling> {value} </NumFeeling>
@@ -100,16 +100,33 @@ function ReviewTab() {
                   height: "15vh",
                   width: "121vh",
                   marginLeft: "-3vh",
-                  marginTop: "-1vh",
                 }}
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
               ></input>
-        
+
             </InputText>
           </ContainerInputText>
         </UserEditNote>
+
+        {/* Review  */}
+        <SimpleBar style={{ maxHeight: "85vh" }}>
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+        </SimpleBar>
+
+
       </Col>
       <Col sm={3}>
         <Heading2>

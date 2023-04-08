@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { Heading2, Content } from "../../TextField/TestComponents";
+import {  Content } from "../../TextField/TestComponents";
 export const ImageComicReading = styled.img`
   width:  39px;  
+  object-fit: fill;
   height: 52px;
 `;
 export const CardReading = styled.div`

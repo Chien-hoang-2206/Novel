@@ -60,12 +60,10 @@ export const RowNav = styled(Row)`
 export const BtnRead = styled.button`
   border: 2px solid black;
   border-radius: 30px;
-  padding: 0 30px;
-  background-color: RGB(201 183 67);
-  color: #fff;
-  font-weight: bold;
+  padding: 0 40px;
+  font-weight: bold;  
   font-size: 1.5rem;
-  max-height: 5vh;
+  max-height: 7vh;
   &:hover {
     background-color: rgb(183, 138, 40);
     color: #fff;
@@ -74,12 +72,12 @@ export const BtnRead = styled.button`
 export const BtnBookmark = styled.button`
   border: 2px solid black;
   border-radius: 30px;
-  padding: 0 30px;
-  max-height: 5vh;
-  margin-left: 5vh;
-  color: gray;
-  font-weight: bold;
+  padding: 0 40px;
+  margin-left: 10px;
+  font-weight: bold;  
   font-size: 1.5rem;
+  max-height: 7vh;
+  color: gray;
   &:hover {
     background-color:RGB(94 89 77);
     color: #fff;

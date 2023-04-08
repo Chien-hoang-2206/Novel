@@ -13,7 +13,7 @@ export const NovelName = styled.p`
   margin-bottom: 20px;
 `;
 export const Heading2 = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   max-height: 7%;
   font-weight: bold;
   text-align: left;
@@ -24,8 +24,18 @@ export const TextCenter = styled.p`
   text-align: center;
 `;
 export const Nomal = styled.p`
-  font-size: 0.rem;
+  font-size: 0.9rem;
   text-align: center;
+`;
+export const TypesDeleteText = styled.p`
+  font-size: 0.8rem;
+  text-align: left;
+  max-height: 1vh;
+`;
+export const TypesText = styled.p`
+  font-size: 0.7rem;
+  text-align: left;
+  max-height: 1vh;
 `;
 export const ContentNovelTab = styled.p`
   font-size: 0.9rem;
@@ -53,7 +63,7 @@ export const TextNumInfoNovel = styled.p`
   font-weight: bold;
 `;
 export const Content = styled.p`
-  text-align: left;
+  text-align: justify;
   font-size: 12px;
 `;
 export const NumFeeling = styled.p`
@@ -65,10 +75,16 @@ export const AuthName = styled.p`
   text-align: left;
   font-size: 14px;
   font-weight: bold;
+  max-height: 1vh;
 `;
 export const ComicyName = styled.p`
   text-align: left;
   font-size: 13px;
+  font-weight: bold;
+`;
+export const TitleText = styled.p`
+  text-align: left;
+  font-size: 20px;
   font-weight: bold;
 `;
 

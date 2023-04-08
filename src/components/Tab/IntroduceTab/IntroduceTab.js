@@ -33,7 +33,6 @@ function IntroduceTab() {
       <ContainerTab1>
         <Col1 sm={8}>
           <Row1>
-
             <ContentNovelTab>
               Nomal Cầu tiến vào linh khí khôi phục thời đại, nhân loại mở ra dị
             </ContentNovelTab>

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import  Modal from 'react-modal';
+import  Row  from 'react-bootstrap/Row';
 
 export const ImageBanner = styled.div`
   font-family: "Roboto", sans-serif;
@@ -36,6 +38,17 @@ export const ContainerPageContent = styled.div`
   }
 `;
 
+
+export const ModalStyle = styled(Modal)`
+  background: #FEFEFE;
+  height: 74%;
+  width: 60vh;
+  padding: 3vh;
+  border: 2px solid black;
+  border-radius: 6px;
+  margin: 15vh 35%;
+}
+`;
 export const ContainerRow1 = styled.div`
   height: 700px;
 `;
@@ -59,9 +72,7 @@ export const ContainerRow1Column4 = styled.div`
   padding-top: 5px;
   }
 `;
-export const ContainerRow2Column1 = styled.div`
-  width: 100%;
-  height: 660px;
+export const ContainerRow2Column1 = styled(Row)`
   margin-left: -10px;
 `;
 export const ContainerRow2Column2 = styled.div`

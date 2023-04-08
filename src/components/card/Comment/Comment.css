@@ -1,0 +1,113 @@
+/* comment Component */
+.comment {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .comment-header {
+    display: flex;
+    align-items: center;
+  }
+  
+    
+  .star-date {
+  }
+  .comment-header img {
+  width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+  
+  .comment-header h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .comment-header-date {
+    font-size: 0.8rem;
+    margin-left: -4vh;
+    color: #95a5a6;
+  }
+  
+  .comment-body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .comment-body-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .comment-body-chapter {
+    font-size: 0.8rem;
+    margin-left: 2vh;
+    color: #95a5a6;
+  }
+  
+  .comment-body-content {
+    font-size: 1rem;
+    width: 125vh;
+    max-height: 15vh;
+  }
+  
+  .comment-body-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .comment-body-likes,
+  .comment-body-reply,
+  .comment-body-report {
+    font-size: 0.8rem;
+    padding-left: 4vh;
+    color: #95a5a6;
+  }
+  
+  .comment-body-likes:hover,
+  .comment-body-reply:hover,
+  .comment-body-report:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .comment-form-input {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .comment-form-button {
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    background-color: #2980b9;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .comment-form-button:hover {
+    background-color: #1c5a8b;
+  }
+  

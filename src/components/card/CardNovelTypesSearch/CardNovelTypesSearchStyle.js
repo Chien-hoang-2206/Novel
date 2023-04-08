@@ -1,11 +1,17 @@
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export const ContainerCard = styled.div`
-  width: 97%;  
-  height: 150px;
-  margin-left: 20px;
-  margin-right: 30px;
-  height: 130px;
+  width: 45%;  
+  height: 20vh;
+  margin-bottom: 3vh;
+  margin-right: 4vh;
+`;
+export const ImgNovel = styled.img`
+  width: 100%;  
+  height: 90%;
+ background-size: cover;
 `;
 export const LinkRoute = styled(Link)`
   color: #000;
@@ -22,8 +28,6 @@ export const LinkRoute = styled(Link)`
 export const ImageComicRecommended = styled.img`
   width:  90px;  
   height: 120px;
-  object-fit: fill;
-  
 `;
 export const ContainerCardType= styled.div`
   text-align: right;
@@ -31,15 +35,20 @@ export const ContainerCardType= styled.div`
   max-height: 2vh;
 `;
 export const ContainerCardStar = styled.div`
-  margin-left: 10px;
+  margin-left: 6px;
   text-align: right;
   margin-right: 4px;
+  font-size: 10px;
 `;
 export const ContainerRowContent = styled.div`
-  height: 10vh;
+  height: 8.5vh;
   overflow: hidden;
 
 `;
-export const ContainerRowInfo = styled.div`
+export const ContainerRowInfo = styled(Col)`
   margin-left: -17px;
+`;
+export const Chapter = styled.div`
+  max-width: 80%;
+  margin-left: -2vh;
 `;

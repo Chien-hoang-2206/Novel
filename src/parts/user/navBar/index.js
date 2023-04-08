@@ -1,32 +1,32 @@
 import { Icon } from "@iconify/react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button } from "../../../components/Button/Button";
 import {
   BtnSearch,
-  HH,
   Navbar,
   NavbarContainer,
-  NavBtn,
   NavBtnLink,
-  NavBtnSearch,
-  NavLink,
   NavLogo,
   NavLogoPage,
-  NavMenu,
   NavMenuIcon,
   NavSearch,
   NavSearchContainer,
   NavSearchInput,
   NavSelect,
 } from "./narBarElements";
-import { SpaceBar } from "@mui/icons-material";
-import { Nav } from "react-bootstrap";
+import LoginModal from "../../../pages/users/LoginModal/LoginModal";
 function NarBar() {
   const [click, setClick] = useState(false);
   const [search, setSearch] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
+  const handleLoginClick = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowLoginModal(false);
+  };
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const showSearch = () => {
@@ -37,6 +37,7 @@ function NarBar() {
     }
   };
   window.addEventListener("resize", showSearch);
+
   return (
     <>
       <Navbar>
@@ -77,39 +78,16 @@ function NarBar() {
               </NavBtnLink>
             </li>
             <li>
-              <NavBtnLink to="/login" onClick={closeMobileMenu}>
+              <NavBtnLink onClick={handleLoginClick}>
                 Đăng nhập
               </NavBtnLink>
             </li>
           </ul>
 
-          {/* {search &&   
-          
-
-
-          } */}
-          {/* <NavMenu>
-        
-          <NavLink href="/charts">Bảng xếp hạng</NavLink>
-        </NavMenu> */}
-          {/* <NavSearch>
-            <NavSelect>
-                <option value="1">Tên truyện</option>
-                <option value="2">Tóm tắt</option>
-            </NavSelect>
-            <NavSearchInput name="firstName" />
-            <NavBtnSearch>
-            <NavBtnSearch to="/search"><Icon icon="material-symbols:search-rounded" /></NavBtnSearch>
-            </NavBtnSearch>
-        </NavSearch>
-
-        
-        <NavBtn>
-          <NavBtnLink to="/login">Đăng nhập</NavBtnLink>
-          <NavBtnLink to="/register">Đăng ký</NavBtnLink>
-        </NavBtn> */}
+    
         </NavbarContainer>
       </Navbar>
+            {showLoginModal && <LoginModal onClose={handleCloseModal} />}
     </>
   );
 }
