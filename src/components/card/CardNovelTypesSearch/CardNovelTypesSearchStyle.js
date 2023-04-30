@@ -2,15 +2,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-export const ContainerCard = styled.div`
+export const ContainerCard = styled(Row)`
   width: 45%;  
   height: 20vh;
   margin-bottom: 3vh;
-  margin-right: 4vh;
+  margin-left: 2vh;
 `;
 export const ImgNovel = styled.img`
-  width: 100%;  
-  height: 90%;
+  width: 120%;  
+  height: 85%;
+  margin-top: 5px;
  background-size: cover;
 `;
 export const LinkRoute = styled(Link)`
@@ -38,7 +39,8 @@ export const ContainerCardStar = styled.div`
   margin-left: 6px;
   text-align: right;
   margin-right: 4px;
-  font-size: 10px;
+  margin-top: 2px;
+  font-size: 15px;
 `;
 export const ContainerRowContent = styled.div`
   height: 8.5vh;
@@ -46,9 +48,9 @@ export const ContainerRowContent = styled.div`
 
 `;
 export const ContainerRowInfo = styled(Col)`
-  margin-left: -17px;
+  margin-left: 0px;
 `;
 export const Chapter = styled.div`
-  max-width: 80%;
-  margin-left: -2vh;
+  display: flex;
+  justify-content: space-between;
 `;

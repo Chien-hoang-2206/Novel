@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Chapter,
   Col2Row2,
@@ -11,26 +10,41 @@ import {
 } from "./ListChapterTabStyle";
 import SimpleBar from "simplebar-react";
 import {
+  Content1,
   TextInfoNovel,
   TextNumInfoNovel,
 } from "../../TextField/TestComponents";
+
 import { Content } from "../../TextField/TestComponents";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Avatar from "../../Avatar/Avatar";
+import { useState } from "react";
 
-const ListChapterTab = ({ chapters }) => {
-  const [sortAscending, setSortAscending] = useState(true);
-
-  const handleSortClick = () => {
-    setSortAscending(!sortAscending);
+const ListChapterTab = ({ chapters, nameNovel, IDNovel ,accountId}) => {
+  const [sortOrder, setSortOrder] = useState(false);
+  const novelname = nameNovel;
+  const Idnovel = IDNovel;
+  const accID = accountId;
+  console.log(accID);
+  const calculateDaysFromCreatedAt = (createdAt) => {
+    if (!createdAt) {
+      return 0;
+    }
+    const date = new Date(createdAt.split("T")[0]);
+    const now = new Date();
+    const diffInMs = now.getTime() - date.getTime();
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    return diffInDays;
   };
-
-  const sortedChapters = [...chapters].sort((a, b) =>
-    sortAscending
-      ? a.chapterNumber - b.chapterNumber
-      : b.chapterNumber - a.chapterNumber
-  );
+  const myState = { myData: "abc" };
+  function handleSortClick() {
+    if (sortOrder) {
+      setSortOrder(false);
+    } else {
+      setSortOrder(true);
+    }
+  }
 
   return (
     <>
@@ -55,145 +69,58 @@ const ListChapterTab = ({ chapters }) => {
                   fontSize: "22px",
                 }}
               >
-                <i class="fa-solid fa-arrow-up-wide-short"></i>{" "}
+                {sortOrder === true ? (
+                  <i class="fa-solid fa-arrow-down-short-wide"></i>
+                ) : (
+                  <i class="fa-solid fa-arrow-up-wide-short"></i>
+                )}
               </button>
             </ColButton>
           </Row1>
           <SimpleBar style={{ maxHeight: "110vh" }}>
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
+            {sortOrder === true
+              ? chapters &&
+                chapters.reverse().map((chapter, index) => (
+                  <Chapter key={index + 1}>
+                    <Content1
+                      to={`/novel/chapter/${chapter._id}`}
+                      state={{ novelname , Idnovel ,accID}}
+                      style={{ marginLeft: "8vh" }}
+                    >
+                      Chương {index + 1}
+                    </Content1>
+                    <Content1
+                      to={`/novel/chapter/${chapter._id}`}
+                      state={{ novelname , Idnovel ,accID}}
+                    >
+                      {chapter.title}
+                    </Content1>
 
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
-            {sortedChapters.map((chapter) => (
-              <Chapter key={chapter.chapterNumber}>
-                <Content>Chapter {chapter.chapterNumber}</Content>
-                <Content>{chapter.chapterTitle}</Content>
-                <Content>{chapter.dateUpload} ngày trước</Content>
-              </Chapter>
-            ))}
+                    <Content1>
+                      {calculateDaysFromCreatedAt(chapter.createdAt)} ngày trước
+                    </Content1>
+                  </Chapter>
+                ))
+              : chapters &&
+                chapters.reverse().map((chapter, index) => (
+                  <Chapter key={index + 1}>
+                    <Content1
+                      style={{ marginLeft: "8vh" }}
+                      to={`/novel/chapter/${chapter._id}`}
+                      state={{ novelname , Idnovel ,accID}}
+                    >
+                      Chương {chapters.length - index}
+                    </Content1>
+                    <Content1  to={`/novel/chapter/${chapter._id}`}
+                      state={{ novelname , Idnovel ,accID}} >
+                      {chapter.title}
+                    </Content1>
+
+                    <Content1>
+                      {calculateDaysFromCreatedAt(chapter.createdAt)} ngày trước
+                    </Content1>
+                  </Chapter>
+                ))}
           </SimpleBar>
         </Col>
 

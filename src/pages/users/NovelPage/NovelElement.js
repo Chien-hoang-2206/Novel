@@ -20,20 +20,24 @@ export const TransparentBanner = styled.div`
 `;
 export const ContainerPageContent = styled.div`
   border-radius: 15px;
-  width: 90%;
+  width: 66%;
+  display:flex;
+ flex-wrap: wrap;
   margin-inline: auto;
   padding: 5vh;
   background-color: #fff;
   border: 3px solid gray;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   @media (max-width: 1370px) {
+    width: 85%;
   }
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
 export const ContainerInfo = styled.div`
-  height: 60vh;
+    width: 100%;
+
 `;
 export const ContainerTabs = styled(Col)`
   height: 140vh;

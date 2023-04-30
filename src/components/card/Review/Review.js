@@ -17,7 +17,7 @@ function Review(props) {
       <div className="review-header">
         <img src="favicon.ico" alt="Avatar" />
         <div className="review-header-info">
-          <h4>{username} MemoEO</h4>
+          <h4>{username} </h4>
           <div className="star-date">
             <div className="review-header-stars">
               {star}
@@ -28,7 +28,7 @@ function Review(props) {
               <i class="fa-solid fa-star"></i>
             </div>
             <div className="review-header-date">
-              {date} 5 ngày trước
+              {date} ngày trước
             </div>
             <div className="review-body-chapter">
             Chapter {chapterRead}
@@ -40,9 +40,7 @@ function Review(props) {
         <div className="review-body-info">
 
           <div className="review-body-content">
-            {content} Nulla aute nisi quis nostrud reprehenderit nisi cillum mollit anim amet duis non esse.
-            Eu laborum fugiat magna reprehenderit reprehenderit tempor aliquip nisi officia irure qui ad. Labore pariatur ex ut aliqua ad
-            exercitation deserunt eu nisi do velit mollit consequat in quis. Adipisicing magna
+            {content} 
           </div>
         </div>
         <div className="review-body-actions">

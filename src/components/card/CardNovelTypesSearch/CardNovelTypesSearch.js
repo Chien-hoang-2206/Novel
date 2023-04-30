@@ -29,15 +29,14 @@ import { TypesDeleteText } from "../../TextField/TestComponents";
 function CardNovelTypesSearch(props) {
   return (
     <ContainerCard>
-      <Row>
-        <Col sm={4} style={{ Height: "15vh" }}>
+        <Col sm={3} style={{ Height: "15vh" }}>
           <ImgNovel src="image/demoImg.webp" />
         </Col>
 
-        <ContainerRowInfo sm={8}>
+        <ContainerRowInfo sm={9}>
           <Row style={{ maxHeight: "5vh" }}>
-            <Col sm={7} style={{ maxHeight: "4vh" }}>
-              <LinkRoute to="/novel">
+            <Col style={{ maxHeight: "4vh" }}>
+            <LinkRoute to={`/novel/${props.id}`}>
                 <Heading2> {props.nameComic}</Heading2>
               </LinkRoute>
             </Col>
@@ -54,7 +53,7 @@ function CardNovelTypesSearch(props) {
             </Col>
             <Col>
               <ContainerCardStar>
-                {props.numStar}
+                {/* {props.numStar} */}
                 <Icon icon="material-symbols:star" />
                 <Icon icon="material-symbols:star" />
                 <Icon icon="material-symbols:star" />
@@ -63,35 +62,34 @@ function CardNovelTypesSearch(props) {
             </Col>
           </Row>
           <Row>
-            <Col sm={7}>
               <Chapter >
                 <Nomal>Chương: 102</Nomal>
-              </Chapter>
-            </Col>
-            <Col sm={5}>
-              <Button
+               <Button
                 size="small"
                 variant="outlined"
                 color="error"
-                style={{ maxHeight: "3vh" }}
-              >
-                <TypesText>{props.type2}</TypesText>
-              </Button>
-            </Col>
+                style={{ maxHeight: "3.5vh" }}
+                >
+                <TypesText style={{marginTop: "1vh"}}>{props.type}</TypesText>
+               </Button>
+
+               
+                </Chapter>
+
           </Row>
         </ContainerRowInfo>
-      </Row>
     </ContainerCard>
   );
 }
 CardNovelTypesSearch.defaultProps = {
   nameComic: "Tieu de truyen",
-  type1: "The loai 1",
+  type: "The loai 1",
   type2: "The loai 2",
   type3: "The loai 3",
   content:
     "Description about the product: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ss",
   auth: "Alibaba",
   numStar: "4",
+  id: "22",
 };
 export default CardNovelTypesSearch;

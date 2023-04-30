@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export const Heading1 = styled.p`
   font-size: 30px;
@@ -24,7 +25,7 @@ export const TextCenter = styled.p`
   text-align: center;
 `;
 export const Nomal = styled.p`
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: center;
 `;
 export const TypesDeleteText = styled.p`
@@ -66,12 +67,58 @@ export const Content = styled.p`
   text-align: justify;
   font-size: 12px;
 `;
-export const NumFeeling = styled.p`
-  font-size: 19px;
-  margin-top: 0.5vh;
+export const Content1 = styled(Link)`
   text-align: justify;
+  font-size: 16px;
+  flex: 1 ;
+  min-width: 15vh;
+  text-decoration: none;
+  margin-right:  20px;
+  padding: 7px 0;
+  color: rgb(30, 31, 53);
+`;
+export const ContentEdit2 = styled(Link)`
+  text-align: left;
+  font-size: 16px;
+  flex: 6 ;
+  width:100%;
+  text-decoration: none;
+  margin-right:  20px;
+  padding: 7px 0;
+  color: rgb(30, 31, 53);
+`;
+export const ContentEdit = styled(Link)`
+  text-align: left;
+  font-size: 16px;
+  flex: 1 ;
+  margin-left: 20px;
+  text-decoration: none;
+  padding: 7px 0;
+  color: rgb(30, 31, 53);
+`;
+export const ContentEdit1 = styled(Link)`
+  text-align: left;
+  font-size: 16px;
+  flex: 2 ;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  padding: 7px 0;
+  color: rgb(30, 31, 53);
+`;
+export const NumFeeling = styled.p`
+  font-size: 17px;
+  max-width: 30px;
+  text-align: end;
 `;
 export const AuthName = styled.p`
+  text-align: left;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  max-height:10px;
+`;
+export const AuthNameCard = styled.p`
   text-align: left;
   font-size: 14px;
   font-weight: bold;

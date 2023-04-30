@@ -11,13 +11,13 @@ function LoginModal({ onClose }) {
         <TranspaentContainer>
 
         <FormModal>
-        <span className="close" onClick={onClose}>&times;</span>
+        <span  className="close" onClick={onClose}>&times;</span>
         <Tabs
           defaultActiveKey="login"
           id="uncontrolled-tab-example"
           className="mb-6"
           fill
-          style={{ height: "7vh", border: "none" }}
+          style={{ height: "7vh", border: "none"  }}
         >
           <Tab eventKey="login" title="Đăng nhập">
             <Login />

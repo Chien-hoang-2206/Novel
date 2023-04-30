@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import "./typeSearch.css";
 import {
   ContainerPageContent,
@@ -10,16 +10,79 @@ import {
   Heading1,
   Heading2,
   TitleText,
+  TypesDeleteText,
 } from "../../../components/TextField/TestComponents";
 import ButtonTypes from "../../../components/Button/ButtonTypes/ButtonTypes";
 import ButtonChoosedType from "../../../components/Button/ButtonChoosedType/ButtonChoosedType";
 import DropdownSort from "../../../components/Dropdown/DropdownSort/DropdownSort";
 import CardNovelTypesSearch from "../../../components/card/CardNovelTypesSearch/CardNovelTypesSearch";
 
-function typesPage() {
+import axios from "../../../api/axios";
+import { Axios } from "axios";
+const TypesNovelURL = "/api/novels/types";
+
+function TypesPage() {
+  const [types, setTypes] = useState([]);
+  const [typesForChoose, setTypeForChoose] = useState([
+    "Tiên Hiệp",
+    "Kiếm Hiệp",
+    "Huyễn Huyền",
+    "Vô Địch",
+    "Điềm Đạm",
+    "Tưởng Tu",
+    "Nhẹ Nhàng",
+    "Đô Thị",
+    "Dị Giới",
+  ]);
+  const [Listnovel, setListnovel] = useState();
+
+  const handleAddType = (choose) => {
+    const newTypes = [...types, choose];
+    setTypes((types) => {
+      axios
+        .post(TypesNovelURL, {
+          types: newTypes,
+        })
+        .then((response) => {
+          if (response.data) {
+            setListnovel(response.data.novelSameTypes);
+          } else {
+            // Đăng nhập thất bại, hiển thị thông báo lỗi
+            alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
+          }
+        })
+        .catch((error) => {
+          alert(error.response.data.error);
+        });
+      return newTypes;
+    });
+  };
+
+  const handleDelete = (type) => {
+    const newTypes = types.filter((t) => t !== type);
+    axios
+    .post(TypesNovelURL, {
+      types: newTypes,
+    })
+    .then((response) => {
+      if (response.data) {
+        setListnovel(response.data.novelSameTypes);
+        setTypes(newTypes);
+      } else {
+        // Đăng nhập thất bại, hiển thị thông báo lỗi
+        alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
+      }
+    })
+    .catch((error) => {
+      alert(error.response.data.error);
+    });
+  };
+
+  function callApiSearchTypeNovel() {}
+
   return (
     <>
-      <ImageBanner style={{ backgroundImage: "url('image/bgBanner.jpg')" }}>
+      <ImageBanner style={{ backgroundImage:  "url('/bgBanner.jpg')" }}>
         <TransparentBanner>
           <ContainerPageContent>
             <div className="box-page">
@@ -27,38 +90,75 @@ function typesPage() {
                 <div className="choose">
                   <TitleText>Đã chọn</TitleText>
                   <div className="choosed-type">
-                    <ButtonChoosedType type="Tloai2" />
-                    <ButtonChoosedType type="Tloai2" />
-                    <ButtonChoosedType type="Tloai2" />
+                    {types &&
+                      types.map((type, index) => (
+                        <button className="btn-choosed-types">
+                          <TypesDeleteText
+                            key={index}
+                            onClick={() => handleDelete(type)}
+                          >
+                            {type}
+                          </TypesDeleteText>
+                          <button className="btn-delete">
+                            <i class="fa-solid fa-xmark"></i>
+                          </button>
+                        </button>
+                      ))}
                   </div>
                 </div>
                 <div className="type-choose">
                   <TitleText> Thể loại </TitleText>
                   <div className="type">
-                    <ButtonTypes type="Thefloa i1" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
-                    <ButtonTypes type="Theloai5" />
+                    {typesForChoose &&
+                      typesForChoose.map((type, index) => (
+                        <button
+                          key={index}
+                          className="btn-types"
+                          onClick={() => handleAddType(type)}
+                        >
+                          <TypesDeleteText>{type} </TypesDeleteText>
+                        </button>
+                      ))}
                   </div>
                 </div>
                 <div className="status">
                   <TitleText> Tình trạng </TitleText>
                   <div className="type">
-                    <ButtonTypes type="Hoàn thành" />
-                    <ButtonTypes type="Đang ra" />
+                    <button
+                      className="btn-types"
+                      onClick={() => handleAddType("Hoàn Thành")}
+                    >
+                      <TypesDeleteText> Hoàn Thành </TypesDeleteText>
+                    </button>
+                    <button
+                      className="btn-types"
+                      onClick={() => handleAddType("Đang Ra")}
+                    >
+                      <TypesDeleteText> Đang Ra </TypesDeleteText>
+                    </button>
                   </div>
                 </div>
                 <div className="view">
                   <TitleText> Thuộc tính</TitleText>
                   <div className="type">
-                    <ButtonTypes type="Nam" />
-                    <ButtonTypes type="Nữ" />
-                    <ButtonTypes type="Ngôi thứ ba" />
+                    <button
+                      className="btn-types"
+                      onClick={() => handleAddType("Góc Nhìn Nam")}
+                    >
+                      <TypesDeleteText> Nam </TypesDeleteText>
+                    </button>
+                    <button
+                      className="btn-types"
+                      onClick={() => handleAddType("Góc Nhìn Nữ")}
+                    >
+                      <TypesDeleteText> Nữ </TypesDeleteText>
+                    </button>
+                    <button
+                      className="btn-types"
+                      onClick={() => handleAddType("Ngôi Thứ Ba")}
+                    >
+                      <TypesDeleteText> Ngôi Thứ Ba </TypesDeleteText>
+                    </button>
                   </div>
                 </div>
                 <div className="hot-novel">
@@ -105,28 +205,26 @@ function typesPage() {
                   />
                 </div>
                 <div className="novel-info">
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
-                  <CardNovelTypesSearch />
+                  {Listnovel &&
+                    Listnovel.map((novel, index) => (
+                      <CardNovelTypesSearch
+                      key={index}
+                        id={novel._id}
+                        type={novel.types[0]}
+                        nameComic={novel.title}
+                        content={novel.intro}
+                        auth={novel.author}
+                        numStar="4"
+                      />
+                    ))}
                 </div>
               </div>
             </div>
           </ContainerPageContent>
+          <Footer />
         </TransparentBanner>
-        <Footer />
       </ImageBanner>
     </>
   );
 }
-export default memo(typesPage);
+export default memo(TypesPage);

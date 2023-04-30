@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Col from "react-bootstrap/Col";
+import { Link } from "react-router-dom";
 export const Row1 = styled.div`
   position: relative;
 `;
@@ -15,8 +16,29 @@ export const ColSearch = styled.div`
   right: 7vh;
   float: right;
 `;
+export const LinkChapter = styled(Link)`
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  color: gray;
+  text-decoration: none;
+  align-items: center;
+  width:40px;
+  height: 40px;
+  background: rgb(255, 198, 111);
+  &:hover{
+  color: #fff;
+    
+  }
+`;
 
 export const Chapter = styled.div`
+  display: flex;
+  padding-right: 3rem;
+  padding-left: 1rem;
+`;
+export const ChapterEdit = styled.div`
   display: flex;
   padding-right: 3rem;
   padding-left: 1rem;

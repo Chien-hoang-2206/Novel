@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import  Modal from 'react-modal';
 import  Row  from 'react-bootstrap/Row';
+import { Button } from 'react-bootstrap';
+import { Transparent } from './../loginPage/loginStyle';
 
 export const ImageBanner = styled.div`
   font-family: "Roboto", sans-serif;
@@ -47,45 +49,76 @@ export const ModalStyle = styled(Modal)`
   border: 2px solid black;
   border-radius: 6px;
   margin: 15vh 35%;
-}
 `;
 export const ContainerRow1 = styled.div`
-  height: 700px;
 `;
 export const ContainerRow1Column1 = styled.div`
   display: flex;
   flex-direction: row;
 
 `;
-export const ContainerRow1Column2 = styled.div`
-  margin-left: 40px;
-  padding-top: 6px;
-  }
+export const ContainerButton = styled.div`
+    position: relative;
+    max-height: 30px;
+    left: 600px;
+    font-size: 20px;
+    top: -20px;
 `;
 export const ContainerRow1Column3 = styled.div`
   width: 100%;
   margin-left: 10px;
   display: flex;
-  }
 `;
 export const ContainerRow1Column4 = styled.div`
-  padding-top: 5px;
+    position: relative;
+    max-height: 29px;
+    top: -59px;
+    left: 244px;
+  
+`;
+export const ButtonShowAll = styled(Button)`
+  background: transparent;
+  border: none;
+  color: transparent;
+`;
+export const ButtonShowAllReading = styled(Button)`
+  background: transparent;
+  border: none;
+  color: transparent;
+`;
+export const ReadingContainer = styled(Row)`
+  &:hover {
+    ${ButtonShowAllReading} {
+      /* styles cho button khi di chuột vào div */
+      background-color: Transparent;
+      border: 1px solid #0784B0;
+      color: black;
+    }
   }
 `;
 export const ContainerRow2Column1 = styled(Row)`
   margin-left: -10px;
+  margin-top: -35px;
+  
+  &:hover {
+    ${ButtonShowAll} {
+      /* styles cho button khi di chuột vào div */
+      background-color: Transparent;
+      border: 1px solid #0784B0;
+      color: black;
+    }
+  }
 `;
 export const ContainerRow2Column2 = styled.div`
   margin-left: 15px;
-  margin-top: 10px;
-  }
+  margin-top: -30px;
 `;
 
 export const ContainerRow4 = styled.div`
   text-align: center;
   margin-left: 5px;
   margin-bottom: 30px;
-  padding-botom: 20px;
+  padding-bottom: 20px;
   padding-right: 20px;
 
 `;

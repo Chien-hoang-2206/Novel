@@ -35,6 +35,15 @@
     min-height: 10vh;
     display: inline-flex;
     flex-wrap: wrap!important;
+    row-gap: 10px;
+
+}
+@media(max-width: 1468){
+    .type{
+        min-height: 10vh;
+        display: inline-flex;
+        flex-wrap: wrap!important;
+    }
 }
 .status{
     min-height: 10vh;

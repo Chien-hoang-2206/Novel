@@ -14,12 +14,13 @@ export const UserEditNote = styled.div`
   border: 1px solid rgb(250,234,177);
   border-radius: 4px;
   background: rgb(250,234,177);
-  max-height: 33vh;
+  max-height: 40vh;
   margin-bottom: 14vh;
   padding: 1.5vh 3vh;
 `;
 export const R1Note = styled(Row)`
   background: white;
+  min-height:5vh;
   margin-bottom: 1vh;
 `;
 export const NumverSlide = styled.div`

@@ -1,20 +1,47 @@
-import React, { useState } from "react";
+import {  useState } from "react";
 import "./login.css";
 import { Icon } from "@iconify/react";
 import { Nomal } from "../../../components/TextField/TestComponents";
-function Login(props) {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
 
-  const handleSubmit = (e) => {
+import axios from "../../../api/axios";
+const LOGIN_URL = "/api/accounts/login";
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    axios
+      .post(LOGIN_URL, {
+        email: email,
+        password: pwd,
+      })
+      .then((response) => {
+        if (response.data.user) {
+          // Đăng nhập thành công, chuyển hướng đến trang chủ và lưu iduser vào cookies hoặc session
+          document.cookie = `userID=${response.data.user._id}`;
+          document.cookie = `avatar=${response.data.user.avatarLink}`;
+          sessionStorage.setItem('username',response.data.user.name);
+          sessionStorage.setItem('accID',response.data.user._id);
+          sessionStorage.setItem('avatar',response.data.user.avatarLink);
+          window.location.href = '/home'; // Thay đổi đường dẫn tương ứng
+          // ReloadNavBar;
+        } else {
+          // Đăng nhập thất bại, hiển thị thông báo lỗi
+          alert('Đăng nhập không thành công');
+        }
+      })
+      .catch((error) => {
+        alert(error.response.data.error);
+      });
   };
+
   return (
     <>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
-        
+
         <div className="Boxinput">
           <Icon icon="ic:baseline-email" />
           <input
@@ -27,14 +54,14 @@ function Login(props) {
             name="email"
           />
         </div>
-        <label htmlFor="password">Password</label>
+        <label style={{marginTop:"2vh"}} htmlFor="password">Password</label>
 
         <div className="Boxinput">
-        <Icon icon="mdi:password" />
+          <Icon icon="mdi:password" />
           <input
             className="input"
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
+            value={pwd}
+            onChange={(e) => setPwd(e.target.value)}
             type="password"
             placeholder="********"
             id="password"
@@ -42,11 +69,13 @@ function Login(props) {
           />
         </div>
 
-        <button className="Sunmit" type="submit">Log In</button>
+        <button className="submit" type="submit">
+          Login
+        </button>
       </form>
       <button
         className="link-btn"
-        onClick={() => props.onFormSwitch("register")}
+        // onClick={() => props.onFormSwitch("register")}
       >
         Don't have an account? Register here.
       </button>
@@ -56,12 +85,15 @@ function Login(props) {
           <Nomal>OR</Nomal>
         </div>
         <div className="icon-link">
-        <i class="fa-brands fa-facebook" style={{color: "#075ced" }}></i>
-        <i class="fa-brands fa-google-plus" style={{color: "#ff0505", marginLeft: "5vh"}}></i>
+          <i class="fa-brands fa-facebook" style={{ color: "#075ced" }}></i>
+          <i
+            class="fa-brands fa-google-plus"
+            style={{ color: "#ff0505", marginLeft: "5vh" }}
+          ></i>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Login;

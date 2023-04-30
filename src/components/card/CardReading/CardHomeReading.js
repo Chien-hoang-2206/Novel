@@ -3,9 +3,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Heading2 } from "../../TextField/TestComponents";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { CardReading, ContainerRow, ContentCardHomeReading, ImageComicReading } from "./CardReadingStylel";
-import {  LinkRoute } from "../../../utils/style";
+import {
+  CardReading,
+  ChpaetNUm,
+  ContainerRow,
+  ContentCardHomeReading,
+  ImageComicReading,
+  LinkRouteContinue,
+} from "./CardReadingStylel";
+import { LinkRoute } from "../../../utils/style";
+import { Link } from "react-router-dom";
 const CardHomeReading = (props) => {
+  const chapterID = props.chapterID;
   return (
     <div>
       <CardReading>
@@ -14,18 +23,21 @@ const CardHomeReading = (props) => {
             <ImageComicReading src={props.image} />
           </Col>
           <Col sm={10}>
-          <ContainerRow>
-            <Row>
-              <LinkRoute>
+            <ContainerRow>
+              <LinkRoute to={`/novel/${props.id}`}>
                 <Heading2>{props.nameComic}</Heading2>
               </LinkRoute>
-            </Row>
-            <Row>
+
+              <ChpaetNUm>
                 <LinkRoute>
-                  <ContentCardHomeReading>Đã đọc chương:   {props.chaperReading}/{props.chaperNum}</ContentCardHomeReading>
+                    Đã đọc chương: {props.chaperReading}/{props.chaperNum}
                 </LinkRoute>
-            </Row>
-          </ContainerRow>
+                <LinkRouteContinue to={`/novel/chapter/${chapterID}`}>
+                  {" "}
+                  Đọc tiếp{" "}
+                </LinkRouteContinue>
+              </ChpaetNUm>
+            </ContainerRow>
           </Col>
         </Row>
       </CardReading>

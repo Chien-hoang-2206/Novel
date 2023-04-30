@@ -14,8 +14,8 @@ export const FormModal = styled.div`
   opacity: 1;
 `
 export const TranspaentContainer = styled.div`
-  background:rgba(187, 202, 219, 0.34);
-  height: 200%;
+  background: rgba(187, 202, 219, 0.44);
+  height: 100%;
   width: 100%;
   border-radius: 6px;
   position: absolute;

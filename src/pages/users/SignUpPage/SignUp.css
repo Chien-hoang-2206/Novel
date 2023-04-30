@@ -12,14 +12,14 @@
     margin: 2vh 12%;
     background: transparent;
   }
-.Boxinput {
+.BoxinputSingUp {
     border: none;
-    height: 7vh;
+    height: 5vh;
     padding-left:10px;
     margin: 1vh  0vh;
-    background: rgb(227, 222, 222);
+    background: rgb(241, 236, 236);
   }
-.input {
+.inputSignUP {
     border: none;
     width: 91%;
     height: 100%;

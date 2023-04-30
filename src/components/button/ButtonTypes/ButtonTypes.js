@@ -3,12 +3,9 @@ import "./ButtonTypesStyle.css"
 import { Nomal, TypesDeleteText } from '../../TextField/TestComponents'
 function ButtonTypes(props) {
   return (
-    <div>
-      <div className='btn-types'>
+      <button className='btn-types'>
          <TypesDeleteText>{props.type}</TypesDeleteText>
-    
-      </div>
-    </div>
+      </button>
   )
 }
 ButtonTypes.defaultProps={

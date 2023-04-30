@@ -3,6 +3,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
+  ButtonShowAll,
+  ButtonShowAllReading,
+  ContainerButton,
   ContainerRow1,
   ContainerRow1Column1,
   ContainerRow1Column2,
@@ -13,7 +16,13 @@ import {
   ContainerRow4,
   ContainerUpdate,
   ContentnerRow4Title,
+  ReadingContainer,
 } from "./styleHome";
+import {
+  ContainerPageContent,
+  ImageBanner,
+  TransparentBanner,
+} from "../NovelPage/NovelElement";
 import {
   AuthName,
   Heading1,
@@ -25,29 +34,53 @@ import NewUpdateRowHomeStyle from "../../../components/NewUpdateRow/NewUpdateRow
 import { Button } from "@mui/material";
 import "./home.css";
 import Footer from "../../../parts/user/footer";
-import {
-  ContainerPageContent,
-  ImageBanner,
-  TransparentBanner,
-} from "../NovelPage/NovelElement";
+import axios from "../../../api/axios";
+const HomeNewNoevl_URL = "/api/novels/";
 
-import Axios from "axios";
-export default function HomePage() {
-  const [novels, setNovels] = useState();
-  const getData = async () => {
-    const response = await Axios.get("http://localhost:5000/api/novels/");
-    setNovels(response.data.novelList);
-  };
+function callApiNewNovelList() {
+  return axios
+    .get(HomeNewNoevl_URL)
+    .then((response) => {
+      // console.log(response.data);
+      return response.data.novelList;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+function callApiReadingNovelList(id) {
+  return axios
+    .get(`http://localhost:5000/api/history/${id}`)
+    .then((response) => {
+      return response.data.historyList;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+export default function HomePage(props) {
+  const accID = props.accountID;
+  const [newNovels, setNewNovels] = useState([]);
+  const [readingNovels, setReadingNovels] = useState([]);
+
   useEffect(() => {
-    getData();
+    async function fetchData() {
+      const newNovelList = await callApiNewNovelList();
+      if (accID) {
+        const readingNovelList = await callApiReadingNovelList(accID);
+        console.log("truyen doc");
+        console.log(readingNovels);
+        setReadingNovels(readingNovelList);
+      }
+      setNewNovels(newNovelList);
+    }
+    fetchData();
   }, []);
 
-  console.log(novels);
-
-  // const novel = novels.slice(0, 3);
   return (
     <>
-      <ImageBanner style={{ backgroundImage: "url('image/bgBanner.jpg')" }}>
+      <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
         <TransparentBanner>
           <ContainerPageContent>
             {/* Title  */}
@@ -56,33 +89,23 @@ export default function HomePage() {
                 <Col sm={8}>
                   <Row>
                     <ContainerRow1Column1>
-                      <Col sm={9}>
-                        <Heading1>Truyện mới cập nhật</Heading1>
-                      </Col>
-                      <Col sm={3}>
-                        <ContainerRow1Column2>
-                          <Button
-                            size="small"
-                            variant="outline"
-                            color="inherit"
-                            startIcon={
-                              <Icon icon="material-symbols:app-registration" />
-                            }
-                          >
-                            Xem tất cả
-                          </Button>
-                        </ContainerRow1Column2>
-                      </Col>
+                      <Heading1>Truyện mới cập nhật</Heading1>
                     </ContainerRow1Column1>
                   </Row>
 
                   {/* truyne moi  */}
                   <ContainerRow2Column1>
-                   
-                    {novels &&
-                      novels.map((novels,index) => (
+                    <ContainerButton>
+                      <ButtonShowAll styled={{ maxHeight: "27px" }}>
+                        <Icon icon="material-symbols:app-registration" />
+                        Xem tất cả
+                      </ButtonShowAll>
+                    </ContainerButton>
+                    {newNovels &&
+                      newNovels.map((novels, index) => (
                         <CardHomeRecomended
                           key={index}
+                          id={novels._id}
                           image={novels.coverLink}
                           nameComic={novels.title}
                           type1={novels.types[0]}
@@ -90,50 +113,44 @@ export default function HomePage() {
                           // type3=""
                           content={novels.intro}
                           auth={novels.author}
-                          numStar="4"
                         />
                       ))}
-                      <CardHomeRecomended/>
                   </ContainerRow2Column1>
                 </Col>
+
                 <Col sm={4}>
                   <Row>
                     <ContainerRow1Column3>
-                      <Col sm={7}>
-                        <Heading1>Đang đọc</Heading1>
-                      </Col>
-                      <Col sm={6}>
-                        <ContainerRow1Column4>
-                          <Button
-                            size="small"
-                            variant="outline"
-                            color="inherit"
-                            startIcon={
-                              <Icon icon="material-symbols:app-registration" />
-                            }
-                          >
-                            Xem tất cả
-                          </Button>
-                        </ContainerRow1Column4>
-                      </Col>
+                      <Heading1>Đang đọc</Heading1>
                     </ContainerRow1Column3>
                   </Row>
                   {/* đang đọc  */}
-                  <Row>
+                  <ReadingContainer>
+                    <ContainerRow1Column4>
+                      <ButtonShowAllReading
+                        style={{maxHeight:"37px", paddingBottom: "-5px"}}
+                        startIcon={
+                          <Icon icon="material-symbols:app-registration" />
+                        }
+                      >
+                        Xem tất cả
+                      </ButtonShowAllReading>
+                    </ContainerRow1Column4>
                     <ContainerRow2Column2>
-                    {novels &&
-                      novels.map((novels,index) => (
-                      <CardHomeReading
-                        key={index}
-                        image={novels.coverLink}
-                        nameComic={novels.title}
-                        chaperReading="2"
-                        chaperNum="2222"
-                      />
-                      ))}
-                    
+                      {readingNovels &&
+                        readingNovels.map((novels, index) => (
+                          <CardHomeReading
+                            key={index}
+                            id={novels.novelId}
+                            chapterID={novels.chapterId}
+                            image={novels.novelInfo.coverLink}
+                            nameComic={novels.novelInfo.title}
+                            chaperReading={novels.chapterInfo.index}
+                            chaperNum={novels.chapterInfo.index}
+                          />
+                        ))}
                     </ContainerRow2Column2>
-                  </Row>
+                  </ReadingContainer>
                 </Col>
               </Row>
             </ContainerRow1>

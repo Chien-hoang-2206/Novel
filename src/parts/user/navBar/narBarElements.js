@@ -20,6 +20,15 @@ export const NavbarContainer = styled.div`
   align-items: center;
   width: 80%;
 `
+export const NavAfterLogin = styled.div`
+  cursor: pointer;
+  display: flex;
+  padding-top: 17%;
+`;
+export const AvatarWrap = styled(Link)`
+  border-radius: 50%;
+  margin-top: -5px;
+`;
 export const NavLogo = styled(Link)`
   justify-self: start;
   cursor: pointer;
@@ -28,6 +37,18 @@ export const NavLogo = styled(Link)`
   font-size: 2rem;
   display: flex;
   align-items: center;
+`;
+export const NavAvatar = styled.img`
+  text-align: left;
+  height: 3vh;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 3vh;
+  @media screen and (max-width: 960px) {
+    position: absolute;
+    margin-left: -50%;
+    transform: translate(50%, 0%);
+  }
 `;
 export const NavLogoPage = styled.img`
   width: 10vh;
@@ -68,15 +89,12 @@ export const NavBtnLink = styled(Link)`
   color: #583f3f;
   display: flex;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.7rem;
   text-decoration: none;
-  margin-top: 2vh;
-  padding: 1vh 0.5rem;
+    font-weight: bold;
+  margin-top: 50%;
   &:hover {
     transition: all 0.2s ease-out;
-    border-bottom: 2px solid rgba(79, 77, 72, 1);
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.68);
     text-align: center;
 }
   @media screen and (max-width: 768px) {
@@ -102,7 +120,7 @@ export const NavBtnLink = styled(Link)`
 `;
 
 export const NavSearchContainer = styled.div`
-  margin: 10vh;
+  margin-left: 10vh;
   @media screen and (max-width: 1374px) {
     width: 40%;
   }

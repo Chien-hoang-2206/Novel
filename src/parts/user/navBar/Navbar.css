@@ -17,7 +17,83 @@
   height: 80px;
   max-width: 1500px;
 }
+.dropdown{
+  position: relative;
+  top: 3px;
+  width: max-content;
+}
+.dropdown-bxh{
+  position: relative;
+  font-weight: bold;
+  top: -14px;
+  width: max-content;
+}
+.dropdown-profile{
+  position: relative;
+  font-weight: bold;
+  width: max-content;
+}
+.dropdown-content{
+  display: none;
+  position: absolute;
+  width: 44vh;
+  z-index: 1;
+}
+.grid-content{
+  padding: 2vh 0;
+  margin-left: 2vh;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.dropdown-content-profile{
+  display: none;
+  position: absolute;
+  width: 24vh;
+  margin-top: 2.2vh;
+  z-index: 1;
+}
+.grid-content-profile{
+  padding: 2vh 0;
+  margin-left: 2vh;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.dropdown-content a {
+  text-align: left;
+  border-top: none;
+  font-size: 1rem;
+  text-decoration: none;
+  color:rgb(26, 23, 23);
+}
+.dropdown-content-profile a {
+  text-align: left;
+  font-size: 1rem;
+  text-decoration: none;
+  color:rgb(26, 23, 23);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-top: none;
+  border-radius: 4px;
+  background-color: #f1f0f0;
 
+}
+.dropdown-profile :hover .dropdown-content-profile {
+  display: block;
+  border-radius: 4px;
+  border-top: none;
+  background-color: #f1f0f0;
+
+}
+.dropdown-bxh:hover .dropdown-content {
+  display: block;
+  border-radius: 4px;
+  border-top: none;
+  background-color: #f1f0f0;
+
+}
 .navbar-logo {
   color: #fff;
   justify-self: start;
@@ -36,12 +112,11 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 10px;
-  list-style: none;
-  text-align: center;
-  width: 60vw;
+  grid-template-columns: repeat(3, auto);
+  gap:20px;
+  width: 35%;
   justify-content: end;
+  
 }
 
 .nav-item {

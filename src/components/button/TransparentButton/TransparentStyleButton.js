@@ -3,8 +3,8 @@ export const ButtonTransparent = styled.button`
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   color: gray;
-  margin: 0.1rem 0.2rem;
-  padding: 0vh 2px;
+  margin: 0.1rem 10px;
+  padding: 0vh 10px;
   font-weight: bold;
   &:hover {
     color: #fff;

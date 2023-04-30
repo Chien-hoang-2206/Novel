@@ -23,53 +23,38 @@ function CommentTab() {
   return (
     <Row>
     <Col sm={9}>
-      <UserEditNote>
-       
+    <div className="commentRD">
+            <div className="Cmt">
+              <h3>Bình luận</h3>
+            </div>
 
-        <ContainerInputText>
-          <InputText>
-            <input
-              style={{
-                height: "15vh",
-                width: "121vh",
-                marginLeft: "-3vh",
-              }}
-              type="text"
-              value={inputValue}
-              onChange={handleInputChange}
-            ></input>
+            <form method="post">
+              <textarea className="inputRD"
+                name="message"
+                placeholder="Chia sẻ bình luận của bạn về truyện .... "
+              ></textarea>
+              <div className="submitCMT">
+                <button className="cssbuttons-io" type="submit">
+                <span>
+                   Đăng
+                </span>
+              </button>
+              </div>
 
-          </InputText>
-        </ContainerInputText>
-      </UserEditNote>
-
-      {/* Review  */}
-      <SimpleBar style={{ maxHeight: "85vh" }}>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-        <Comment/>
-      </SimpleBar>
+            </form>
+            <div className="comments">
+            <SimpleBar style={{ maxHeight: "85vh" }}>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                <Comment/>
+                </SimpleBar>
+            </div>
+          </div>
 
 
     </Col>

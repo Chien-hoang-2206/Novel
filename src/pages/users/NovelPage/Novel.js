@@ -6,9 +6,7 @@ import {
   ImageBanner,
   TransparentBanner,
 } from "./NovelElement";
-import {
-  TabName,
-} from "../../../components/TextField/TestComponents";
+import { TabName } from "../../../components/TextField/TestComponents";
 
 import CardInfoNovel from "../../../components/card/CardInfoNovel/CardInfoNovel";
 import Footer from "../../../parts/user/footer";
@@ -19,43 +17,57 @@ import ListChapterTab from "../../../components/Tab/ListChapterTab/ListChapterTa
 import CommentTab from "../../../components/Tab/CommentTab/CommentTab";
 import Carosel from "./../../../components/Carosel/Carosel";
 import Row from "react-bootstrap/Row";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
-const options = {
-  method: 'GET',
-  url: 'https://web-novel-api.p.rapidapi.com/novel/fa102782f605163ddc1b3341709fd70221b4e23b',
-  headers: {
-    'X-RapidAPI-Key': 'be4e2f28a7mshb59f609cd0a1af0p19977fjsnaf6acd1c335a',
-    'X-RapidAPI-Host': 'web-novel-api.p.rapidapi.com'
-  }
-};
-
-function Novel() {
+function Novel(props) {
   const [novel, setNovel] = useState();
-
-  useEffect(() => {
-    axios.request(options).then(function (response) {
-      // console.log(response.data);
-      setNovel(response.data.novel)
-    }).catch(function (error) {
-      console.error(error);
-    });
-  }, []);
-  console.log(novel);
+  const [chapterList, setchapterList] = useState();
+  const [numBookmard, setnumBookmard] = useState();
+  const [reviewList, setReviewList] = useState();
+  const [numReview, setNumReview] = useState();
+  const [numRead, setnumRead] = useState();
+  const { id } = useParams();
   const [toggleState, setToggleState] = useState(1);
-
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  const apiUrl = `http://localhost:5000/api/novels/${id}`;
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setNovel(data.novelInfo[0]);
+        setchapterList(data.chapterList);
+        setnumBookmard(data.bookmarkNum);
+        setReviewList(data.reviewList);
+        setNumReview(data.reviewList.length);
+        // console.log(numReview);
+      });
+  }, []);
+
   return (
     <div>
-      <ImageBanner style={{ backgroundImage: "url('image/bgBanner.jpg')" }}>
+      <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')"  }}>
         <TransparentBanner>
           <ContainerPageContent>
             <ContainerInfo>
-              <CardInfoNovel />
+              {novel && (
+                <CardInfoNovel
+                  nameNovel={novel.title}
+                  IDNovel={novel._id}
+                  accountId={props.accountID}
+                  nameAuth={novel.author}
+                  chaperNum={chapterList.length}
+                  intro={novel.intro}
+                  types={novel.types}
+                  numBookmark={numBookmard}
+                  numRead={novel.readCount}
+                  srcimage={novel.coverLink}
+                  // bookmark= "true"
+                />
+              )}
             </ContainerInfo>
             <Row>
               <ContainerTabs>
@@ -76,7 +88,7 @@ function Novel() {
                       onClick={() => toggleTab(2)}
                     >
                       <TabName>Đánh giá</TabName>
-                      <div className="number-border">25</div>
+                      <div className="number-border"> {numReview}</div>
                     </div>
                     <div
                       className={
@@ -97,22 +109,15 @@ function Novel() {
                           : "content"
                       }
                     >
-                      <ListChapterTab
-                        chapters={[
-                          {
-                            id: 1,
-                            chapterNumber: "1",
-                            chapterTitle: "Năm nay  122",
-                            dateUpload: "5",
-                          },
-                          {
-                            id: 2,
-                            chapterNumber: "2",
-                            chapterTitle: "Duong khai đại chiến mèo boi",
-                            dateUpload: "2",
-                          },
-                        ]}
-                      />
+                  
+                        {novel && (
+                          <ListChapterTab
+                            chapters={chapterList}
+                            nameNovel={novel.title}
+                            IDNovel={novel._id}
+                            accountId={props.accountID}
+                          />
+                        )}
                     </div>
 
                     <div
@@ -122,7 +127,11 @@ function Novel() {
                           : "content"
                       }
                     >
-                      <ReviewTab />
+                      <ReviewTab
+                        reviewList={reviewList}
+                        novelID={id}
+                        accountId={props.accountID}
+                      />
                     </div>
 
                     <div
