@@ -14,9 +14,8 @@ export const UserEditNote = styled.div`
   border: 1px solid rgb(250,234,177);
   border-radius: 4px;
   background: rgb(250,234,177);
-  max-height: 40vh;
+  max-height: 60vh;
   margin-bottom: 14vh;
-  padding: 1.5vh 3vh;
 `;
 export const R1Note = styled(Row)`
   background: white;
@@ -30,7 +29,7 @@ export const NumverSlide = styled.div`
   max-height: 10px;
 `;
 export const ContainerInputText = styled.div`
-  height: 120%;
+  height: 100%;
   max-height: 20vh;
   width: 105%;
   margin-left: -3vh;

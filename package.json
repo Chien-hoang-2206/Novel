@@ -27,7 +27,7 @@
     "react-parallax": "^3.5.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.9.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",
     "react-slider": "^2.0.4",
@@ -72,6 +72,7 @@
     "@iconify/react": "^4.1.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "eslint-plugin-react": "^7.32.2"
+    "eslint-plugin-react": "^7.32.2",
+    "tailwindcss": "^3.3.2"
   }
 }

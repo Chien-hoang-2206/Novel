@@ -1,9 +1,6 @@
 import React from "react";
-import {
-  BtnAuthLink,
-  BtnLink,
-} from "../../../pages/users/ChartPage/Trend/trandstyle";
 import { Introtext } from "../../TextField/TestComponents";
+import { BtnAuthLink, BtnLink } from "../../../pages/users/chartPage/ListChart/ListChartStyle";
 
 function CardChartNovel(props) {
   const idNovel = props.id;

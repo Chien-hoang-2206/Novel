@@ -28,6 +28,8 @@ import {
   Col2,
   ImgNovel,
   ColStar,
+  BtnReadMobile,
+  BtnBookmarkedMobile,
 } from "./CardInFoNovelStyle";
 import ImageNovel from "../../ImageNovel/ImageNovel";
 import {
@@ -36,12 +38,14 @@ import {
   Nomal,
   NovelName,
   TextInfoNovel,
+  TypesDeleteText,
 } from "../../TextField/TestComponents";
-import TransparentButton from "./../../Button/TransparentButton/TransparentButton";
 
 function CardInfoNovel(props) {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const contentNovel = props.intro;
+  const [width, setWidth] = React.useState(window.innerWidth);
+
   const handleAddBookmark = () => {
     const accountId = props.accountId;
     const novelId = props.IDNovel;
@@ -85,97 +89,157 @@ function CardInfoNovel(props) {
         console.error(error);
       });
   };
-  return (
-    <div>
-      <ContainerCard>
-        {/* image */}
-        <Col1>
-          <ImgNovel src={props.srcimage}></ImgNovel>
-        </Col1>
-        {/* info */}
-        <Col2>
-          {/* title   */}
-          <RowTitle>
-            <NovelName> {props.nameNovel} </NovelName>
-          </RowTitle>
-          {/* auth */}
-          <RowAuth>
-            <ColAuth>
-              <AuthName> {props.nameAuth} </AuthName>
-            </ColAuth>
+  React.useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
 
-            <ColStar>
-              <ContainerStar>
-                <ContainerStarIcon>
-                  <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                  <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                  <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                  <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                </ContainerStarIcon>
-                <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
-              </ContainerStar>
-            </ColStar>
-          </RowAuth>
+    window.addEventListener('resize', handleResize);
 
-          {/* intro */}
-          <RowIntro>
-            <SimpleBar autoHide={true} style={{ maxHeight: "190px",maxWidth: "100%"   , scrollbarWidth: "none"}}>
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  if (width <= 768)
+    return (
+      <div className="my-4">
+        <p className="text-2xl w-4/6 mx-auto  text-center font-serift font-extrabold">{props.nameNovel}</p>
+        <div className="w-2/4 h-56 mx-auto my-2">
+          <img className="border-2 border-slate-400 rounded-lg shadow-md object-fill h-56 mx-auto w-3/4  " src={props.srcimage}></img>
+        </div>
+        <div className="px-3 align-middle  justify-center">
+          <div className="flex selection: ">
+            <p className="w-2/4 text-lg font-bold " > Tác giả: </p>
+            <p className="w-2/4  flex " >  {props.nameAuth} </p>
+          </div>
+          <div className="flex  justify-center">
+            <p className="w-2/4 text-lg font-bold " > Tình trạng: </p>
+            <p className="w-2/4 flex " >  Đang tiến hành  </p>
+          </div>
+          <div className="flex ">
+            <p className="w-2/4 text-lg font-bold " > Thê loại: </p>
+            <p className="w-2/4 flex mr-1" >
+              {props.types &&
+                props.types.map((type, index) => (
+                  <button className='mx-1 hover:bg-slate-400 hover:text-white '>
+                    <TypesDeleteText>{type}</TypesDeleteText>
+                  </button>
+                ))} </p>
+          </div>
+          <div className="flex  ">
+            <p className="w-2/4 text-lg font-bold " > Lượt đánh dấu: </p>
+            <p className="w-2/4   flex " >  {props.numBookmark}  </p>
+          </div>
+
+          <div className="flex mx-auto w-3/4 justify-center">
+            <BtnReadMobile>Đọc truyện</BtnReadMobile>
+            <BtnBookmarkedMobile
+              onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
+            >
+              {isBookmarked ? "Đã lưu" : "Đánh dấu"}
+            </BtnBookmarkedMobile>
+          </div>
+          <div className="" >
+          <p className="font-bold text-xl "> Nội dung</p>
+            <SimpleBar autoHide={true} style={{ padding: "5px 5px", maxHeight: "190px", maxWidth: "100%", scrollbarWidth: "none" }}>
               <Introtext>
                 <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
               </Introtext>
             </SimpleBar>
-          </RowIntro>
+          </div>
+        </div>
+        
+      </div>
+    )
+  else
+    return (
+      <div>
+        <ContainerCard>
+          {/* image */}
+          <Col1>
+            <ImgNovel src={props.srcimage}></ImgNovel>
+          </Col1>
+          {/* info */}
+          <Col2>
+            {/* title   */}
+            <RowTitle>
+              <NovelName> {props.nameNovel} </NovelName>
+            </RowTitle>
+            {/* auth */}
+            <RowAuth>
+              <ColAuth>
+                <AuthName> {props.nameAuth} </AuthName>
+              </ColAuth>
 
-          {/* type  */}
-          <RowType style={{marginTop:"10px"}}>
-            {props.types &&
-              props.types.map((types, index) => (
-                <TransparentButton
-                  key={index}
-                  title={types}
-                ></TransparentButton>
-              ))}
-          </RowType>
+              <ColStar>
+                <ContainerStar>
+                  <ContainerStarIcon>
+                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                  </ContainerStarIcon>
+                  <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
+                </ContainerStar>
+              </ColStar>
+            </RowAuth>
 
-          {/* info  */}
-          <RowInfo>
-            <ColInfo>
-              <TextInfoNovel>Chương: </TextInfoNovel>
+            {/* intro */}
+            <RowIntro>
+              <SimpleBar autoHide={true} style={{ maxHeight: "190px", maxWidth: "100%", scrollbarWidth: "none" }}>
+                <Introtext>
+                  <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
+                </Introtext>
+              </SimpleBar>
+            </RowIntro>
 
-              <NomalDiv>
-                <Nomal>{props.chaperNum}</Nomal>{" "}
-              </NomalDiv>
-            </ColInfo>
+            {/* type  */}
+            <RowType style={{ marginTop: "10px" }}>
+              {props.types &&
+                props.types.map((type, index) => (
+                  <button className='rounded-md px-1 bg-slate-300 hover:bg-slate-400 hover:text-white mx-2'>
+                    <TypesDeleteText>{type}</TypesDeleteText>
+                  </button>
+                ))}
+            </RowType>
 
-            <ColInfo>
-              <TextInfoNovel>Lượt lưu: </TextInfoNovel>
-              <NomalDiv>
-                <Nomal>{props.numBookmark}</Nomal>{" "}
-              </NomalDiv>
-            </ColInfo>
+            {/* info  */}
+            <RowInfo>
+              <ColInfo>
+                <TextInfoNovel>Chương: </TextInfoNovel>
 
-            <ColInfo>
-              <TextInfoNovel>Lượt đọc: </TextInfoNovel>
-              <NomalDiv>
-                <Nomal>{props.numRead}</Nomal>{" "}
-              </NomalDiv>
-            </ColInfo>
-          </RowInfo>
+                <NomalDiv>
+                  <Nomal>{props.chaperNum}</Nomal>{" "}
+                </NomalDiv>
+              </ColInfo>
 
-          <ButtonContainer>
-            <BtnRead>Đọc truyện</BtnRead>
+              <ColInfo>
+                <TextInfoNovel>Lượt lưu: </TextInfoNovel>
+                <NomalDiv>
+                  <Nomal>{props.numBookmark}</Nomal>{" "}
+                </NomalDiv>
+              </ColInfo>
 
-            <BtnBookmarked
-              onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
-            >
-              {isBookmarked ? "Đã lưu" : "Đánh dấu"}
-            </BtnBookmarked>
-          </ButtonContainer>
-          
-        </Col2>
-      </ContainerCard>
-    </div>
-  );
+              <ColInfo>
+                <TextInfoNovel>Lượt đọc: </TextInfoNovel>
+                <NomalDiv>
+                  <Nomal>{props.numRead}</Nomal>{" "}
+                </NomalDiv>
+              </ColInfo>
+            </RowInfo>
+
+            <ButtonContainer>
+              <BtnRead>Đọc truyện</BtnRead>
+
+              <BtnBookmarked
+                onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
+              >
+                {isBookmarked ? "Đã lưu" : "Đánh dấu"}
+              </BtnBookmarked>
+            </ButtonContainer>
+
+          </Col2>
+        </ContainerCard>
+      </div>
+    );
 }
 CardInfoNovel.defaultProps = {
   nameNovel: "Thieu nieen trung sinh",

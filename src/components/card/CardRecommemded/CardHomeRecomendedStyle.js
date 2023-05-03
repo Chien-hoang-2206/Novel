@@ -1,22 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-export const ContainerCard = styled.div`
-  width: 97%;  
-  height: 170px;
-  margin-left: 20px;
-  margin-right: 30px;
-  padding: 20px 5px;
-  border-radius :5px;
-  &:hover{
-    transition: 0.2s ;
-    border: 1px solid rgb(95, 189, 211,0.9);
-    background: #FFFFCC;
-    transform: translateX(-5px);
-    box-shadow:  7px 7px 15px #b3b3b3,
-    -7px -7px 15px #ffffff;
 
-  }
-`;
 export const LinkRoute = styled(Link)`
   color: #000;
   height: 100%;
@@ -51,7 +35,4 @@ export const ContainerRowContent = styled.div`
   height: 70px;
   overflow: hidden;
 
-`;
-export const ContainerRowInfo = styled.div`
-  margin-left: -10px;
 `;

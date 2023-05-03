@@ -1,15 +1,12 @@
 import { useState } from "react";
-import "./login.css";
 import { Icon } from "@iconify/react";
-import { Nomal } from "../../../components/TextField/TestComponents";
 
 import axios from "../../../api/axios";
 import { Link } from "react-router-dom";
 const LOGIN_URL = "/api/accounts/login";
-const Login = () => {
+const Loginmobile = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,10 +34,12 @@ const Login = () => {
         alert(error.response.data.error);
       });
   };
-
   return (
     <>
-      <form className="px-auto pt-16  " onSubmit={handleSubmit}>
+      <form className="px-5 pt-16  " onSubmit={handleSubmit}>
+        <div className="flex items-center my-4 justify-center h-10 ">
+          <p className=" text-2xl bold"> Đăng Nhập</p>
+        </div>
         <div className="flex items-center justify-center h-12 ">
           <Icon className="relative left-7" icon="ic:baseline-email" />
           <input
@@ -70,7 +69,7 @@ const Login = () => {
         </button>
       </form>
       
-      <Link  className="flex justify-end my-3 bg-transparent" to="forgot-pass"> Quên mật khẩu ? </Link>
+      <Link  className="flex justify-end mx-12 my-3 bg-transparent " to="forgot-pass"> Quên mật khẩu ? </Link>
       <div className="mx-auto  my-8">
         <div className="flex justify-center my-2 items-center text-2xl">
           <i class="fa-brands fa-facebook" style={{ color: "#075ced" , fontSize: 40}}></i>
@@ -81,7 +80,7 @@ const Login = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Loginmobile

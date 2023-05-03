@@ -17,7 +17,7 @@ function SignUp(props) {
         // Hiển thị cảnh báo khi hai mật khẩu không giống nhau
         setPasswordMatch(false);
       }
-      else{
+      else {
         setPasswordMatch(true)
       }
     }
@@ -39,8 +39,8 @@ function SignUp(props) {
           // Đăng nhập thành công, chuyển hướng đến trang chủ và lưu iduser vào cookies hoặc session
           document.cookie = `userID=${response.data.user._id}`;
           document.cookie = `avatar=${response.data.user.avatarLink}`;
-          sessionStorage.setItem('username',response.data.user.name);
-          sessionStorage.setItem('avatar',response.data.user.avatarLink);
+          sessionStorage.setItem('username', response.data.user.name);
+          sessionStorage.setItem('avatar', response.data.user.avatarLink);
           window.location.href = 'home'; // Thay đổi đường dẫn tương ứng
           // ReloadNavBar;
         } else {
@@ -58,8 +58,8 @@ function SignUp(props) {
     <div>
       <form className="login-form" onSubmit={handleSubmit}>
 
-        <div className="BoxinputSingUp">
-        <i class="fa-solid fa-user"></i>
+        <div className="flex my-2 items-center justify-center bg-transparent h-10 border-2">
+          <Icon icon="ic:baseline-email" />
           <input
             className="inputSignUP"
             value={userName}
@@ -71,7 +71,7 @@ function SignUp(props) {
           />
         </div>
 
-        <div className="BoxinputSingUp">
+        <div className="flex my-2 items-center justify-center bg-transparent h-10 border-2">
           <Icon icon="ic:baseline-email" />
           <input
             className="inputSignUP"
@@ -84,7 +84,8 @@ function SignUp(props) {
           />
         </div>
 
-        <div className="BoxinputSingUp">
+        <div className="flex my-2 items-center justify-center bg-transparent h-10 border-2">
+
           <Icon icon="mdi:password" />
           <input
             className="inputSignUP"
@@ -97,7 +98,8 @@ function SignUp(props) {
           />
         </div>
 
-        <div className="BoxinputSingUp">
+        <div className="flex my-2 items-center justify-center bg-transparent h-10 border-2">
+
           <Icon icon="mdi:password" />
           <input
             className="inputSignUP"
@@ -110,12 +112,12 @@ function SignUp(props) {
           />
         </div>
         {!passwordMatch && (
-        <span style={{ color: "red" , padding: "0px 18%"}}> Nhập lại mật khẩu không đúng </span>
+          <span style={{ color: "red", padding: "0px 18%" }}> Nhập lại mật khẩu không đúng </span>
         )}
         {warming && (
-          <span style={{ color: "red" , padding: "0px 18%"}}> Email đã tồn tại </span>
+          <span style={{ color: "red", padding: "0px 18%" }}> Email đã tồn tại </span>
         )}
-        <button className="Sunmit" type="submit">
+        <button className="flex mx-auto  h-10 text-2xl uppercase  my-4 w-full  justify-center rounded-lg items-center bg-slate-300 hover:bg-orange-400" type="submit">
           Đăng ký
         </button>
       </form>
@@ -124,12 +126,14 @@ function SignUp(props) {
         <div className="OR">
           <Nomal>OR</Nomal>
         </div>
-        <div className="icon-link-su">
-          <i class="fa-brands fa-facebook" style={{ color: "#075ced" }}></i>
-          <i
-            class="fa-brands fa-google-plus"
-            style={{ color: "#ff0505", marginLeft: "3vh" }}
-          ></i>
+        <div className="icon-link-su mx-auto">
+          <div className="px-auto">
+            <i class="fa-brands fa-facebook" style={{ color: "#075ced", marginLeft: "28px" , fontSize: 40 }}></i>
+            <i
+              class="fa-brands fa-google-plus"
+              style={{ color: "#ff0505", marginLeft: "30px", fontSize: 40 }}
+            ></i>
+          </div>
         </div>
       </div>
     </div>

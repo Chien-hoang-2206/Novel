@@ -3,7 +3,6 @@ import "./file.css"
 import { BtnRead, ButtonContainer, ButtonContainerPost, Col1, Col2, ColAuth, ColInfo, ColStar, ContainerCard, ContainerStar, ContainerStarIcon, ImgNovel, ImgNovelPost, NomalDiv, ReviewText, RowAuth, RowInfo, RowIntro, RowTitle, RowType } from '../CardInfoNovel/CardInFoNovelStyle';
 import { AuthName, Introtext, Nomal, NovelName, TextInfoNovel } from '../../TextField/TestComponents';
 import SimpleBar from 'simplebar-react';
-import TransparentButton from '../../Button/TransparentButton/TransparentButton';
 import "simplebar-react/dist/simplebar.min.css";
 
 function CardInfoNovelPost(props) {
@@ -57,10 +56,9 @@ function CardInfoNovelPost(props) {
             <RowType>
               {props.types &&
                 props.types.map((types, index) => (
-                  <TransparentButton
+                  <button
                     key={index}
-                    title={types}
-                  ></TransparentButton>
+                  >{types} </button>
                 ))}
             </RowType>
   

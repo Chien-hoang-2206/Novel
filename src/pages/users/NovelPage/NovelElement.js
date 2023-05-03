@@ -14,9 +14,9 @@ export const ImageBanner = styled.div`
 export const TransparentBanner = styled.div`
   margin-top: 100px;
   height: 100vh;
+  width: 100%;
   border: none;
   background-image: linear-gradient(0deg, #fff, 85%, transparent);
-  width: 100%;
 `;
 export const ContainerPageContent = styled.div`
   border-radius: 15px;
@@ -24,7 +24,6 @@ export const ContainerPageContent = styled.div`
   display:flex;
  flex-wrap: wrap;
   margin-inline: auto;
-  padding: 5vh;
   background-color: #fff;
   border: 3px solid gray;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -32,6 +31,9 @@ export const ContainerPageContent = styled.div`
     width: 85%;
   }
   @media (max-width: 768px) {
+    width: 100%;
+  }
+  @media (max-width: 248px) {
     width: 100%;
   }
 `;

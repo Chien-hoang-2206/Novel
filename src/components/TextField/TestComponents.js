@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export const Heading1 = styled.p`
-  font-size: 30px;
+  font-size: 24px;
   color: ##404247;
+  height: 20px;
   font-weight: bold;
   margin-left: 10px;
   margin-bottom: 20px;
@@ -30,8 +31,6 @@ export const Nomal = styled.p`
 `;
 export const TypesDeleteText = styled.p`
   font-size: 0.8rem;
-  text-align: left;
-  max-height: 1vh;
 `;
 export const TypesText = styled.p`
   font-size: 0.7rem;
@@ -111,12 +110,16 @@ export const NumFeeling = styled.p`
   max-width: 30px;
   text-align: end;
 `;
+export const NumFeelingMObile= styled.p`
+  font-size: 17px;
+  max-width: 30px;
+  margin-left: -10px;
+  text-align: end;
+`;
 export const AuthName = styled.p`
   text-align: left;
-  margin-top: 10px;
   font-size: 14px;
   font-weight: bold;
-  max-height:10px;
 `;
 export const AuthNameCard = styled.p`
   text-align: left;

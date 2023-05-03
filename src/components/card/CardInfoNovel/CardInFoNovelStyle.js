@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 export const ContainerCard = styled.div`
   display: flex;
+  opacity: 1;
 `;
 
 export const Col1 = styled.div`
@@ -11,8 +12,6 @@ export const Col1 = styled.div`
 
 export const Col2 = styled.div`
   flex: 5;
-  width: 100%;
-  padding-left: 3vh;
 `;
 
 export const ImgNovel = styled.img`
@@ -49,10 +48,11 @@ export const RowAuth = styled.div`
 `;
 export const RowType = styled.div`
   max-height: 30px;
+  display: flex;
 `;
 export const RowIntro = styled.div`
   height: 170px;
-  width: 100%;
+  width: 98%;
   border-radius: 5px;
   margin: 1vh auto;
   padding: 1.1vh 1vh;
@@ -69,7 +69,7 @@ export const ColStar = styled.div`
 `;
 export const NomalDiv = styled.div`
   height: 50%;
-  margin: 6px 5px;
+  margin: 15px 5px;
 `;
 export const ColInfo = styled.div`
   max-height: 5vh;
@@ -120,6 +120,18 @@ export const BtnRead = styled.button`
     color: #fff;
   }
 `;
+export const BtnReadMobile = styled.button`
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 0 4px;
+  font-weight: bold;
+  font-size: 20px;
+  max-height: 7vh;
+  &:hover {
+    background-color: rgb(183, 138, 40);
+    color: #fff;
+  }
+`;
 export const BtnBookmark = styled.button`
   border: 2px solid black;
   border-radius: 30px;
@@ -142,6 +154,21 @@ export const BtnBookmarked = styled.button`
   font-weight: bold;
   background-color: rgba(217, 241, 128, 1);
   font-size: 1.5rem;
+  max-height: 7vh;
+  color: gray;
+  &:hover {
+    background-color: RGB(9 89 77);
+    color: #fff;
+  }
+`;
+export const BtnBookmarkedMobile = styled.button`
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 0 4px;
+  margin-left: 30px;
+  font-weight: bold;
+  background-color: rgba(217, 241, 128, 1);
+  font-size: 20px;
   max-height: 7vh;
   color: gray;
   &:hover {

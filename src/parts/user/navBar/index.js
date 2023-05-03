@@ -31,8 +31,9 @@ function NarBar() {
   const username = sessionStorage.getItem("username");
   const [click, setClick] = useState(false);
   const [search, setSearch] = useState(true);
+  const [showPostNewnovel, setshowPostNewnovel] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
-    const loggedIn = isLoggedIn();
+  const loggedIn = isLoggedIn();
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -44,10 +45,12 @@ function NarBar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const showSearch = () => {
-    if (window.innerWidth <= 967) {
+    if (window.innerWidth <= 800) {
       setSearch(false);
+      setshowPostNewnovel(false);
     } else {
       setSearch(true);
+      setshowPostNewnovel(true);
     }
   };
   window.addEventListener("resize", showSearch);
@@ -55,98 +58,133 @@ function NarBar() {
     <>
       <Navbar>
         <NavbarContainer>
-          <NavLogo to="/home" onClick={closeMobileMenu}>
-            <NavLogoPage src="/LogoPage.png"></NavLogoPage>
-          </NavLogo>
-
-          {search && (
-            <NavSearchContainer>
-              <NavSearch>
-                <NavSelect>
-                  <option value="1">Tên</option>
-                  <option value="2">Tóm tắt</option>
-                </NavSelect>
-                <NavSearchInput name="firstName" />
-                <BtnSearch to="/search">
-                  <Icon icon="material-symbols:search-rounded" />
-                </BtnSearch>
-              </NavSearch>
-            </NavSearchContainer>
-          )}
-
-          <NavMenuIcon onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          <NavMenuIcon onClick={handleClick} className="flex items-center">
+            <i style={{ fontSize: 18, alignItems: "center" }} className={click ? "fas fa-times" : "fas fa-bars"} />
           </NavMenuIcon>
+          <div className="flex w-3/12 items-center">
+            <NavLogo to="/home" onClick={closeMobileMenu}>
+              <NavLogoPage src="/LogoPage.png"></NavLogoPage>
+            </NavLogo>
 
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li>
-              <div className="dropdown">
-                <NavBtnLink to="/types" onClick={closeMobileMenu}>
-                  Thể loại
-                </NavBtnLink>
-                <div className="dropdown-content">
-                  <div className="grid-content">
-                    <a href="/home">Tất cả</a>
-                    <a href="/home">Huyễn huyền</a>
-                    <a href="/home">Tiên hiệp</a>
-                    <a href="/home">Khoa Huyễn</a>
-                    <a href="/home">Đô thị</a>
-                    <a href="/home">Huyễn Nghi</a>
-                    <a href="/home">Kỳ Ảo</a>
-                    <a href="/home">Kiếm hiệp</a>
-                    <a href="/home">Đồng nhân</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="dropdown-bxh">
-                <NavBtnLink to="/charts/trend" onClick={closeMobileMenu}>
-                  Bảng Xếp Hạng
-                </NavBtnLink>
-                <div className="dropdown-content">
-                  <div className="grid-content">
-                    <a href="/home">Tất cả</a>
-                    <a href="/home">Huyễn huyền</a>
-                    <a href="/home">Tiên hiệp</a>
-                    <a href="/home">Khoa Huyễn</a>
-                    <a href="/home">Đô thị</a>
-                    <a href="/home">Huyễn Nghi</a>
-                    <a href="/home">Kỳ Ảo</a>
-                    <a href="/home">Kiếm hiệp</a>
-                    <a href="/home">Đồng nhân</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-            {loggedIn ? (
-              // Nếu isLogin là true, hiển thị avatar của người dùng
-              <div className="dropdown-profile">
-                <NavAfterLogin>
-                  <AvatarWrap to="/profile" onClick={closeMobileMenu}>
-                    <NavAvatar src={avaterLink}></NavAvatar>
-                  </AvatarWrap>
-                  <h6 style={{ paddingLeft: "0.7vh" }}>{username}</h6>
-                  <div className="dropdown-content-profile">
+            <ul className=" items-center  text-base flex nav-menu">
+              <li>
+                <div className="dropdown ">
+                  <NavBtnLink to="/types">
+                    Thể loại
+                  </NavBtnLink>
+                  <div className="dropdown-content">
                     <div className="grid-content">
-                      <a href="/post-novel/profile">Hồ sơ</a>
-                      <a href="/home">Tủ truyện</a>
-                      <a href="/post-novel">Đăng truyện</a>
-                      <Link to="/logout">Đăng xuất</Link>
+                      <a href="/home">Tất cả</a>
+                      <a href="/home">Huyễn huyền</a>
+                      <a href="/home">Tiên hiệp</a>
+                      <a href="/home">Khoa Huyễn</a>
+                      <a href="/home">Đô thị</a>
+                      <a href="/home">Huyễn Nghi</a>
+                      <a href="/home">Kỳ Ảo</a>
+                      <a href="/home">Kiếm hiệp</a>
+                      <a href="/home">Đồng nhân</a>
                     </div>
                   </div>
-                </NavAfterLogin>
-              </div>
-            ) : (
-              // Nếu isLogin là false, hiển thị nút đăng nhập
-              <li>
-                <NavBtnLink style={{marginTop: "4vh"}} onClick={handleLoginClick}>Đăng nhập</NavBtnLink>
+                </div>
               </li>
-            )}
-          </ul>
+              <li>
+                <div className="dropdown-bxh">
+                  <NavBtnLink to="/charts/trend" >
+                    Bảng Xếp Hạng
+                  </NavBtnLink>
+                  <div className="dropdown-content">
+                    <div className="grid-content">
+                      <a href="/home">Tất cả</a>
+                      <a href="/home">Huyễn huyền</a>
+                      <a href="/home">Tiên hiệp</a>
+                      <a href="/home">Khoa Huyễn</a>
+                      <a href="/home">Đô thị</a>
+                      <a href="/home">Huyễn Nghi</a>
+                      <a href="/home">Kỳ Ảo</a>
+                      <a href="/home">Kiếm hiệp</a>
+                      <a href="/home">Đồng nhân</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          {showPostNewnovel ?
+            <div className="mx-20  flex w-4/12 items-center    justify-center rounded-2xl h-6 px-1 py-1">
+              <input className=" text-xs  h-6 w-full pr-8  pl-2 bg-white  rounded-2xl border-transparent  relative " placeholder="Tìm kiếm" name="SearchValue" />
+
+              <Link to="/search" className="relative right-7 " > <Icon icon="material-symbols:search-rounded" /> </Link>
+            </div>
+            : (
+              <div className=" flex  w-9/12 items-center   px-2 justify-end  rounded-2xl h-6  py-1">
+                <input className=" text-xs  h-6 w-full pr-8  pl-2 bg-white  rounded-2xl border-transparent  relative " placeholder="Tìm kiếm" name="SearchValue" />
+                <Link to="/search" className="relative right-7 " > <Icon icon="material-symbols:search-rounded" /> </Link>
+              </div>
+            )
+          }
+
+          {click &&
+            <div className="nav-menu active">
+              <div>
+                <li>
+                  <NavBtnLink className="px-2" to="/home" onClick={closeMobileMenu}>Trang Chủ</NavBtnLink>
+                </li>
+                {loggedIn ? (
+                  <li>
+                    <NavBtnLink to="post-novel/profile" onClick={closeMobileMenu} >
+                      <p >{username}</p>
+                    </NavBtnLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavBtnLink className="px-2" to="/login" onClick={closeMobileMenu}>Đăng nhập</NavBtnLink>
+                  </li>
+                )}
+              </div>
+            </div>
+          }
+
+          {showPostNewnovel &&
+            <div className="flex">
+
+              {loggedIn ? (
+                <div className="flex">
+                  <NavBtnLink to="/post-novel" >
+                    Đăng Truyện
+                  </NavBtnLink>
+                  <div className="dropdown-profile px-2 ">
+                    <NavAfterLogin>
+                      <p >{username}</p>
+                      <div className="dropdown-content-profile">
+                        <div className="grid-content">
+                          <a href="/post-novel/profile">Hồ sơ</a>
+                          <a href="/home">Tủ truyện</a>
+                          <a href="/post-novel">Đăng truyện</a>
+                          <Link to="/logout">Đăng xuất</Link>
+                        </div>
+                      </div>
+                    </NavAfterLogin>
+                  </div>
+                </div>
+              ) : (
+                // Nếu isLogin là false, hiển thị nút đăng nhập
+                <div className="flex">
+                  <li>
+                    <NavBtnLink to="/post-novel" onClick={handleLoginClick} >
+                      Đăng Truyện
+                    </NavBtnLink>
+                  </li>
+                  <li>
+                    <NavBtnLink className="px-2" onClick={handleLoginClick}>Đăng nhập</NavBtnLink>
+                  </li>
+                </div>
+              )}
+            </div>
+          }
+
         </NavbarContainer>
+        {showLoginModal && <LoginModal onClose={handleCloseModal} />}
       </Navbar>
-      {showLoginModal && <LoginModal onClose={handleCloseModal} />}
     </>
   );
 }

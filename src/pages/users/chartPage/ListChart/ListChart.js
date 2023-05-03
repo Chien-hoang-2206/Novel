@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Trand.css";
-import { BtnAuthLink, BtnLink } from "./trandstyle";
+import "./ListChart.css";
+import { BtnAuthLink, BtnLink } from "./ListChart";
 import CardChartNovel from "../../../../components/card/CardChartNovel/CardChartNovel";
 import axios from "../../../../api/axios";
 const HomeNewNoevl_URL = "/api/novels/";

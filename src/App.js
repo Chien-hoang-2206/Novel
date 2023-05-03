@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import HomePage from "./pages/users/homePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import WelcomePage from "./pages/users/welcomePage";
 import NavBar from "./parts/user/navBar";
 import Novel from "./pages/users/NovelPage/Novel";
-import Table from "./components/Table";
-import Login from "./pages/users/loginPage";
 import Logout from "./components/Logout/Logout";
 import ReadingNovel from "./pages/users/ReadingNovel/ReadingNovel";
 import PostNovel from "./pages/users/PostNovel/PostNovel";
@@ -16,12 +13,11 @@ import MyNovel from "./pages/users/Mynovel/MyNovel";
 import MessageAuth from "./pages/users/MessageAuth/MessageAuth";
 import WithdrawMoney from "./pages/users/WithdrawMoney/WithdrawMoney";
 import EditNovel from "./pages/users/EditNovel/EditNovel";
-import ChartPage from "./pages/users/ChartPage/ChartPage";
-import ListChart from "./pages/users/ChartPage/Trend/Trend";
 import EdiChaptertModel from "./pages/users/EdiChaptertModel/EdiChaptertModel";
-import ChatGpt from "./pages/users/ChatGpt/ChatGpt";
-import ChatBox from "./pages/users/ChatBox/ChatBox";
-
+import ListChart from "./pages/users/chartPage/ListChart/ListChart";
+import ChartPage from "./pages/users/chartPage";
+import "./App.css"
+import Loginmobile from "./pages/users/Loginmobile/Loginmobile";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -50,7 +46,7 @@ function App() {
           </Route>
 
           <Route
-            path="post-novel"
+            path="post-novel/"
             element={<PostNovel accountID={accountID} />}
           >
             <Route path="profile" element={<InfoAuth />} />
@@ -65,6 +61,7 @@ function App() {
             <Route path="money" element={<WithdrawMoney />} />
           </Route>
 
+          <Route path="login" element={<Loginmobile />} />
           <Route path="logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>

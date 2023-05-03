@@ -4,6 +4,7 @@ import {
   Content,
   Heading2,
   NumFeeling,
+  NumFeelingMObile,
 } from "../../TextField/TestComponents";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -25,15 +26,16 @@ import axios from "../../../api/axios";
 const AddReview_URL = "/api/reviews/";
 
 function ReviewTab(props) {
-  const accID= props.accountId;
-  const novelID= props.novelID;
-  const reviewList= props.reviewList;
+  const accID = props.accountId;
+  const novelID = props.novelID;
+  const reviewList = props.reviewList;
   // console.log(reviewList);
   const [value11, setValue11] = useState(5);
   const [value2, setValue2] = useState(5);
   const [value3, setValue3] = useState(5);
   const [starReview, setstarReview] = useState(0);
   const [reload, setReload] = useState(false);
+  const [width, setWidth] = React.useState(window.innerWidth);
 
   function handleRangeChange(event) {
     setValue11(event.target.value);
@@ -63,7 +65,7 @@ function ReviewTab(props) {
       .post(AddReview_URL, {
         tinhCachNhanVat: value11,
         noiDungCotTruyen: value2,
-        boCucTheGioi: value3 , 
+        boCucTheGioi: value3,
         content: inputValue,
         novelId: novelID,
         accountId: accID,
@@ -86,135 +88,225 @@ function ReviewTab(props) {
         alert('Bạn chỉ có thể đánh giá một lần ');
       });
   };
-  return (
-    <> 
+  React.useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
 
-    <Row key={reload}>
-      <Col sm={9}>
-        <form onSubmit={handleSubmit}>
-          <UserEditNote>
-            <R1Note>
-              <Col sm={1} style={{ margin: "auto 1vh" }}>
-                <i class="fa-solid fa-dragon"></i>
-              </Col>
-              <Col sm={3} style={{ paddingTop: "1.1rem" }}>
-                <AuthName>Tính cách nhân vật</AuthName>
-              </Col>
-              <Col sm={7} style={{ paddingTop: "1.4rem", display: "flex" }}>
-                <input
-                  type="range"
-                  min="0"
-                  max="10"
-                  value={value11}
-                  onChange={handleRangeChange}
-                  style={{ width: "100vh", height: "5vh", marginTop: "-1vh" }}
-                />
-                <NumFeeling> {value11} </NumFeeling>
-              </Col>
-            </R1Note>
+    window.addEventListener('resize', handleResize);
 
-            <R1Note>
-              <Col sm={1} style={{ margin: "auto 1vh" }}>
-                <i class="fa-solid fa-dragon"></i>
-              </Col>
-              <Col sm={3} style={{ paddingTop: "0.9rem" }}>
-                <AuthName>Nội dung cốt truyện</AuthName>
-              </Col>
-              <Col sm={7} style={{ paddingTop: "1.4rem", display: "flex" }}>
-                <input
-                  type="range"
-                  min="0"
-                  max="10"
-                  value={value2}
-                  onChange={handleChangeSlide2}
-                  style={{ width: "100vh", height: "5vh", marginTop: "-1vh" }}
-                />
-                <NumFeeling> {value2} </NumFeeling>
-              </Col>
-            </R1Note>
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  if (width <= 768) {
+    return (
+      <>
+        <div key={reload}>
+            <form onSubmit={handleSubmit}  >
+              <UserEditNote className="mx-auto">
+                <div className="flex w-11/12  items-center bg-yellow-100  mx-auto my-2 h-10">
+                  <div className="w-6/12 items-center">
+                    <p className="text-xs font-sans px-1">Tính cách nhân vật</p>
+                  </div>
+                  <div className="w-6/12 flex">
+                    <input
+                      type="range"
+                      min="0"
+                      max="10"
+                      value={value11}
+                      onChange={handleRangeChange}
+                      className="mt-1 w-10/12"
+                    />
+                    <NumFeelingMObile> {value11} </NumFeelingMObile>
+                  </div>
+                </div>
+                <div className="flex  w-11/12 items-center bg-yellow-100 mx-auto my-2 h-10">
+                  <div className="w-6/12 items-center">
+                    <p className="text-xs font-sans px-1">Nội dung cốt truyện</p>
+                  </div>
+                  <div className="w-6/12 flex">
+                    <input
+                      type="range"
+                      min="0"
+                      max="10"
+                      value={value2}
+                      onChange={handleChangeSlide2}
+                      className="mt-1 w-10/12"
+                    />
+                    <NumFeelingMObile> {value2} </NumFeelingMObile>
+                  </div>
+                </div>
+                <div className="flex  w-11/12 items-center bg-yellow-100  mx-auto  my-2 h-10">
+                  <div className="w-6/12 items-center">
+                    <p className="text-xs font-sans px-1">Bó cục thế giới</p>
+                  </div>
+                  <div className="w-6/12 flex">
+                    <input
+                      type="range"
+                      min="0"
+                      max="10"
+                      value={value3}
+                      onChange={handleChangeSlide3}
+                      className="mt-1 w-10/12"
+                    />
+                    <NumFeeling> {value3} </NumFeeling>
+                  </div>
+                </div>
 
-            <R1Note>
-              <Col sm={1} style={{ margin: "auto 1vh" }}>
-                <i class="fa-solid fa-dragon"></i>
-              </Col>
-              <Col sm={3} style={{ paddingTop: "1.1rem" }}>
-                <AuthName>Bố cục thế giới</AuthName>
-              </Col>
-              <Col sm={7} style={{ paddingTop: "1.4rem", display: "flex" }}>
-                <input
-                  type="range"
-                  min="0"
-                  max="10"
-                  value={value3}
-                  onChange={handleChangeSlide3}
-                  style={{ width: "100vh", height: "5vh", marginTop: "-1vh" }}
-                />
-                <NumFeeling> {value3} </NumFeeling>
-              </Col>
-            </R1Note>
-
-            <ContainerInputText>
-              <InputText>
                 <textarea
-                  style={{
-                    height: "116px",
-                    width: "784px",
-                    marginLeft: "-3vh",
-                    paddingBottom: "20px",
-                    paddingLeft: "10px",
-                    overflowWrap: "break-word",
-                    border: "none",
-                  }}
+                  className="flex  w-11/12  mx-auto rounded-md h-20  py-2 px-2"
                   type="text"
                   // value=""
                   placeholder="Nhập đánh giá về bộ truyện của bạn"
                   onChange={handleInputChange}
                 ></textarea>
-              </InputText>
-              <button class="cssbuttons-io" type="submit">
-                <span>
-                   Đăng
-                </span>
-              </button>
-            </ContainerInputText>
-          </UserEditNote>
-        </form>
+                <button class="cssbuttons-io " style={{ top: -40, left: 640 }} type="submit">
+                  <span>
+                    Đăng
+                  </span>
+                </button>
+              </UserEditNote>
+            </form>
 
-        {/* Review  */}
-        <SimpleBar style={{ maxHeight: "90vh" }}>
-          {reviewList &&
-          reviewList.map((review,index) => (
-            <Review
-            username= {review.accountInfo.name}
-            star= "4"
-            date="2"
-            chapterRead="1"
-            content={review.content}
-            like="1"
-            reply="1"
-            report
-            />
-          ))
-        }
-        </SimpleBar>
-      </Col>
-      <Col sm={3}>
-        <Heading2>
-          {" "}
-          <i class="fa-solid fa-triangle-exclamation"></i> Lưu ý khi đánh giá !
-        </Heading2>
-        <Note>
-          <NoteText>
-            <Content>1. Elit dolor laboris nulla eiusmod duis.</Content>
-            <Content>2. Elit dolor laboris nulla eiusmod duis.</Content>
-            <Content>3. Elit dolor laboris nulla eiusmod duis.</Content>
-            <Content>4. Elit dolor laboris nulla eiusmod duis.</Content>
-          </NoteText>
-        </Note>
-      </Col>
-    </Row>
-    </>
-  );
+            <div className="px-2 " style={{marginTop: -100}}>
+              <p className="font-bold text-2xl ">Đánh Giá Khác</p>
+              <SimpleBar style={{ maxHeight: "90vh" }}>
+              {reviewList &&
+                reviewList.map((review, index) => (
+                  <Review
+                    username={review.accountInfo.name}
+                    star="4"
+                    date="2"
+                    chapterRead="1"
+                    content={review.content}
+                    like="1"
+                    reply="1"
+                    report
+                  />
+                ))
+              }
+            </SimpleBar>
+            </div>
+            {/* Review  */}
+        </div>
+      </>
+    );
+  }
+  else {
+    return (
+      <>
+
+        <Row key={reload}>
+          <Col sm={9}>
+            <form onSubmit={handleSubmit}  >
+              <UserEditNote className="mx-auto">
+                <div className="flex w-11/12  items-center bg-yellow-100  mx-auto my-2 h-10">
+                  <div className="w-1/12 pl-3  justify-center items-center">
+                    <i class="fa-solid fa-dragon"></i>
+                  </div>
+                  <div className="w-6/12 items-center">
+                    <AuthName>Tính cách nhân vật</AuthName>
+                  </div>
+                  <div className="w-6/12 flex">
+                    <input
+                      type="range"
+                      min="0"
+                      max="10"
+                      value={value11}
+                      onChange={handleRangeChange}
+                      className="mt-1 w-10/12"
+                    />
+                    <NumFeeling> {value11} </NumFeeling>
+                  </div>
+                </div>
+                <div className="flex  w-11/12 items-center bg-yellow-100 mx-auto my-2 h-10">
+                  <div className="w-1/12 pl-3  justify-center items-center">
+                    <i class="fa-solid fa-dragon"></i>
+                  </div>
+                  <div className="w-6/12 items-center">
+                    <AuthName>Nội dung cốt truyện</AuthName>
+                  </div>
+                  <div className="w-6/12 flex">
+                    <input
+                      type="range"
+                      min="0"
+                      max="10"
+                      value={value2}
+                      onChange={handleChangeSlide2}
+                      className="mt-1 w-10/12"
+                    />
+                    <NumFeeling> {value2} </NumFeeling>
+                  </div>
+                </div>
+                <div className="flex  w-11/12 items-center bg-yellow-100  mx-auto  my-2 h-10">
+                  <div className="w-1/12 pl-3  justify-center items-center">
+                    <i class="fa-solid fa-dragon"></i>
+                  </div>
+                  <div className="w-6/12 items-center">
+                    <AuthName>Bố cục thế giới</AuthName>
+                  </div>
+                  <div className="w-6/12 flex">
+                    <input
+                      type="range"
+                      min="0"
+                      max="10"
+                      value={value3}
+                      onChange={handleChangeSlide3}
+                      className="mt-1 w-10/12"
+                    />
+                    <NumFeeling> {value3} </NumFeeling>
+                  </div>
+                </div>
+
+                <textarea
+                  className="flex  w-11/12  mx-auto rounded-md h-20  py-2 px-2"
+                  type="text"
+                  // value=""
+                  placeholder="Nhập đánh giá về bộ truyện của bạn"
+                  onChange={handleInputChange}
+                ></textarea>
+                <button class="cssbuttons-io " style={{ top: -40, left: 640 }} type="submit">
+                  <span>
+                    Đăng
+                  </span>
+                </button>
+              </UserEditNote>
+            </form>
+
+            {/* Review  */}
+            <SimpleBar style={{ maxHeight: "90vh" , marginTop: -100 }}>
+              {reviewList &&
+                reviewList.map((review, index) => (
+                  <Review
+                    username={review.accountInfo.name}
+                    star="4"
+                    date="2"
+                    chapterRead="1"
+                    content={review.content}
+                    like="1"
+                    reply="1"
+                    report
+                  />
+                ))
+              }
+            </SimpleBar>
+          </Col>
+          <Col sm={3}>
+            <Heading2>
+              {" "}
+              <i class="fa-solid fa-triangle-exclamation"></i> Lưu ý khi đánh giá !
+            </Heading2>
+            <Note>
+              <NoteText>
+                <Content>1. Elit dolor laboris nulla eiusmod duis.</Content>
+                <Content>2. Elit dolor laboris nulla eiusmod duis.</Content>
+                <Content>3. Elit dolor laboris nulla eiusmod duis.</Content>
+                <Content>4. Elit dolor laboris nulla eiusmod duis.</Content>
+              </NoteText>
+            </Note>
+          </Col>
+        </Row>
+      </>
+    );
+  }
 }
-
 export default ReviewTab;

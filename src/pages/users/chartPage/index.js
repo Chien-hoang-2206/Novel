@@ -8,9 +8,10 @@ import "./ChartPage.css";
 import React, { useEffect, useState } from "react";
 import { LinkChart } from "./ChartStyle";
 
-function ChartPage() {
+const ChartPage = () => {
   return (
-    <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
+    <div>
+        <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
       <TransparentBanner>
         <ContainerPageContent>
           <div className="container-chart">
@@ -48,14 +49,14 @@ function ChartPage() {
 
             <div className="col-2">
               <Outlet />
-
           
             </div>
           </div>
         </ContainerPageContent>
       </TransparentBanner>
     </ImageBanner>
-  );
+    </div>
+  )
 }
 
-export default ChartPage;
+export default ChartPage

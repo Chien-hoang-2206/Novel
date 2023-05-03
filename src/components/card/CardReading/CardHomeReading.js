@@ -16,31 +16,23 @@ import { Link } from "react-router-dom";
 const CardHomeReading = (props) => {
   const chapterID = props.chapterID;
   return (
-    <div>
-      <CardReading>
-        <Row>
-          <Col sm={2}>
-            <ImageComicReading src={props.image} />
-          </Col>
-          <Col sm={10}>
-            <ContainerRow>
-              <LinkRoute to={`/novel/${props.id}`}>
-                <Heading2>{props.nameComic}</Heading2>
-              </LinkRoute>
-
-              <ChpaetNUm>
-                <LinkRoute>
-                    Đã đọc chương: {props.chaperReading}/{props.chaperNum}
-                </LinkRoute>
-                <LinkRouteContinue to={`/novel/chapter/${chapterID}`}>
-                  {" "}
-                  Đọc tiếp{" "}
-                </LinkRouteContinue>
-              </ChpaetNUm>
-            </ContainerRow>
-          </Col>
-        </Row>
-      </CardReading>
+    <div className="flex px-3 md:px-2 my-2 md:mt-2   " >
+      <div className="w-1/6   h-5/6 md:h-5/6 flex items-center">
+        <img className="w-3/4 h-3/5 md:h-full  md:w-full flex object-fill rounded-md " src={props.image} />
+      </div>
+      <div className="w-5/6 px-1 h-16  md:ml-2  ">
+        <LinkRoute to={`/novel/${props.id}`}>
+          <p className="text-base">{props.nameComic}</p>
+        </LinkRoute>
+        <dic className="flex my-3 ">
+          <LinkRoute className="w-3/4">
+            <p className="text-xs "> Đã đọc: {props.chaperReading}/{props.chaperNum} </p>
+          </LinkRoute>
+          <LinkRouteContinue className="w-2/4 text-center" to={`/novel/chapter/${props.chapterID}`}>
+          <p className="text-xs">  Đọc tiếp </p>
+          </LinkRouteContinue>
+        </dic>
+      </div>
     </div>
   );
 };

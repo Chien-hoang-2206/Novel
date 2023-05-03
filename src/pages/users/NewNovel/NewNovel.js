@@ -9,14 +9,17 @@ import {
 } from "firebase/storage";
 
 import { v4 } from "uuid";
-import ButtonChoosedType from "../../../components/Button/ButtonChoosedType/ButtonChoosedType";
 import axios from "axios";
 import { storage } from "../../../firebase";
+import LoginModal from "../LoginModal/LoginModal";
 
 const PostNovel = "/api/novels/";
 
 function NewNovel(props) {
   const accID = props.accountID;
+  if (!accID) {
+    <LoginModal/>
+  }
   const [nameNovel, setNameNovel] = useState("");
   const [content, setContent] = useState("");
   const [isTranslated, setisTranslated] = useState(true);
@@ -294,9 +297,9 @@ function NewNovel(props) {
 
             <div className="col-input-btn">
               {types.map((type, index) => (
-                <ButtonChoosedType key={index} type={type}>
-                  {" "}
-                </ButtonChoosedType>
+                <button key={index} >
+                {type}
+                </button>
               ))}
             </div>
           </div>

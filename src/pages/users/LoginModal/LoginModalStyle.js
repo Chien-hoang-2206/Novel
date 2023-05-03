@@ -10,7 +10,7 @@ export const FormModal = styled.div`
   border-radius: 6px;
   position: fixed;
   margin: 15vh 35%;
-  z-index: 999;
+  z-index: 10;
   opacity: 1;
 `
 export const TranspaentContainer = styled.div`
@@ -18,6 +18,7 @@ export const TranspaentContainer = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 6px;
+  right: 100px;
   position: absolute;
   z-index: 2000;
 

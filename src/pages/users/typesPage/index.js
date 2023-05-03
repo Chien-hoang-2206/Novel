@@ -12,8 +12,6 @@ import {
   TitleText,
   TypesDeleteText,
 } from "../../../components/TextField/TestComponents";
-import ButtonTypes from "../../../components/Button/ButtonTypes/ButtonTypes";
-import ButtonChoosedType from "../../../components/Button/ButtonChoosedType/ButtonChoosedType";
 import DropdownSort from "../../../components/Dropdown/DropdownSort/DropdownSort";
 import CardNovelTypesSearch from "../../../components/card/CardNovelTypesSearch/CardNovelTypesSearch";
 

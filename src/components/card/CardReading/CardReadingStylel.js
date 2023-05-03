@@ -42,11 +42,9 @@ export const LinkRouteContinue = styled(Link)`
     font-size: 14px;
     padding: 1px 10px;
     line-height: 25px;
-    &:hover{
-      background: rgb(95, 189, 211, 0.9);
-      color: #fff;
-      border-radius: 5px;
-    }
+    background: rgb(95, 189, 211, 0.9);
+    color: #fff;
+    border-radius: 5px;
 `;
 export const ContentCardHomeReading = styled(Content)`
   margin-top: -14px;

@@ -3,11 +3,10 @@ import { NavLink as Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 export const Navbar = styled.nav`
   background: linear-gradient(90deg, #FFFFFF 0%, rgb(237, 237, 222) 100%);
-  height: 6vh;
+  height: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
   position: sticky;
   top: 0;
   z-index: 999;
@@ -15,15 +14,11 @@ export const Navbar = styled.nav`
 
 export const NavbarContainer = styled.div`
   display: flex;
-  height: 6vh;
-  justify-content: center;
   align-items: center;
   width: 80%;
 `
 export const NavAfterLogin = styled.div`
   cursor: pointer;
-  display: flex;
-  padding-top: 17%;
 `;
 export const AvatarWrap = styled(Link)`
   border-radius: 50%;
@@ -68,7 +63,6 @@ export const NavMenuIcon = styled.div`
     position: absolute;
     margin-right: -70%;
     transform: translate(50%, 0%);
-    font-size: 2.0rem;
     cursor: pointer;
   }
 `;
@@ -89,10 +83,9 @@ export const NavBtnLink = styled(Link)`
   color: #583f3f;
   display: flex;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 1rem;
   text-decoration: none;
     font-weight: bold;
-  margin-top: 50%;
   &:hover {
     transition: all 0.2s ease-out;
     text-align: center;

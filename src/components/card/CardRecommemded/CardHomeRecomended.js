@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import Button from "@mui/material/Button";
 import { Icon } from "@iconify/react";
 import React from "react";
@@ -23,67 +23,57 @@ import {
   Content,
   AuthNameCard,
 } from "../../TextField/TestComponents";
+
+
 function CardHomeRecomended(props) {
   const contentNovel = props.content;
+  const [showType, setShowTypes] = useState(true);
+  const showSearch = () => {
+    if (window.innerWidth <= 967) {
+      setShowTypes(false);
+    } else {
+      setShowTypes(true);
+    }
+  };
+  window.addEventListener("resize", showSearch);
   return (
-    <ContainerCard>
-      <Row>
-        <Col sm={2}>
-          <ImageComicRecommended src={props.image} />
-        </Col>
-        <Col sm={10}>
-          <ContainerRowInfo>
-            <Row style={{ maxHeight: "25px" }}>
-              <Col sm={6} style={{ maxHeight: "10px" }}>
-                {/* <LinkRoute to="/novel"> */}
-                <LinkRoute to={`/novel/${props.id}`}>
-                  <Heading2> {props.nameComic}</Heading2>
-                </LinkRoute>
-              </Col>
-              <Col
-                sm={6}
-                style={{
-                  maxHeight: "22px",
-                  justifyContent: "end",
-                  display: "flex",
-                }}
-              >
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="error"
-                  style={{ maxHeight: "4vh", marginRight: "1vh" }}
-                >
-                  {props.type1}
-                </Button>
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="error"
-                  style={{ maxHeight: "25px" }}
-                >
-                  {props.type2}
-                </Button>
-              </Col>
-            </Row>
+    <div className="h-28 my-2 md:my-4 md:h-36 md:my-4 px-2 py-2 rounded-md hover:bg-slate-200 shadow-xl">
+      <div className="flex px-1 py-1">
+        <div className=" w-1/6 h-5/6 md:h-5/6 flex items-center ">
+          <img className="w-20 h-24 md:h-32  md:w-24    flex object-fill rounded-md  " src={props.image} />
+        </div>
+        <div className="w-5/6 mx-2 md:mx-0  ">
+          <div className="flex">
+            <div className="w-1/2">
+              {/* <LinkRoute to="/novel"> */}
+              <LinkRoute to={`/novel/${props.id}`}>
+                <p className="text-sm md:text-2xl " > {props.nameComic}</p>
+              </LinkRoute>
+            </div>
+            <div className="w-1/2 flex  justify-end">
 
-            <Row>
-              <ContainerRowContent>
-                <Content>
-                  <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
-                </Content>
-              </ContainerRowContent>
-            </Row>
-            <Row style={{ marginTop: "3px" }}>
-              <Col>
-                <AuthNameCard> {props.auth}</AuthNameCard>
-              </Col>
-              <Col></Col>
-            </Row>
-          </ContainerRowInfo>
-        </Col>
-      </Row>
-    </ContainerCard>
+              <button className="text-xs px-1 py-0 h-5 rounded-md border-2 border-red-300 hover:bg-red-300 "              >
+                {props.type1}
+              </button>
+              {showType &&
+                <button className="text-xs  mx-1 px-1 py-0 h-5 rounded-md border-2 border-red-300 hover:bg-red-300"              >
+                  {props.type2}
+                </button>
+              }
+            </div>
+          </div>
+
+          <div className=" h-14 md:h-20   overflow-hidden">
+            <Content>
+              <div className="text-slate-500" dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
+            </Content>
+          </div>
+          <div className="  h-10 overflow-hidden">
+            <AuthNameCard> {props.auth}</AuthNameCard>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -95,7 +85,7 @@ CardHomeRecomended.defaultProps = {
   type2: "The loai 2",
   type3: "The loai 3",
   content:
-    "Description about the product: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ss",
+    "Description about the product: Lorem ipsum dolor sit amLoct: Lorem ipsum dolor sit amLorem ict: Lorem ipsum dolor sit amLorem ict: Lorem ipsum dolor sit amLorem ict: Lorem ipsum dolor sit amLorem ict: Lorem ipsum dolor sit amLorem ict: Lorem ipsum dolor sit amLorem irem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cLorem ipsum dolor sit amet, cet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ss Description about the product: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ssDescription about the product: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ssDescription about the product: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.ss",
   auth: "Alibaba",
 };
 export default memo(CardHomeRecomended);
