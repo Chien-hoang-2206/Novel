@@ -37,7 +37,7 @@ function CardHomeRecomended(props) {
   };
   window.addEventListener("resize", showSearch);
   return (
-    <div className="h-28 my-2 md:my-4 md:h-36 md:my-4 px-2 py-2 rounded-md hover:bg-slate-200 shadow-xl">
+    <div className="h-28 my-2 md:my-4 md:h-36 px-2 py-2 rounded-md hover:bg-slate-200 shadow-xl">
       <div className="flex px-1 py-1">
         <div className=" w-1/6 h-5/6 md:h-5/6 flex items-center ">
           <img className="w-20 h-24 md:h-32  md:w-24    flex object-fill rounded-md  " src={props.image} />
