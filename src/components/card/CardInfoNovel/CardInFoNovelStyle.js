@@ -12,6 +12,7 @@ export const Col1 = styled.div`
 
 export const Col2 = styled.div`
   flex: 5;
+    padding: 10px 25px;
 `;
 
 export const ImgNovel = styled.img`

@@ -25,9 +25,12 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
   const [sortOrder, setSortOrder] = useState(false);
   const novelname = nameNovel;
   const Idnovel = IDNovel;
-  const accID = accountId;
+  let accID = accountId;
+  if (accountId)
+  accID =  accountId;
+  else
+  accID = "000";
   const [width, setWidth] = React.useState(window.innerWidth);
-
   console.log(accID);
   const calculateDaysFromCreatedAt = (createdAt) => {
     if (!createdAt) {
@@ -82,9 +85,9 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
             )}
           </button>
         </div>
-        <div className="">
-          <SimpleBar style={{ maxHeight: "400px" }}>
-            {sortOrder === true
+        <div className="px-4">
+          <SimpleBar   style={{ maxHeight: 420}}>
+            {sortOrder == true
               ? chapters &&
               chapters.reverse().map((chapter, index) => (
                 <Chapter key={index + 1}>
@@ -160,7 +163,7 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
                 </button>
               </ColButton>
             </Row1>
-            <SimpleBar style={{ maxHeight: "110vh" }}>
+            <SimpleBar style={{ maxHeight: "110vh", padding:"10px 0px" }}>
               {sortOrder === true
                 ? chapters &&
                 chapters.reverse().map((chapter, index) => (

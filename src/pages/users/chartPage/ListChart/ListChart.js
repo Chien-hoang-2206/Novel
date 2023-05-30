@@ -3,15 +3,15 @@ import "./ListChart.css";
 import { BtnAuthLink, BtnLink } from "./ListChart";
 import CardChartNovel from "../../../../components/card/CardChartNovel/CardChartNovel";
 import axios from "../../../../api/axios";
-const HomeNewNoevl_URL = "/api/novels/";
+const HomeNewNoevl_URL = "/api/ranking/readcount";
 
 
 function callApiNewNovelList() {
   return axios
     .get(HomeNewNoevl_URL)
     .then((response) => {
-      // console.log(response.data);
-      return response.data.novelList;
+      console.log(response.data);
+      return response.data;
     })
     .catch((error) => {
       console.log(error);
@@ -54,7 +54,6 @@ function ListChart() {
                     nameComic={novels.title}
                     type1={novels.types[0]}
                     type2={novels.types[1]}
-                    // type3=""
                     content={novels.intro}
                     auth={novels.author}
                   />

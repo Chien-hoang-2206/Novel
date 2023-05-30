@@ -65,7 +65,7 @@ const Login = () => {
             name="password"
           />
         </div>
-        <button className="flex mx-auto  h-12 text-2xl uppercase mx-2 mt-9 w-11/12  justify-center rounded-lg items-center bg-slate-300 hover:bg-orange-400  " type="submit">
+        <button className="flex mx-auto  h-12 text-2xl uppercase  mt-9 w-11/12  justify-center rounded-lg items-center bg-slate-300 hover:bg-orange-400  " type="submit">
           Login
         </button>
       </form>

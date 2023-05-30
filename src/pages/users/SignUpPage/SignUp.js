@@ -40,8 +40,9 @@ function SignUp(props) {
           document.cookie = `userID=${response.data.user._id}`;
           document.cookie = `avatar=${response.data.user.avatarLink}`;
           sessionStorage.setItem('username', response.data.user.name);
+          sessionStorage.setItem('accID', response.data.user._id);
           sessionStorage.setItem('avatar', response.data.user.avatarLink);
-          window.location.href = 'home'; // Thay đổi đường dẫn tương ứng
+          window.location.href = '/home'; // Thay đổi đường dẫn tương ứng
           // ReloadNavBar;
         } else {
           // Đăng nhập thất bại, hiển thị thông báo lỗi
@@ -128,7 +129,7 @@ function SignUp(props) {
         </div>
         <div className="icon-link-su mx-auto">
           <div className="px-auto">
-            <i class="fa-brands fa-facebook" style={{ color: "#075ced", marginLeft: "28px" , fontSize: 40 }}></i>
+            <i class="fa-brands fa-facebook" style={{ color: "#075ced", marginLeft: "28px", fontSize: 40 }}></i>
             <i
               class="fa-brands fa-google-plus"
               style={{ color: "#ff0505", marginLeft: "30px", fontSize: 40 }}

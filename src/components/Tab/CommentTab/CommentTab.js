@@ -45,7 +45,7 @@ function CommentTab() {
                 placeholder="Chia sẻ bình luận của bạn về truyện .... "
               ></textarea>
               <div className="submitCMT">
-                <button className="cssbuttons-io" style={{ top: -10, left: 640 }} type="submit">
+                <button  style={{ position: "relative", left: 280 }}  type="submit">
                   <span>
                     Đăng
                   </span>

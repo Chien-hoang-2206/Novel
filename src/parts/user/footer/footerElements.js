@@ -16,7 +16,7 @@ export const TransparentBanner= styled.div`
 `
 export const ContainerFooter = styled.div`
     padding-top: 30px;
-    padding-bottim: 10px;
+    padding-bottom: 10px;
     min-height: 20vh;
 `
 export const ContainerFooterColumn = styled.div`
@@ -28,6 +28,7 @@ export const FooterColumn = styled.div`
 `;
 export const FooterColumnIcon = styled.div`
   margin-left: 200px;
+  display: flex;
 `;
 
 export const FooterLinkIcon = styled.div`

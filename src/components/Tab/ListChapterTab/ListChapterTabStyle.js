@@ -35,8 +35,7 @@ export const LinkChapter = styled(Link)`
 
 export const Chapter = styled.div`
   display: flex;
-  padding-right: 3rem;
-  padding-left: 1rem;
+  padding: 5px 5px;
 `;
 export const ChapterEdit = styled.div`
   display: flex;

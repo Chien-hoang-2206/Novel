@@ -3,10 +3,10 @@ import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export const ContainerCard = styled(Row)`
-  width: 45%;  
+  width: 47%;  
   height: 20vh;
-  margin-bottom: 3vh;
-  margin-left: 2vh;
+  margin-right: 30px;
+  margin-bottom: 15px;
 `;
 export const ImgNovel = styled.img`
   width: 120%;  
@@ -16,12 +16,12 @@ export const ImgNovel = styled.img`
 `;
 export const LinkRoute = styled(Link)`
   color: #000;
-  height: 100%;
+  height: 80%;
   display: flex;
   align-items: left;
   text-decoration: none;
   font-weight: bold;
-  curson: pointer;
+  cursor: pointer;
   &.hover {
     color: #15cdfc;
   }
@@ -32,25 +32,31 @@ export const ImageComicRecommended = styled.img`
 `;
 export const ContainerCardType= styled.div`
   text-align: right;
-  margin-right: 4px;
   max-height: 2vh;
 `;
 export const ContainerCardStar = styled.div`
   margin-left: 6px;
   text-align: right;
-  margin-right: 4px;
   margin-top: 2px;
+  display: flex;
+  justify-content: flex-end;
   font-size: 15px;
 `;
 export const ContainerRowContent = styled.div`
-  height: 8.5vh;
+  height: 60px;
   overflow: hidden;
-
+`;
+export const RowContent = styled.div`
+  height: 50px;
+  overflow: hidden;
 `;
 export const ContainerRowInfo = styled(Col)`
-  margin-left: 0px;
 `;
 export const Chapter = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  gap: 5px;
+  padding-left: 13px;
+  justify-content: flex-start;
 `;

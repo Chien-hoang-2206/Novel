@@ -82,12 +82,7 @@ function PostNovel(props) {
               </Link>
             </div>
           
-            <div className="option-nav">
-              <Link to={"/post-novel/money"}>
-                <i class="fa-solid fa-money-check-dollar"></i>
-                Rút tiền
-              </Link>
-            </div>
+           
           </div>
         </div>
 

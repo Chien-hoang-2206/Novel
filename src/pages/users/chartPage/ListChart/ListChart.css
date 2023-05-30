@@ -1,5 +1,4 @@
 .container-list {
-    max-height: 206vh;
     margin-left: 1vh;
     margin-top: 0px;
 }
@@ -132,6 +131,7 @@
 
 .row-2-chart {
     display: flex;
+    justify-content: space-between;
 }
 
 .row-auth {}
@@ -149,6 +149,7 @@
     margin-left: 20px;
     margin-top: -2px;
     display: flex;
+    justify-content: flex-end;
 
 }
 

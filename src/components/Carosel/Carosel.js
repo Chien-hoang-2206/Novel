@@ -1,135 +1,139 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "./Carousel.css";
+import { useState } from "react";
+import { useEffect } from "react";
 
-import { EffectCoverflow, Pagination, Navigation } from "swiper";
-import { ContainerSlide, ContentCarousel, ImagCarousel } from "./CaroselStyle";
-import {  NovelName, NumFeeling } from "../TextField/TestComponents";
-import SimpleBar from "simplebar-react";
+import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import axios from "../../api/axios";
+import CardNovelTypesSearch from "../card/CardNovelTypesSearch/CardNovelTypesSearch";
+const TypesNovelURL = "/api/novels/types";
 
-function Carosel() {
-  return (
-    <div className="containerCarousel">
-      <h1 className="headingCarousel">Các truyện khác</h1>
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        loop={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
-        pagination={{ el: ".swiper-pagination", clickable: true }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-          clickable: true,
-        }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
-        className="swiper_container"
-      >
-    
-      <SwiperSlide>
-          <NovelName style={{ textAlign: "center", marginLeft: "10vh", color: "#C58940" }}>
-            Meo moe Meo Meo
-          </NovelName>
-          <ContainerSlide>
-            <ImagCarousel src="image/demoImg.webp" alt="slide_image" />
-            <ContentCarousel>
-            <SimpleBar  autoHide={true}  style={{ margin: "5vh", maxHeight: "30vh" }}>
-              <NumFeeling>
-                Nomal Cầu tiến vào linh khí khôi phục thời đại, nhân loại mở ra
-                dị năng thức tỉnh! Giang Nam bắt đầu thức tỉnh mạnh nhất hàng
-                vỉa hè hệ thống, đại lực nước thuốc? Giải độc đậu nành nhỏ? May
-                mắn anh đào? Cung không đủ cầu! Thế giới đỉnh cấp thần hào, nhà
-                giàu nhất, nhân khí streamer, cường giả tối đỉnh nhao nhao đến
-                đây cầu mua. Giang Nam: "Ta đối với tiền ức điểm đều không có
-                mắn anh đào? Cung không đủ cầu! Thế giới đỉnh cấp thần hào, nhà
-                giàu nhất, nhân khí streamer, cường giả tối đỉnh nhao nhao đến
+function Carosel({ types }) {
 
-              </NumFeeling>
-              </SimpleBar>
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const [Listnovel, setListnovel] = useState();
 
-            </ContentCarousel>
-          </ContainerSlide>
+  useEffect(() => {
+    async function fetchData() {
+      const Listnovel = await callApiNewNovelList();
+      setListnovel(Listnovel);
+    }
+    fetchData();
+  }, []);
+  console.log(types);
+  console.log(Listnovel);
+  function callApiNewNovelList() {
+    axios
+      .post(TypesNovelURL, {
+        types: types,
+      })
+      .then((response) => {
+        if (response.data) {
+          setListnovel(response.data.novelSameTypes);
+        } else {
+          alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
+        }
+      })
+      .catch((error) => {
+        alert(error.response.data.error);
+      })
+  }
+
+  React.useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  if (width <= 768) {
+    return (
+      <Carousel style={{ marginTop: "0px auto", paddingTop: 30 }}>
+
+        {Listnovel &&
+          Listnovel.map((novel, index) => (
+            <Carousel.Item key={index}  >
+              <img
+                className="d-block w-60 rounded-md shadow-md mx-auto "
+                src={novel.coverLink}
+                alt="First slide"
+              />
+              <a style={{ textDecoration: "none", color: "#3c3f42f7" }} href={novel._id}>
+                <p className="my-4 text-3xl  font-bold font-mono text-center">{novel.title}</p>
+              </a>
+            </Carousel.Item>
+          ))}
+
        
-        </SwiperSlide>
-    
-    
-        <SwiperSlide>
-          <NovelName style={{ textAlign: "center", marginLeft: "10vh", color: "#C58940" }}>
-            Meo moe Meo Meo
-          </NovelName>
-          <ContainerSlide>
-            <ImagCarousel src="image/demoImg.webp" alt="slide_image" />
-            <ContentCarousel>
-            <SimpleBar  scrollbarMaxSize={"10px"} style={{ maxHeight: "30vh" }}>
-              <NumFeeling>
-                Nomal Cầu tiến vào linh khí khôi phục thời đại, nhân loại mở ra
-                dị năng thức tỉnh! Giang Nam bắt đầu thức tỉnh mạnh nhất hàng
-                vỉa hè hệ thống, đại lực nước thuốc? Giải độc đậu nành nhỏ? May
-                mắn anh đào? Cung không đủ cầu! Thế giới đỉnh cấp thần hào, nhà
-                giàu nhất, nhân khí streamer, cường giả tối đỉnh nhao nhao đến
-                đây cầu mua. Giang Nam: "Ta đối với tiền ức điểm đều không có
-                mắn anh đào? Cung không đủ cầu! Thế giới đỉnh cấp thần hào, nhà
-                giàu nhất, nhân khí streamer, cường giả tối đỉnh nhao nhao đến
 
-              </NumFeeling>
-              </SimpleBar>
-
-            </ContentCarousel>
-          </ContainerSlide>
-       
-        </SwiperSlide>
-
-         
-        <SwiperSlide>
-          <NovelName style={{ textAlign: "center", marginLeft: "20vh", color: "#C58940" }}>
-            Meo moe Meo Meo
-          </NovelName>
-          <ContainerSlide>
-            <ImagCarousel src="image/demoImg.webp" alt="slide_image" />
-            <ContentCarousel>
-            <SimpleBar  autoHide={true} style={{ maxHeight: "30vh" }}>
-              <NumFeeling>
-                Nomal Cầu tiến vào linh khí khôi phục thời đại, nhân loại mở ra
-                dị năng thức tỉnh! Giang Nam bắt đầu thức tỉnh mạnh nhất hàng
-                vỉa hè hệ thống, đại lực nước thuốc? Giải độc đậu nành nhỏ? May
-                mắn anh đào? Cung không đủ cầu! Thế giới đỉnh cấp thần hào, nhà
-                giàu nhất, nhân khí streamer, cường giả tối đỉnh nhao nhao đến
-                đây cầu mua. Giang Nam: "Ta đối với tiền ức điểm đều không có
-                mắn anh đào? Cung không đủ cầu! Thế giới đỉnh cấp thần hào, nhà
-                giàu nhất, nhân khí streamer, cường giả tối đỉnh nhao nhao đến
-
-              </NumFeeling>
-              </SimpleBar>
-
-            </ContentCarousel>
-          </ContainerSlide>
-       
-        </SwiperSlide>
+      </Carousel>
+    );
+  }
+  else {
+    return (
+      <div className="py-5 whitespace-nowrap overflow-x-scroll  w-11/12 mx-auto ">
+        <div className="inline-block  ">
 
 
-        <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow">
-            <ion-icon name="arrow-back-outline"></ion-icon>
+
+          <div className="flex max-w-md  ">
+
+            {Listnovel &&
+              Listnovel.map((novel, index) => (
+                <div key={index} className="w-full mx-3">
+                  <img className="rounded-md  w-64 h-80 mx-auto object-fill" alt="" src={novel.coverLink} />
+                  <a style={{ textDecoration: "none", color: "#3c3f42f7" }} href={novel._id}>
+                    <p className="my-4 text-3xl  font-bold font-mono text-center">{novel.title}</p>
+                  </a>
+                </div>
+              ))}
+
+
+            <div className="w-full mx-3">
+              <img className="rounded-md  w-4/5 h-4/5 mx-auto object-fill" src="https://static.cdnno.com/poster/nguoi-tai-hien-dai-thu-den-tien-gioi-tin-nhan/300.jpg?1677481899"
+                alt="Three slide" />
+              <a href="/novel/643c1ba9846d4044a2b45786">
+                <p className="my-4 text-3xl font-bold font-mono text-center">Thiên Long Bát Bộ</p>
+              </a>
+            </div>
+            <div className="w-full mx-3">
+              <img className="rounded-md  w-4/5 h-4/5 mx-auto object-fill" src="https://img.dtruyen.com/public/images/large/phamnhantutienNne33LSoZl.jpg"
+                alt="Three slide" />
+              <a href="/novel/64381622da02d2d2678d291c">
+                <p className="my-4 text-3xl font-bold font-mono text-center">Phàm Nhân Tu Tiên</p>
+              </a>
+            </div>
+            <div className="w-full mx-3">
+              <img className="rounded-md  w-4/5 h-4/5 mx-auto object-fill" src="https://static.cdnno.com/poster/xich-tam-tuan-thien/300.jpg?1612524612"
+                alt="Three slide" />
+              <a href="/novel/6474310463d1c7a4046821b6">
+                <p className="my-4 text-3xl font-bold font-mono text-center">Xích Tâm Tuần Thiên</p>
+              </a>
+            </div>
+
+            <div className="w-full mx-3">
+              <img className="rounded-md  w-4/5 h-4/5 mx-auto object-fill" src="https://static.cdnno.com/poster/linh-canh-hanh-gia/300.jpg?1648001055"
+                alt="Three slide" />
+              <a href="/novel/6474310463d1c7a4046821b7">
+                <p className="my-4 text-3xl font-bold font-mono text-center">Linh Cảnh Hành Giả</p>
+              </a>
+            </div>
+
+            <div className="w-full mx-3">
+              <img className="rounded-md  w-4/5 h-4/5 mx-auto object-fill" src="https://static.cdnno.com/poster/vu-em-my-thuc-tiem/300.jpg?1664010144"
+                alt="Three slide" />
+              <a href="/novel/6474310463d1c7a4046821b8">
+                <p className="my-4 text-3xl font-bold font-mono text-center">Vú Em Mỹ Thực Tiệm</p>
+              </a>
+            </div>
+
+
           </div>
-          <div className="swiper-button-next slider-arrow">
-            <ion-icon name="arrow-forward-outline"></ion-icon>
-          </div>
-          <div className="swiper-pagination"></div>
         </div>
-      </Swiper>
-    </div>
-  );
+      </div>
+    );
+  }
 }
-
 export default Carosel;

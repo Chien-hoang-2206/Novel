@@ -9,23 +9,22 @@ import {
 } from "firebase/storage";
 
 import { v4 } from "uuid";
-import axios from "axios";
 import { storage } from "../../../firebase";
 import LoginModal from "../LoginModal/LoginModal";
-
+import axios from "../../../api/axios";
 const PostNovel = "/api/novels/";
 
 function NewNovel(props) {
-  const accID = props.accountID;
+  const accID = sessionStorage.getItem("accID") || "" ;
   if (!accID) {
-    <LoginModal/>
+    <LoginModal />
   }
   const [nameNovel, setNameNovel] = useState("");
   const [content, setContent] = useState("");
   const [isTranslated, setisTranslated] = useState(true);
   const [contentTranslate, setContentTranslate] = useState("");
   const [types, setTypes] = useState([]);
-  const [AuthName, setAuthName] = useState("");
+  const [AuthName, setAuthName] = useState(sessionStorage.getItem("username"));
   const [valuetype, setValueType] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -45,11 +44,11 @@ function NewNovel(props) {
       },
       data: encodedParams,
     };
-    
+
     try {
       const response = await axios.request(options);
-    // eslint-disable-next-line
-      setContent(response.data. results[0].entities[0].objects[0].entities[0].text);
+      // eslint-disable-next-line
+      setContent(response.data.results[0].entities[0].objects[0].entities[0].text);
     } catch (error) {
       console.error(error);
     }
@@ -61,68 +60,49 @@ function NewNovel(props) {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageUrls((prev) => [...prev, url]);
       });
-     
+
     });
     convertOCR();
   };
-  
- 
+
+
 
   const handleTranslate = () => {
+    const url = "https://rapid-translate-multi-traduction.p.rapidapi.com/t";
+
+    const headers = {
+      'content-type': 'application/json',
+      'X-RapidAPI-Key': 'a8b719b14fmsh597de01bbf11361p16687cjsnfab1472786fd',
+      'X-RapidAPI-Host': 'rapid-translate-multi-traduction.p.rapidapi.com'
+    };
+    let data ;
     if (isTranslated) {
-      const url = "https://api.openai.com/v1/completions";
-      const API_KEY = "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"; //
-      const value = "Translate this into English '" + contentTranslate + "'";
-
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
+        data = {
+        from: 'vi-VN',
+        to: 'EN',
+        q: contentTranslate,
       };
-
-      const data = {
-        model: "text-davinci-003",
-        prompt: value,
-        max_tokens: 700,
-        temperature: 0,
-      };
-
-      axios
-        .post(url, data, { headers: headers })
-        .then((response) => {
-          setContent(response.data.choices[0].text);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setisTranslated(!isTranslated);
-    } else {
-      const url = "https://api.openai.com/v1/completions";
-      const API_KEY = "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"; //
-      const value = "Dịch sang tiếng Việt  '" + contentTranslate + "'";
-
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-      };
-
-      const data = {
-        model: "text-davinci-003",
-        prompt: value,
-        max_tokens: 700,
-        temperature: 0,
-      };
-      axios
-        .post(url, data, { headers: headers })
-        .then((response) => {
-          setContent(response.data.choices[0].text);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setisTranslated(!isTranslated);
-      // setContent(contentTranslate);
     }
-  };
+    else{
+      data = {
+        from: 'EN',
+        to: 'vi-VN',
+        q: contentTranslate,
+      };
+    }
+
+    axios
+      .post(url, data, { headers: headers })
+      .then((response) => {
+        console.log(response.data[0]);
+        setContent(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setisTranslated(!isTranslated);
+
+  }
   const handleAddType = () => {
     const newType = document.getElementById("inputType").value; // lấy giá trị từ ô input
     setValueType("");
@@ -136,6 +116,7 @@ function NewNovel(props) {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     axios
       .post(PostNovel, {
@@ -158,15 +139,22 @@ function NewNovel(props) {
         }
       })
       .catch((error) => {
+        console.log(error);
+
         alert(error.response.data.error);
       });
+      console.log(nameNovel);
+      console.log(content);
+      console.log(types);
+      console.log(AuthName);
+      console.log(accID);
   };
 
   const handleChange = (value) => {
     setContent(value);
     setContentTranslate(content);
   };
- 
+
 
   return (
     <div className="box-post-novel">
@@ -192,11 +180,12 @@ function NewNovel(props) {
             <div className="col-input">
               <input
                 name="nameNovel"
+                type="text"
+                className="input-name-novel"
                 onChange={(e) => setNameNovel(e.target.value)}
                 id="nameNovel"
                 placeholder={"Nhập tên truyện"}
               />
-              <div></div>
             </div>
           </div>
 
@@ -208,9 +197,7 @@ function NewNovel(props) {
             <div className="col-input">
               <ReactQuill value={content} onChange={handleChange} />
 
-              {/* <button  className="ocr-import"  onClick={handleImportOcR}    > OCR   </button> */}
-              {/* <input type="button"  className="ocr-import"  style={{ paddingLeft:"5px", width:"50px"}}  onClick={handleImportOcR}   value="OCR" /> */}
-              {isTranslated === true ? (
+              {/* {isTranslated === true ? (
                 <input
                   type="button"
                   className="translater-btn"
@@ -263,7 +250,7 @@ function NewNovel(props) {
                 }}
                 value="Upload"
                 onClick={uploadFile}
-              />
+              /> */}
             </div>
           </div>
 
@@ -277,18 +264,21 @@ function NewNovel(props) {
               <input
                 style={{ flex: "4" }}
                 type="text"
+                className="input-name-novel"
                 value={valuetype}
                 onChange={handleInputChange}
                 name="inputType"
                 id="inputType"
                 placeholder={"Nhập tên thể loại"}
               />
-              <input
+              <button
                 type="button"
+                className="button-add-type"
                 style={{ flex: 2 }}
                 onClick={handleAddType}
-                value="Thêm"
-              />
+              >
+                Thêm
+              </button>
             </div>
           </div>
 
@@ -298,7 +288,7 @@ function NewNovel(props) {
             <div className="col-input-btn">
               {types.map((type, index) => (
                 <button key={index} >
-                {type}
+                  {type}
                 </button>
               ))}
             </div>
@@ -345,8 +335,7 @@ function NewNovel(props) {
               {selectedOption === "Tự sáng tác" ? (
                 <input
                   type="text"
-                  value={"chienhoang"}
-                  onChange={(e) => setAuthName(e.target.value)}
+                  value={AuthName}
                   name="AuthName"
                   id="AuthName"
                 />
@@ -363,7 +352,6 @@ function NewNovel(props) {
           </div>
           <div className="post-novel">
             <button type="submit" class="btn">
-              {" "}
               Đăng Truyện
             </button>
           </div>

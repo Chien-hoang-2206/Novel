@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import HomePage from "./pages/users/homePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./parts/user/navBar";
@@ -18,12 +18,10 @@ import ListChart from "./pages/users/chartPage/ListChart/ListChart";
 import ChartPage from "./pages/users/chartPage";
 import "./App.css"
 import Loginmobile from "./pages/users/Loginmobile/Loginmobile";
+import Footer from "./parts/user/footer";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const [accountID, setaccountID] = useState(
-    sessionStorage.getItem("accID") || ""
-  );
+  
+  const accountID = sessionStorage.getItem("accID") || "" ;
   return (
     <>
       <BrowserRouter>

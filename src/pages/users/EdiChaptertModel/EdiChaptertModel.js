@@ -24,68 +24,67 @@ function EdiChaptertModel() {
   console.log(id);
   console.log(chapterInfo);
   const [nameChap, setNameChapter] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
-  const handleTranslate = () => {
-    if (isTranslated) {
-      const url = "https://api.openai.com/v1/completions";
-      const API_KEY = "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"; //
-      const value = "Translate this into China '" + contentTranslate + "'";
+  // const handleTranslate = () => {
+  //   if (isTranslated) {
+  //     const url = "https://api.openai.com/v1/completions";
+  //     const API_KEY = "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"; //
+  //     const value = "Translate this into China '" + contentTranslate + "'";
 
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-      };
+  //     const headers = {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${API_KEY}`,
+  //     };
 
-      const data = {
-        model: "text-davinci-003",
-        prompt: value,
-        max_tokens: 700,
-        temperature: 0,
-      };
+  //     const data = {
+  //       model: "text-davinci-003",
+  //       prompt: value,
+  //       max_tokens: 700,
+  //       temperature: 0,
+  //     };
 
-      axios
-        .post(url, data, { headers: headers })
-        .then((response) => {
-          setContent(response.data.choices[0].text);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setisTranslated(!isTranslated);
-    } else {
-      const url = "https://api.openai.com/v1/completions";
-      const API_KEY = "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"; //
-      const value = "Dịch sang tiếng Việt  '" + contentTranslate + "'";
+  //     axios
+  //       .post(url, data, { headers: headers })
+  //       .then((response) => {
+  //         setContent(response.data.choices[0].text);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //     setisTranslated(!isTranslated);
+  //   } else {
+  //     const url = "https://api.openai.com/v1/completions";
+  //     const API_KEY = "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"; //
+  //     const value = "Dịch sang tiếng Việt  '" + contentTranslate + "'";
 
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${API_KEY}`,
-      };
+  //     const headers = {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${API_KEY}`,
+  //     };
 
-      const data = {
-        model: "text-davinci-003",
-        prompt: value,
-        max_tokens: 700,
-        temperature: 0,
-      };
+  //     const data = {
+  //       model: "text-davinci-003",
+  //       prompt: value,
+  //       max_tokens: 700,
+  //       temperature: 0,
+  //     };
 
-      axios
-        .post(url, data, { headers: headers })
-        .then((response) => {
-          setContent(response.data.choices[0].text);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      setisTranslated(!isTranslated);
-      // setContent(contentTranslate);
-    }
-  };
+  //     axios
+  //       .post(url, data, { headers: headers })
+  //       .then((response) => {
+  //         setContent(response.data.choices[0].text);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //     setisTranslated(!isTranslated);
+  //     // setContent(contentTranslate);
+  //   }
+  // };
 
   const handleChange = (value) => {
     setContent(value);
-    setContentTranslate(content);
   };
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
@@ -115,6 +114,7 @@ function EdiChaptertModel() {
 
   const handleSubmitAddChapter = async (e) => {
     e.preventDefault();
+    console.log(nameChap, content, novelID);
     axios
       .post(AddChapter_Url, {
         title: nameChap,
@@ -124,11 +124,11 @@ function EdiChaptertModel() {
       .then((response) => {
         console.log(response.data);
         if (response.data) {
-          window.location.href = `/post-novel/mynovel/${novelID}`; // Thay đổi đường dẫn tương ứng
           alert("Đăng chương thành công");
+          // window.location.href = `/post-novel/mynovel/${novelID}`; // Thay đổi đường dẫn tương ứng
         } else {
           // Đăng nhập thất bại, hiển thị thông báo lỗi
-          alert("Đăng truyện không thành công");
+          alert("Đăng chương không thành công");
         }
       })
       .catch((error) => {
@@ -166,7 +166,6 @@ function EdiChaptertModel() {
               <div className="col-input">
                 <ReactQuill
                   value={content}
-                  placeholder={chapterInfo.content}
                   onChange={handleChange}
                 />
               </div>
@@ -201,19 +200,23 @@ function EdiChaptertModel() {
                 <h8>Nội dung chương</h8>
               </div>
               <div className="col-input">
-                <ReactQuill value={ content} placeholder={"Nhap noi dung"} onChange={handleChange} />
+                <ReactQuill
+                  value={content}
+                  placeholder="Nhập nội dung"
+                  onChange={handleChange}
+                />
                 <input
-                type="file"
-                className="ocr-import"
-                name="OCR"
-                style={{
-                  backgground: "transparent",
-                  paddingLeft: "5px",
-                  width: "150px",
-                }}
+                  type="file"
+                  className="ocr-import"
+                  name="OCR"
+                  style={{
+                    backgground: "transparent",
+                    paddingLeft: "5px",
+                    width: "150px",
+                  }}
                 // onChange={onFileChange}
-              />
-              {isTranslated === true ? (
+                />
+                {/* {isTranslated === true ? (
                 <input
                   type="button"
                   className="translater-btn"
@@ -239,7 +242,7 @@ function EdiChaptertModel() {
                   }}
                   onClick={handleTranslate}
                 />
-              )}
+              )} */}
               </div>
             </div>
             <div className="row-save-chapter">

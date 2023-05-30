@@ -29,7 +29,7 @@ function CardChartNovel(props) {
           <h4> {props.nameComic} </h4>
         </BtnLink>
 
-        <div className="row-intro">
+        <div className="row-intro ">
           <Introtext>
             <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
           </Introtext>
@@ -45,13 +45,13 @@ function CardChartNovel(props) {
               style={{ marginRight: "3px" }}
               class="fa-solid fa-book-open-reader"
             ></i>
-            {props.numRead}
+            {props.numRead} 2000
           </div>
 
-          <BtnAuthLink className="row-type">
+          <BtnAuthLink className="flex w-30 md:mx-4 justify-end">
             <div className="type-chart">{props.type1} </div>
             <div style={{ marginLeft: "20px" }} className="type-chart">
-              {props.type2}{" "}
+              {props.type2}
             </div>
           </BtnAuthLink>
         </div>

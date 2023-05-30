@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Review.css"
+import Avatar from "../../../assets/user.png"
 function Review(props) {
   const {
     username,
@@ -15,7 +16,7 @@ function Review(props) {
   return (
     <div className="review">
       <div className="review-header">
-        <img src="favicon.ico" alt="Avatar" />
+        <img src={Avatar} alt="Avatar" />
         <div className="review-header-info">
           <h4>{username} </h4>
           <div className="star-date">

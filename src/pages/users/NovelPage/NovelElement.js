@@ -13,7 +13,7 @@ export const ImageBanner = styled.div`
 `;
 export const TransparentBanner = styled.div`
   margin-top: 100px;
-  height: 100vh;
+  height: 120vh;
   width: 100%;
   border: none;
   background-image: linear-gradient(0deg, #fff, 85%, transparent);
@@ -42,7 +42,6 @@ export const ContainerInfo = styled.div`
 
 `;
 export const ContainerTabs = styled(Col)`
-  height: 140vh;
 `;
 
 export const ContainerTab1 = styled(Row)``;

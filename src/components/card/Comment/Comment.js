@@ -1,5 +1,7 @@
 import React from 'react'
 import "./Comment.css"
+import Avatar from "../../../assets/user.png"
+
 function Comment(props) {
   const {
     username,
@@ -14,7 +16,7 @@ function Comment(props) {
   return (
     <div className="comment">
       <div className="comment-header">
-        <img src="favicon.ico" alt="Avatar" />
+        <img src={Avatar} alt="Avatar" />
         <div className="comment-header-info">
           <h4>{username} MemoEO</h4>
           <div className="star-date">

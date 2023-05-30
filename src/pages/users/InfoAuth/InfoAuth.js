@@ -4,11 +4,11 @@ function InfoAuth() {
   return (
     <div className="info-container">
       <div className="banner-box">
-        <img className="img-banner" src="/Banner _DDD.png" />
+        <img className="img-banner" alt="img" src="/Banner _DDD.png" />
       </div>
 
       <div className="avater-box">
-        <img className="img-avatar" src="/avatar.png" />
+        <img className="img-avatar" alt="img" src="/avatar.png" />
       </div>
 
       <div className="content-box-2">

@@ -152,6 +152,29 @@ function EditNovel(props) {
 
         <div className="list-chap">
           <SimpleBar style={{ maxHeight: "110vh" }}>
+            {chapterList &&
+              chapterList.map((chapter, index) => (
+                <Chapter key={index + 1}>
+                  <Content1
+                    to={`/novel/chapter/${chapter._id}`}
+                    state={{}}
+                    style={{ marginLeft: "8vh" }}
+                  >
+                    Chương {index + 1}
+                  </Content1>
+                  <Content1 to={`/novel/chapter/${chapter._id}`} state={{}}>
+                    {chapter.title}
+                  </Content1>
+
+                  <Content1>
+                    {calculateDaysFromCreatedAt(chapter.createdAt)} ngày
+                    trước
+                  </Content1>
+                </Chapter>
+              ))
+            }
+
+
             {/* {value !== NaN
               ? sortOrder === true
                 ? chapterListSort &&
@@ -219,97 +242,60 @@ function EditNovel(props) {
                 )
               } */}
 
-            {/* {chapterSort && (
-              <Chapter>
-                <Content1
-                  to={`/novel/chapter/${chapterSort._id}`}
-                  state={{}}
-                  style={{ marginLeft: "8vh" }}
-                >
-                  Chương {value}
-                </Content1>
-                <Content1 to={`/novel/chapter/${chapterSort._id}`} state={{}}>
-                  {chapterSort.title}
-                </Content1>
 
-                <Content1>
-                  {calculateDaysFromCreatedAt(chapterSort.createdAt)} ngày trước
-                </Content1>
-              </Chapter>
-            )} */}
 
-            {/* {chapterListSearch &&
-              chapterListSearch.map((chapter, index) => (
-                <Chapter key={index + 1}>
-                  <Content1
+            {sortOrder === true
+              ? chapterListSort &&
+              chapterListSort.reverse().map((chapter, index) => (
+                <ChapterEdit key={index + 1}>
+                  <ContentEdit
+                    to={`chapter/${chapter._id}`}
+                    state={{ chapter }}
+                  >
+                    Edit
+                  </ContentEdit>
+
+                  <ContentEdit1
                     to={`/novel/chapter/${chapter._id}`}
-                    state={{}}
-                    style={{ marginLeft: "8vh" }}
+                    state={{ chapter }}
                   >
                     Chương {index + 1}
-                  </Content1>
-                  <Content1 to={`/novel/chapter/${chapter._id}`} state={{}}>
+                  </ContentEdit1>
+                  <ContentEdit2
+                    to={`/novel/chapter/${chapter._id}`}
+                    state={{}}
+                  >
                     {chapter.title}
+                  </ContentEdit2>
+
+                  <Content1>
+                    {calculateDaysFromCreatedAt(chapter.createdAt)} ngày trước
                   </Content1>
+                </ChapterEdit>
+              ))
+              : chapterListSort &&
+              chapterListSort.reverse().map((chapter, index) => (
+                <Chapter key={index + 1}>
+                  <ContentEdit1
+                    style={{ marginLeft: "8vh" }}
+                    to={`/post-novel/mynovel/chapters/editchap`}
+                    //   to={`/post-novel/mynovel//novel/chapters/${chapter._id}`}
+                    state={{}}
+                  >
+                    Chương {chapterList.length - index}
+                  </ContentEdit1>
+                  <ContentEdit2
+                    to={`/novel/chapter/${chapter._id}`}
+                    state={{}}
+                  >
+                    {chapter.title}
+                  </ContentEdit2>
 
                   <Content1>
                     {calculateDaysFromCreatedAt(chapter.createdAt)} ngày trước
                   </Content1>
                 </Chapter>
-              ))} */}
-
-            {sortOrder === true
-              ? chapterListSort &&
-                chapterListSort.reverse().map((chapter, index) => (
-                  <ChapterEdit key={index + 1}>
-                    <ContentEdit
-                      to={`chapter/${chapter._id}`}
-                      state={{ chapter }}
-                    >
-                      Edit
-                    </ContentEdit>
-
-                    <ContentEdit1
-                      to={`/novel/chapter/${chapter._id}`}
-                      state={{ chapter }}
-                    >
-                      Chương {index + 1}
-                    </ContentEdit1>
-                    <ContentEdit2
-                      to={`/novel/chapter/${chapter._id}`}
-                      state={{}}
-                    >
-                      {chapter.title}
-                    </ContentEdit2>
-
-                    <Content1>
-                      {calculateDaysFromCreatedAt(chapter.createdAt)} ngày trước
-                    </Content1>
-                  </ChapterEdit>
-                ))
-              : chapterListSort &&
-                chapterListSort.reverse().map((chapter, index) => (
-                  <Chapter key={index + 1}>
-                    <ContentEdit1
-                      style={{ marginLeft: "8vh" }}
-                      to={`/post-novel/mynovel/chapters/editchap`}
-                      //   to={`/post-novel/mynovel//novel/chapters/${chapter._id}`}
-                      state={{}}
-                    >
-                      Chương {chapterList.length - index}
-                    </ContentEdit1>
-                    <ContentEdit2
-                      to={`/novel/chapter/${chapter._id}`}
-                      state={{}}
-                    >
-                      {chapter.title}
-                    </ContentEdit2>
-
-                    <Content1>
-                      {calculateDaysFromCreatedAt(chapter.createdAt)} ngày trước
-                    </Content1>
-                  </Chapter>
-                ))}
+              ))}
           </SimpleBar>
         </div>
       </div>

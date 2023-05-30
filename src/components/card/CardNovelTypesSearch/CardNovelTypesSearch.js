@@ -16,6 +16,7 @@ import {
   LinkRoute,
   ImgNovel,
   Chapter,
+  RowContent,
 } from "./CardNovelTypesSearchStyle.js";
 import {
   AuthName,
@@ -28,57 +29,34 @@ import { Height } from "@mui/icons-material";
 import { TypesDeleteText } from "../../TextField/TestComponents";
 function CardNovelTypesSearch(props) {
   return (
-    <ContainerCard>
-        <Col sm={3} style={{ Height: "15vh" }}>
-          <ImgNovel src="image/demoImg.webp" />
-        </Col>
+    <div className=" flex w-11/12 justify-center my-2  md:w-5/12 md:mr-8 md:mb-4 " >
+      <div className=" w-24 h-28 flex items-center justify-center" >
+        <img className="w-24 h-28 rounded-md shadow-md" src={props.imageNovel || "image/demoImg.webp" } alt="" />
+      </div>
 
-        <ContainerRowInfo sm={9}>
-          <Row style={{ maxHeight: "5vh" }}>
-            <Col style={{ maxHeight: "4vh" }}>
-            <LinkRoute to={`/novel/${props.id}`}>
-                <Heading2> {props.nameComic}</Heading2>
-              </LinkRoute>
-            </Col>
-          </Row>
+      <div className="w-9/12 ml-2"  >
+        <Row style={{ maxHeight: "60px" }}>
+          <LinkRoute to={`/novel/${props.id}`}>
+            <Heading2> {props.nameComic}</Heading2>
+          </LinkRoute>
+        </Row>
 
-          <Row>
-            <ContainerRowContent>
+        <Row>
+          <ContainerRowContent>
+            <RowContent>
               <Content>{props.content}</Content>
-            </ContainerRowContent>
-          </Row>
-          <Row>
-            <Col>
-              <AuthName> {props.auth}</AuthName>
-            </Col>
-            <Col>
-              <ContainerCardStar>
-                {/* {props.numStar} */}
-                <Icon icon="material-symbols:star" />
-                <Icon icon="material-symbols:star" />
-                <Icon icon="material-symbols:star" />
-                <Icon icon="material-symbols:star" />
-              </ContainerCardStar>
-            </Col>
-          </Row>
-          <Row>
-              <Chapter >
-                <Nomal>Chương: 102</Nomal>
-               <Button
-                size="small"
-                variant="outlined"
-                color="error"
-                style={{ maxHeight: "3.5vh" }}
-                >
-                <TypesText style={{marginTop: "1vh"}}>{props.type}</TypesText>
-               </Button>
+            </RowContent>
+          </ContainerRowContent>
+        </Row>
+        <Row>
+          <Chapter >
+            <i class="fa-solid fa-list"></i>
+            <Nomal>Chương: 102</Nomal>
+          </Chapter>
 
-               
-                </Chapter>
-
-          </Row>
-        </ContainerRowInfo>
-    </ContainerCard>
+        </Row>
+      </div>
+    </div>
   );
 }
 CardNovelTypesSearch.defaultProps = {

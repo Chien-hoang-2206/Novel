@@ -19,34 +19,51 @@ import Carosel from "./../../../components/Carosel/Carosel";
 import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "../../../api/axios";
 
 
 function Novel(props) {
   const [novel, setNovel] = useState();
+  const [loading, setLoading] = useState(true);
   const [chapterList, setchapterList] = useState();
   const [numBookmard, setnumBookmard] = useState();
+  const [isbookmark, setisbookmark] = useState();
   const [reviewList, setReviewList] = useState();
   const [numReview, setNumReview] = useState();
-  const [numRead, setnumRead] = useState();
   const { id } = useParams();
+  const accountID = sessionStorage.getItem("accID") || "";
   const [toggleState, setToggleState] = useState(1);
   const [width, setWidth] = React.useState(window.innerWidth);
   const toggleTab = (index) => {
     setToggleState(index);
   };
   const apiUrl = `http://localhost:5000/api/novels/${id}`;
+  const apiUrlCheckbookmark = `http://localhost:5000/api/bookmarks/${accountID}/${id}`;
   useEffect(() => {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
+        setLoading(false);
         setNovel(data.novelInfo[0]);
         setchapterList(data.chapterList);
         setnumBookmard(data.bookmarkNum);
         setReviewList(data.reviewList);
         setNumReview(data.reviewList.length);
-        // console.log(numReview);
       });
+    checkIsBookmark();
   }, []);
+
+  function checkIsBookmark() {
+    axios
+      .get(apiUrlCheckbookmark)
+      .then((response) => {
+        console.log(response);
+        setisbookmark(response.data.isBookmarked);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   React.useEffect(() => {
     function handleResize() {
@@ -60,7 +77,7 @@ function Novel(props) {
   if (width <= 768) {
     return (
       <div>
-        <div className=" bg-slate-50">
+        <div className=" bg-white-50">
           <ContainerInfo>
             {novel && (
               <CardInfoNovel
@@ -74,89 +91,87 @@ function Novel(props) {
                 numBookmark={numBookmard}
                 numRead={novel.readCount}
                 srcimage={novel.coverLink}
-              // bookmark= "true"
+                bookmark={isbookmark}
               />
             )}
           </ContainerInfo>
-          <Row>
-            <ContainerTabs>
-              <div className="containerTabs">
-                <div className="bloc-tabs">
-                  <div
-                    className={
-                      toggleState === 1 ? "tabs active-tabs" : "tabs"
-                    }
-                    onClick={() => toggleTab(1)}
-                  >
-                    <TabName> Chương</TabName>
-                  </div>
-                  <div
-                    className={
-                      toggleState === 2 ? "tabs active-tabs" : "tabs"
-                    }
-                    onClick={() => toggleTab(2)}
-                  >
-                    <TabName>Đánh giá</TabName>
-                    <div className="number-border"> {numReview}</div>
-                  </div>
-                  <div
-                    className={
-                      toggleState === 3 ? "tabs active-tabs" : "tabs"
-                    }
-                    onClick={() => toggleTab(3)}
-                  >
-                    <TabName>Bình luận</TabName>
-                    <div className="number-border">3037</div>
-                  </div>
-                </div>
-
-                <div className="content-tabs">
-                  <div
-                    className={
-                      toggleState === 1
-                        ? "content  active-content"
-                        : "content"
-                    }
-                  >
-                    {novel && (
-                      <ListChapterTab
-                        chapters={chapterList}
-                        nameNovel={novel.title}
-                        IDNovel={novel._id}
-                        accountId={props.accountID}
-                      />
-                    )}
-                  </div>
-
-                  <div
-                    className={
-                      toggleState === 2
-                        ? "content  active-content"
-                        : "content"
-                    }
-                  >
-                    <ReviewTab
-                      reviewList={reviewList}
-                      novelID={id}
-                      accountId={props.accountID}
-                    />
-                  </div>
-
-                  <div
-                    className={
-                      toggleState === 3
-                        ? "content  active-content"
-                        : "content"
-                    }
-                  >
-                    <CommentTab />
-                  </div>
-                </div>
+          <div className="containerTabs my-2">
+            <div className="bloc-tabs">
+              <div
+                className={
+                  toggleState === 1 ? "tabs active-tabs" : "tabs"
+                }
+                onClick={() => toggleTab(1)}
+              >
+                <TabName> Chương</TabName>
               </div>
-            </ContainerTabs>
-          </Row>
+              <div
+                className={
+                  toggleState === 2 ? "tabs active-tabs" : "tabs"
+                }
+                onClick={() => toggleTab(2)}
+              >
+                <TabName>Đánh giá</TabName>
+                <div className="number-border"> {numReview}</div>
+              </div>
+              <div
+                className={
+                  toggleState === 3 ? "tabs active-tabs" : "tabs"
+                }
+                onClick={() => toggleTab(3)}
+              >
+                <TabName>Bình luận</TabName>
+                <div className="number-border">3037</div>
+              </div>
+            </div>
 
-          <Carosel />
+            <div className="content-tabs">
+              <div
+                className={
+                  toggleState === 1
+                    ? "content  active-content"
+                    : "content"
+                }
+              >
+                {novel && (
+                  <ListChapterTab
+                    chapters={chapterList}
+                    nameNovel={novel.title}
+                    IDNovel={novel._id}
+                    accountId={props.accountID}
+                  />
+                )}
+              </div>
+
+              <div
+                className={
+                  toggleState === 2
+                    ? "content  active-content"
+                    : "content"
+                }
+              >
+                <ReviewTab
+                  reviewList={reviewList}
+                  novelID={id}
+                  accountId={props.accountID}
+                />
+              </div>
+
+              <div
+                className={
+                  toggleState === 3
+                    ? "content  active-content"
+                    : "content"
+                }
+              >
+                <CommentTab />
+              </div>
+            </div>
+          </div>
+          {
+            novel &&
+            <Carosel types={novel.types} />
+          }
         </div>
         {/* <Footer /> */}
       </div>)
@@ -164,108 +179,112 @@ function Novel(props) {
     return (
       <div>
         <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
-          <TransparentBanner>
-            <div className=" md:w-3/4 rounded-md shadow-lg md:my-32 md:mx-auto bg-slate-50">
-              <ContainerInfo>
-                {novel && (
-                  <CardInfoNovel
-                    nameNovel={novel.title}
-                    IDNovel={novel._id}
-                    accountId={props.accountID}
-                    nameAuth={novel.author}
-                    chaperNum={chapterList.length}
-                    intro={novel.intro}
-                    types={novel.types}
-                    numBookmark={numBookmard}
-                    numRead={novel.readCount}
-                    srcimage={novel.coverLink}
-                  // bookmark= "true"
-                  />
-                )}
-              </ContainerInfo>
-              <Row>
-                <ContainerTabs>
-                  <div className="containerTabs">
-                    <div className="bloc-tabs">
-                      <div
-                        className={
-                          toggleState === 1 ? "tabs active-tabs" : "tabs"
-                        }
-                        onClick={() => toggleTab(1)}
-                      >
-                        <TabName>Danh sách chương</TabName>
+          {loading === false ? (
+            <TransparentBanner>
+              <div className=" md:w-3/4 rounded-md shadow-lg md:my-32 md:mx-auto bg-white">
+                <ContainerInfo>
+                  {novel && (
+                    <CardInfoNovel
+                      nameNovel={novel.title}
+                      IDNovel={novel._id}
+                      accountId={props.accountID}
+                      nameAuth={novel.author}
+                      chaperNum={chapterList.length}
+                      intro={novel.intro}
+                      types={novel.types}
+                      numBookmark={numBookmard}
+                      numRead={novel.readCount}
+                      srcimage={novel.coverLink}
+                      bookmark="false"
+                    />
+                  )}
+                </ContainerInfo>
+                <Row>
+                  <ContainerTabs>
+                    <div className="containerTabs">
+                      <div className="bloc-tabs">
+                        <div
+                          className={
+                            toggleState === 1 ? "tabs active-tabs" : "tabs"
+                          }
+                          onClick={() => toggleTab(1)}
+                        >
+                          <TabName>Danh sách chương</TabName>
+                        </div>
+                        <div
+                          className={
+                            toggleState === 2 ? "tabs active-tabs" : "tabs"
+                          }
+                          onClick={() => toggleTab(2)}
+                        >
+                          <TabName>Đánh giá</TabName>
+                          <div className="number-border"> {numReview}</div>
+                        </div>
+                        <div
+                          className={
+                            toggleState === 3 ? "tabs active-tabs" : "tabs"
+                          }
+                          onClick={() => toggleTab(3)}
+                        >
+                          <TabName>Bình luận</TabName>
+                          <div className="number-border">3037</div>
+                        </div>
                       </div>
-                      <div
-                        className={
-                          toggleState === 2 ? "tabs active-tabs" : "tabs"
-                        }
-                        onClick={() => toggleTab(2)}
-                      >
-                        <TabName>Đánh giá</TabName>
-                        <div className="number-border"> {numReview}</div>
-                      </div>
-                      <div
-                        className={
-                          toggleState === 3 ? "tabs active-tabs" : "tabs"
-                        }
-                        onClick={() => toggleTab(3)}
-                      >
-                        <TabName>Bình luận</TabName>
-                        <div className="number-border">3037</div>
-                      </div>
-                    </div>
 
-                    <div className="content-tabs">
-                      <div
-                        className={
-                          toggleState === 1
-                            ? "content  active-content"
-                            : "content"
-                        }
-                      >
+                      <div className="content-tabs">
+                        <div
+                          className={
+                            toggleState === 1
+                              ? "content  active-content"
+                              : "content"
+                          }
+                        >
 
-                        {novel && (
-                          <ListChapterTab
-                            chapters={chapterList}
-                            nameNovel={novel.title}
-                            IDNovel={novel._id}
+                          {novel && (
+                            <ListChapterTab
+                              chapters={chapterList}
+                              nameNovel={novel.title}
+                              IDNovel={novel._id}
+                              accountId={props.accountID}
+                            />
+                          )}
+                        </div>
+
+                        <div
+                          className={
+                            toggleState === 2
+                              ? "content  active-content"
+                              : "content"
+                          }
+                        >
+                          <ReviewTab
+                            reviewList={reviewList}
+                            novelID={id}
                             accountId={props.accountID}
                           />
-                        )}
-                      </div>
+                        </div>
 
-                      <div
-                        className={
-                          toggleState === 2
-                            ? "content  active-content"
-                            : "content"
-                        }
-                      >
-                        <ReviewTab
-                          reviewList={reviewList}
-                          novelID={id}
-                          accountId={props.accountID}
-                        />
-                      </div>
-
-                      <div
-                        className={
-                          toggleState === 3
-                            ? "content  active-content"
-                            : "content"
-                        }
-                      >
-                        <CommentTab />
+                        <div
+                          className={
+                            toggleState === 3
+                              ? "content  active-content"
+                              : "content"
+                          }
+                        >
+                          <CommentTab />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </ContainerTabs>
-              </Row>
-
-              <Carosel />
-            </div>
-            <Footer />
-          </TransparentBanner>
+                  </ContainerTabs>
+                </Row>
+                {
+                  novel &&
+                  <Carosel types={novel.types} />
+                }
+              </div>
+              <Footer />
+            </TransparentBanner>
+          ) : (<></>)}
         </ImageBanner>
       </div>
     );

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 export const Heading1 = styled.p`
   font-size: 24px;
-  color: ##404247;
+  color: #404247;
   height: 20px;
   font-weight: bold;
   margin-left: 10px;
@@ -10,7 +10,7 @@ export const Heading1 = styled.p`
 `;
 export const NovelName = styled.p`
   font-size: 35px;
-  color: ##404247;
+  color: #404247;
   font-weight: bold;
   margin-bottom: 20px;
 `;
@@ -26,16 +26,16 @@ export const TextCenter = styled.p`
   text-align: center;
 `;
 export const Nomal = styled.p`
-  font-size: 1rem;
+  font-size: 15px;
   text-align: center;
 `;
 export const TypesDeleteText = styled.p`
   font-size: 0.8rem;
 `;
 export const TypesText = styled.p`
-  font-size: 0.7rem;
-  text-align: left;
-  max-height: 1vh;
+  font-size: 0.8rem;
+  max-height: 15px;
+  margin-top:-4px;
 `;
 export const ContentNovelTab = styled.p`
   font-size: 0.9rem;
@@ -135,6 +135,7 @@ export const ComicyName = styled.p`
 export const TitleText = styled.p`
   text-align: left;
   font-size: 20px;
+  padding-left: 5px;
   font-weight: bold;
 `;
 

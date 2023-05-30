@@ -42,7 +42,9 @@ import {
 } from "../../TextField/TestComponents";
 
 function CardInfoNovel(props) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(props.bookmark);
+
+  console.log(isBookmarked);
   const contentNovel = props.intro;
   const [width, setWidth] = React.useState(window.innerWidth);
 
@@ -119,7 +121,7 @@ function CardInfoNovel(props) {
             <p className="w-2/4 flex mr-1" >
               {props.types &&
                 props.types.map((type, index) => (
-                  <button className='mx-1 hover:bg-slate-400 hover:text-white '>
+                  <button key={index} className='mx-1 hover:bg-slate-400 hover:text-white '>
                     <TypesDeleteText>{type}</TypesDeleteText>
                   </button>
                 ))} </p>
@@ -138,15 +140,15 @@ function CardInfoNovel(props) {
             </BtnBookmarkedMobile>
           </div>
           <div className="" >
-          <p className="font-bold text-xl "> Nội dung</p>
-            <SimpleBar autoHide={true} style={{ padding: "5px 5px", maxHeight: "190px", maxWidth: "100%", scrollbarWidth: "none" }}>
+            <p className="font-bold text-xl "> Nội dung</p>
+            <SimpleBar autoHide={true} style={{ padding: "5px 5px", maxHeight: 160, maxWidth: "100%", scrollbarWidth: "none" }}>
               <Introtext>
                 <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
               </Introtext>
             </SimpleBar>
           </div>
         </div>
-        
+
       </div>
     )
   else
@@ -155,7 +157,7 @@ function CardInfoNovel(props) {
         <ContainerCard>
           {/* image */}
           <Col1>
-            <ImgNovel src={props.srcimage}></ImgNovel>
+            <ImgNovel style={{ margin: "10px 10px" }} src={props.srcimage}></ImgNovel>
           </Col1>
           {/* info */}
           <Col2>
@@ -184,7 +186,7 @@ function CardInfoNovel(props) {
 
             {/* intro */}
             <RowIntro>
-              <SimpleBar autoHide={true} style={{ maxHeight: "190px", maxWidth: "100%", scrollbarWidth: "none" }}>
+              <SimpleBar autoHide={true} style={{ maxHeight: "160px", maxWidth: "100%", scrollbarWidth: "none" }}>
                 <Introtext>
                   <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
                 </Introtext>
@@ -195,7 +197,7 @@ function CardInfoNovel(props) {
             <RowType style={{ marginTop: "10px" }}>
               {props.types &&
                 props.types.map((type, index) => (
-                  <button className='rounded-md px-1 bg-slate-300 hover:bg-slate-400 hover:text-white mx-2'>
+                  <button key={index} className='rounded-md px-1 bg-slate-300 hover:bg-slate-400 hover:text-white mx-2'>
                     <TypesDeleteText>{type}</TypesDeleteText>
                   </button>
                 ))}
