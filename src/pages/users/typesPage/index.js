@@ -7,8 +7,6 @@ import {
 } from "../NovelPage/NovelElement";
 import Footer from "../../../parts/user/footer";
 import {
-  Heading1,
-  Heading2,
   TitleText,
   TypesDeleteText,
 } from "../../../components/TextField/TestComponents";
@@ -16,26 +14,22 @@ import DropdownSort from "../../../components/Dropdown/DropdownSort/DropdownSort
 import CardNovelTypesSearch from "../../../components/card/CardNovelTypesSearch/CardNovelTypesSearch";
 
 import axios from "../../../api/axios";
-import ButtonChoosedType from "../../../components/button/ButtonChoosedType/ButtonChoosedType";
 const TypesNovelURL = "/api/novels/types";
 const HomeNewNoevl_URL = "/api/novels/";
 
 function TypesPage() {
   const [types, setTypes] = useState([]);
-  const [typesForChoose, setTypeForChoose] = useState([
-    "Tiên Hiệp",
-    "Kiếm Hiệp",
-    "Huyễn Huyền",
-    "Vô Địch",
-    "Điềm Đạm",
-    "Tưởng Tu",
-    "Nhẹ Nhàng",
-    "Đô Thị",
-    "Dị Giới",
-  ]);
+  const typesForChoose = [ "Tiên Hiệp",
+  "Kiếm Hiệp",
+  "Huyễn Huyền",
+  "Vô Địch",
+  "Điềm Đạm",
+  "Tưởng Tu",
+  "Nhẹ Nhàng",
+  "Đô Thị",
+  "Dị Giới"]
   const [Listnovel, setListnovel] = useState();
   console.log(Listnovel);
-  const [loading, setloading] = useState(true);
   const [width, setWidth] = React.useState(window.innerWidth);
   let startX;
   let scrollLeft;
@@ -56,7 +50,6 @@ function TypesPage() {
     return axios
       .get(HomeNewNoevl_URL)
       .then((response) => {
-        setloading(false);
         return response.data.novelList;
       })
       .catch((error) => {

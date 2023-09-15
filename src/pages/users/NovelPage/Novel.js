@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ContainerInfo,
-  ContainerPageContent,
   ContainerTabs,
   ImageBanner,
   TransparentBanner,

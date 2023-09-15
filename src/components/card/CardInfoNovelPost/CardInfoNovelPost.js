@@ -1,15 +1,12 @@
 import React from 'react'
 import "./file.css"
-import { BtnRead, ButtonContainer, ButtonContainerPost, Col1, Col2, ColAuth, ColInfo, ColStar, ContainerCard, ContainerStar, ContainerStarIcon, ImgNovel, ImgNovelPost, NomalDiv, ReviewText, RowAuth, RowInfo, RowIntro, RowTitle, RowType } from '../CardInfoNovel/CardInFoNovelStyle';
+import { BtnRead, ButtonContainerPost, Col1, Col2, ColAuth, ColInfo, ColStar, ContainerCard, ContainerStar, ContainerStarIcon, ImgNovelPost, NomalDiv, ReviewText, RowAuth, RowInfo, RowIntro, RowTitle, RowType } from '../CardInfoNovel/CardInFoNovelStyle';
 import { AuthName, Introtext, Nomal, NovelName, TextInfoNovel } from '../../TextField/TestComponents';
 import SimpleBar from 'simplebar-react';
 import "simplebar-react/dist/simplebar.min.css";
 
 function CardInfoNovelPost(props) {
     const contentNovel = props.intro;
-      const accountId = props.accountId;
-      const novelId = props.IDNovel;
-      const data = { accountId, novelId };
     return (
       <div>
         <ContainerCard>

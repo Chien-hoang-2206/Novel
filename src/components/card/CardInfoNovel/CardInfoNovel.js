@@ -1,21 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
   ContainerCard,
   RowType,
   RowTitle,
   RowInfo,
-  RowNav,
   ColInfo,
   ContainerStar,
   BtnRead,
-  BtnBookmark,
   ContainerStarIcon,
   ReviewText,
   RowIntro,
@@ -31,7 +26,6 @@ import {
   BtnReadMobile,
   BtnBookmarkedMobile,
 } from "./CardInFoNovelStyle";
-import ImageNovel from "../../ImageNovel/ImageNovel";
 import {
   AuthName,
   Introtext,
@@ -72,8 +66,6 @@ function CardInfoNovel(props) {
   };
   const handleDelBookmark = () => {
     const id = "643706d98989be92b3af0f7c";
-    const data = { id };
-
     const apiUrl = `http://localhost:5000/api/bookmarks/${id}`;
     fetch(apiUrl, {
       method: "DELETE",
@@ -105,7 +97,7 @@ function CardInfoNovel(props) {
       <div className="my-4">
         <p className="text-2xl w-4/6 mx-auto  text-center font-serift font-extrabold">{props.nameNovel}</p>
         <div className="w-2/4 h-56 mx-auto my-2">
-          <img className="border-2 border-slate-400 rounded-lg shadow-md object-fill h-56 mx-auto w-3/4  " src={props.srcimage}></img>
+          <img alt='' className="border-2 border-slate-400 rounded-lg shadow-md object-fill h-56 mx-auto w-3/4  " src={props.srcimage}></img>
         </div>
         <div className="px-3 align-middle  justify-center">
           <div className="flex selection: ">

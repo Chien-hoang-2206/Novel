@@ -1,32 +1,17 @@
-import { memo } from "react";
 import React from "react";
-import Button from "@mui/material/Button";
-import { Icon } from "@iconify/react";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-  ContainerCard,
-  ImageComicRecommended,
-  ContainerCardType,
-  ContainerCardStar,
   ContainerRowContent,
-  ContainerRowInfo,
   LinkRoute,
-  ImgNovel,
   Chapter,
   RowContent,
 } from "./CardNovelTypesSearchStyle.js";
 import {
-  AuthName,
   Heading2,
   Content,
   Nomal,
-  TypesText,
 } from "../../TextField/TestComponents";
-import { Height } from "@mui/icons-material";
-import { TypesDeleteText } from "../../TextField/TestComponents";
 function CardNovelTypesSearch(props) {
   return (
     <div className=" flex w-11/12 justify-center my-2  md:w-5/12 md:mr-8 md:mb-4 " >

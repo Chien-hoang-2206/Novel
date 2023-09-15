@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 function Logout() {
-    const navigate = useNavigate();
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("avatar");
     sessionStorage.removeItem("accID");

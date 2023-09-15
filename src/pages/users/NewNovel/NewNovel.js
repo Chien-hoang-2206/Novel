@@ -2,107 +2,23 @@ import React, { useState } from "react";
 import "./NewNovel.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
 
-import { v4 } from "uuid";
-import { storage } from "../../../firebase";
 import LoginModal from "../LoginModal/LoginModal";
 import axios from "../../../api/axios";
 const PostNovel = "/api/novels/";
 
 function NewNovel(props) {
-  const accID = sessionStorage.getItem("accID") || "" ;
+  const accID = sessionStorage.getItem("accID") || "";
   if (!accID) {
     <LoginModal />
   }
   const [nameNovel, setNameNovel] = useState("");
   const [content, setContent] = useState("");
-  const [isTranslated, setisTranslated] = useState(true);
-  const [contentTranslate, setContentTranslate] = useState("");
   const [types, setTypes] = useState([]);
   const [AuthName, setAuthName] = useState(sessionStorage.getItem("username"));
   const [valuetype, setValueType] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
 
-  const [imageUpload, setImageUpload] = useState(null);
-  const [imageUrls, setImageUrls] = useState([]);
-
-  async function convertOCR() {
-    const encodedParams = new URLSearchParams();
-    encodedParams.set('url', imageUrls[0]);
-    const options = {
-      method: 'POST',
-      url: 'https://ocr43.p.rapidapi.com/v1/results',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'X-RapidAPI-Key': 'be4e2f28a7mshb59f609cd0a1af0p19977fjsnaf6acd1c335a',
-        'X-RapidAPI-Host': 'ocr43.p.rapidapi.com'
-      },
-      data: encodedParams,
-    };
-
-    try {
-      const response = await axios.request(options);
-      // eslint-disable-next-line
-      setContent(response.data.results[0].entities[0].objects[0].entities[0].text);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  const uploadFile = () => {
-    if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        setImageUrls((prev) => [...prev, url]);
-      });
-
-    });
-    convertOCR();
-  };
-
-
-
-  const handleTranslate = () => {
-    const url = "https://rapid-translate-multi-traduction.p.rapidapi.com/t";
-
-    const headers = {
-      'content-type': 'application/json',
-      'X-RapidAPI-Key': 'a8b719b14fmsh597de01bbf11361p16687cjsnfab1472786fd',
-      'X-RapidAPI-Host': 'rapid-translate-multi-traduction.p.rapidapi.com'
-    };
-    let data ;
-    if (isTranslated) {
-        data = {
-        from: 'vi-VN',
-        to: 'EN',
-        q: contentTranslate,
-      };
-    }
-    else{
-      data = {
-        from: 'EN',
-        to: 'vi-VN',
-        q: contentTranslate,
-      };
-    }
-
-    axios
-      .post(url, data, { headers: headers })
-      .then((response) => {
-        console.log(response.data[0]);
-        setContent(response.data[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    setisTranslated(!isTranslated);
-
-  }
   const handleAddType = () => {
     const newType = document.getElementById("inputType").value; // lấy giá trị từ ô input
     setValueType("");
@@ -116,7 +32,7 @@ function NewNovel(props) {
   };
 
   const handleSubmit = async (e) => {
-    
+
     e.preventDefault();
     axios
       .post(PostNovel, {
@@ -143,16 +59,15 @@ function NewNovel(props) {
 
         alert(error.response.data.error);
       });
-      console.log(nameNovel);
-      console.log(content);
-      console.log(types);
-      console.log(AuthName);
-      console.log(accID);
+    console.log(nameNovel);
+    console.log(content);
+    console.log(types);
+    console.log(AuthName);
+    console.log(accID);
   };
 
   const handleChange = (value) => {
     setContent(value);
-    setContentTranslate(content);
   };
 
 

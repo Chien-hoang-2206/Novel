@@ -3,7 +3,6 @@ import { Introtext } from "../../TextField/TestComponents";
 import { BtnAuthLink, BtnLink } from "../../../pages/users/chartPage/ListChart/ListChartStyle";
 
 function CardChartNovel(props) {
-  const idNovel = props.id;
   const contentNovel = props.content;
   const index = props.index + 1;
   console.log(index);
@@ -11,15 +10,15 @@ function CardChartNovel(props) {
     <div className="box-list">
       <div className="image-novel-chart">
         <div className="img-shadow-novel-chart" />
-        <img className="img-novel-chart" src={props.image} />
+        <img  alt = 'img'className="img-novel-chart" src={props.image} />
         {index === 1 ? (
-          <img className="flag1" src="/Flag.png" />
+          <img alt = 'img' className="flag1" src="/Flag.png" />
         ) : index === 2 ? (
-          <img className="flag2" src="/flag2.png" />
+          <img alt = 'img' className="flag2" src="/flag2.png" />
         ) : index === 3 ? (
-          <img className="flag3" src="/flag3.png" />
+          <img  alt = 'img'className="flag3" src="/flag3.png" />
         ) : (
-          <img className="flag3" src="/flag4.png" />
+          <img  alt = 'img'className="flag3" src="/flag4.png" />
         )}
         <div className="num"> {index} </div>
       </div>

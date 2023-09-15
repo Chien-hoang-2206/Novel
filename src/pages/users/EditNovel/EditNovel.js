@@ -1,8 +1,6 @@
 import React from "react";
-
-import CardInfoNovel from "../../../components/card/CardInfoNovel/CardInfoNovel";
 import "./editnovel.css";
-import { Link, Outlet, useParams } from "react-router-dom";
+import {  Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import CardInfoNovelPost from "../../../components/card/CardInfoNovelPost/CardInfoNovelPost";
 import {
@@ -10,7 +8,6 @@ import {
   ChapterEdit,
   LinkChapter,
 } from "../../../components/Tab/ListChapterTab/ListChapterTabStyle";
-import ListChapterTab from "../../../components/Tab/ListChapterTab/ListChapterTab";
 import SimpleBar from "simplebar-react";
 import {
   Content1,
@@ -18,26 +15,14 @@ import {
   ContentEdit1,
   ContentEdit2,
 } from "../../../components/TextField/TestComponents";
-import EdiChaptertModel from "../EdiChaptertModel/EdiChaptertModel";
 
 function EditNovel(props) {
   const [novel, setNovel] = useState();
-  const [value, setValue] = useState();
   const [chapterList, setchapterList] = useState();
-  const [chapterListSearch, setchapterListSearch] = useState();
   const [chapterListSort, setchapterListSort] = useState();
-  const [chapterSort, setchapterSort] = useState();
   const [numBookmard, setnumBookmard] = useState();
-  const [reviewList, setReviewList] = useState();
-  const [numReview, setNumReview] = useState();
-  const [numRead, setnumRead] = useState();
   const { id } = useParams();
-  const [toggleState, setToggleState] = useState(1);
   const [sortOrder, setSortOrder] = useState(false);
-
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
 
   function handleSortClick() {
     setchapterListSort(chapterList);
@@ -55,14 +40,11 @@ function EditNovel(props) {
       value = parseInt(value) - 1;
       const index = chapterList[value]; // Tìm kiếm dựa trên indexOf()
       value = parseInt(value) + 1;
-      setchapterSort(index);
-      setValue(value);
       // console.log(value);
     } else {
       const list = chapterList.filter(
         (chap) => chap[value] === Number(value) || chap.title.includes(value)
       );
-      setchapterListSearch(list);
     }
 
     // const list = chapterList.filter((chap) =>
@@ -89,9 +71,6 @@ function EditNovel(props) {
         setNovel(data.novelInfo[0]);
         setchapterList(data.chapterList);
         setnumBookmard(data.bookmarkNum);
-        setReviewList(data.reviewList);
-        setNumReview(data.reviewList.length);
-        // console.log(numReview);
       });
   }, []);
   return (

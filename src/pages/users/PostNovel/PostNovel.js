@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import "./PostNovel.css";
-import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
-import InfoAuth from "./../InfoAuth/InfoAuth";
-import ReadingNovel from "../ReadingNovel/ReadingNovel";
-import NewNovel from "../NewNovel/NewNovel";
-import MessageAuth from "../MessageAuth/MessageAuth";
-import WithdrawMoney from "../WithdrawMoney/WithdrawMoney";
-import MyNovel from "../Mynovel/MyNovel";
+import { Link, Outlet} from "react-router-dom";
 import ChatBox from "../ChatBox/ChatBox";
 function PostNovel(props) {
-  const [value, setValue] = useState("InfoAuth");
-  const accID = props.accountID;
   const [showChatbox, setShowChatbox] = useState(false);
-  const handleNavClick = (newValue) => {
-    setValue(newValue);
-  };
-
   const handleClick = () => {
     setShowChatbox(!showChatbox);
   };
@@ -49,7 +37,7 @@ function PostNovel(props) {
         <div className="col-sm-1">
           <div className="avatar-area">
             <div className="frame-avt">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/1024px-Avatar_icon_green.svg.png" />
+              <img alt='img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/1024px-Avatar_icon_green.svg.png" />
             </div>
             <div className="name-auth">
               <h6> Chien Hoang </h6>

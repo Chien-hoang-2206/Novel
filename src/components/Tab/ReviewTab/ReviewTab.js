@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import {
   AuthName,
   Content,
@@ -11,12 +11,8 @@ import Col from "react-bootstrap/Col";
 import "toolcool-range-slider";
 import "./btnReviewTab.css";
 import {
-  ContainerInputText,
-  InputText,
   Note,
   NoteText,
-  NumverSlide,
-  R1Note,
   UserEditNote,
 } from "./ReviewTabStyle";
 import Review from "../../card/Review/Review";
@@ -32,7 +28,6 @@ function ReviewTab(props) {
   const [value11, setValue11] = useState(5);
   const [value2, setValue2] = useState(5);
   const [value3, setValue3] = useState(5);
-  const [starReview, setstarReview] = useState(0);
   const [reload, setReload] = useState(false);
   const [width, setWidth] = React.useState(window.innerWidth);
 

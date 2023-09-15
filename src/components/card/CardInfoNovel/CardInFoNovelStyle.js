@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 export const ContainerCard = styled.div`
   display: flex;
   opacity: 1;

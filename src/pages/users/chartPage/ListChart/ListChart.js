@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./ListChart.css";
-import { BtnAuthLink, BtnLink } from "./ListChart";
 import CardChartNovel from "../../../../components/card/CardChartNovel/CardChartNovel";
 import axios from "../../../../api/axios";
 const HomeNewNoevl_URL = "/api/ranking/readcount";
@@ -19,10 +18,6 @@ function callApiNewNovelList() {
 }
 
 function ListChart() {
-  const currentUrl = window.location.href;
-  const urlParts = currentUrl.split("/");
-  const lastPart = urlParts[urlParts.length - 1];
-
   const [newNovels, setNewNovels] = useState([]);
   useEffect(() => {
     async function fetchData() {

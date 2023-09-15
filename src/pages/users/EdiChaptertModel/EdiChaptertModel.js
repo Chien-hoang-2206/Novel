@@ -10,8 +10,6 @@ function EdiChaptertModel() {
   const { state } = useLocation();
   const currentUrl = window.location.href;
   const urlParts = currentUrl.split("/");
-  const [isTranslated, setisTranslated] = useState(true);
-  const [contentTranslate, setContentTranslate] = useState("");
   const novelID = urlParts[urlParts.length - 3];
   console.log("novel");
   console.log(novelID);

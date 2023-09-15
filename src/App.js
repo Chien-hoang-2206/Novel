@@ -18,7 +18,6 @@ import ListChart from "./pages/users/chartPage/ListChart/ListChart";
 import ChartPage from "./pages/users/chartPage";
 import "./App.css"
 import Loginmobile from "./pages/users/Loginmobile/Loginmobile";
-import Footer from "./parts/user/footer";
 function App() {
   
   const accountID = sessionStorage.getItem("accID") || "" ;

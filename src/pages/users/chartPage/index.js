@@ -1,11 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import {
   ContainerPageContent,
   ImageBanner,
   TransparentBanner,
 } from "../NovelPage/NovelElement";
 import "./ChartPage.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { LinkChart } from "./ChartStyle";
 
 const ChartPage = () => {

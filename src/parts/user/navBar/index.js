@@ -19,8 +19,7 @@ import { Link } from "react-router-dom";
 function NarBar() {
   const username = sessionStorage.getItem("username");
   const [click, setClick] = useState(false);
-  const [search, setSearch] = useState(true);
-  const [showPostNewnovel, setshowPostNewnovel] = useState(true);
+  const [showPostNewnovel] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const loggedIn = isLoggedIn();
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -51,7 +50,7 @@ function NarBar() {
       <>
           <div  className="flex h-12 px-3 items-center justify-center ">
             <Link to="/home" className="w-2/12" onClick={closeMobileMenu}>
-              <img className="w-8 h-8 object-fill " src="/LogoPage.png"></img>
+              <img alt='' className="w-8 h-8 object-fill " src="/LogoPage.png"></img>
             </Link>
 
             <div className="mx-20  flex w-8/12  items-center    justify-center rounded-2xl h-6 px-1 py-1">

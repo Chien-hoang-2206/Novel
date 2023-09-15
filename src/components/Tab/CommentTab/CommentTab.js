@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Content,
   Heading2,
@@ -8,19 +8,11 @@ import Col from "react-bootstrap/Col";
 import "toolcool-range-slider";
 
 import SimpleBar from "simplebar-react";
-import { ContainerInputText, InputText, NoteText, UserEditNote } from "../ReviewTab/ReviewTabStyle";
+import {  NoteText} from "../ReviewTab/ReviewTabStyle";
 import Comment from "../../card/Comment/Comment";
 import { Note } from "./CommentTabStyle";
 function CommentTab() {
-  const [value, setValue] = useState(50);
-  const [inputValue, setInputValue] = useState("");
   const [width, setWidth] = React.useState(window.innerWidth);
-  const handleClick = () => {
-    console.log("Button clicked!");
-  };
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
   React.useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);

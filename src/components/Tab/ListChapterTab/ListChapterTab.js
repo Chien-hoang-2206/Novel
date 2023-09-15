@@ -15,7 +15,6 @@ import {
   TextNumInfoNovel,
 } from "../../TextField/TestComponents";
 
-import { Content } from "../../TextField/TestComponents";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Avatar from "../../Avatar/Avatar";
@@ -42,7 +41,6 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
     const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
     return diffInDays;
   };
-  const myState = { myData: "abc" };
   function handleSortClick() {
     if (sortOrder) {
       setSortOrder(false);
@@ -87,7 +85,7 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
         </div>
         <div className="px-4">
           <SimpleBar   style={{ maxHeight: 420}}>
-            {sortOrder == true
+            {sortOrder === true
               ? chapters &&
               chapters.reverse().map((chapter, index) => (
                 <Chapter key={index + 1}>

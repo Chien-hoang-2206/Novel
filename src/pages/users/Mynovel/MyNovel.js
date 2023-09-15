@@ -52,7 +52,7 @@ function MyNovel() {
             <div className="containerDST">
               <div className="novel">
                 <div className="img-div">
-                  <img className="img-novel-post" src="/demoImg.webp" />
+                  <img alt='img' className="img-novel-post" src="/demoImg.webp" />
                 </div>
                 <div className="text-novel-name">
                   <Link to="/post-novel/mynovel/643c1ba9846d4044a2b45786">

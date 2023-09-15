@@ -8,7 +8,6 @@ import {
 import {
   Heading1,
 } from "../../../components/TextField/TestComponents";
-import { Icon } from "@iconify/react";
 import CardHomeRecomended from "../../../components/card/CardRecommemded/CardHomeRecomended";
 import CardHomeReading from "../../../components/card/CardReading/CardHomeReading";
 import "./home.css";
@@ -34,7 +33,7 @@ export default function HomePage(props) {
       setNewNovels(newNovelList);
     }
     fetchData();
-  }, []);
+  }, [accID]);
   const ListNovelRecomended = () => {
     // eslint-disable-next-line no-lone-blocks
     {
@@ -98,7 +97,7 @@ export default function HomePage(props) {
     <>
       <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
         <TransparentBanner >
-          {loading == false ? (
+          {loading === false ? (
             <div className="  md:w-3/4 rounded-md shadow-lg md:my-32 md:mx-auto bg-slate-50">
               {/* Title  */}
               <div className="px-2 py-2 md:py-4 md:mx-4 ">

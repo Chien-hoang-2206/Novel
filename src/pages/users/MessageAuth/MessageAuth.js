@@ -5,7 +5,7 @@ function MessageAuth() {
     <div className="container-mes">
       <div className="message-box">
         <div className="message-img">
-          <img className="img-mes" src="/image 76.png" />
+          <img alt='img' className="img-mes" src="/image 76.png" />
         </div>
         <div className="col-2">
           <div className="message-title">
@@ -24,7 +24,7 @@ function MessageAuth() {
 
       <div className="message-box">
         <div className="message-img">
-          <img className="img-mes" src="/Group 289.png" />
+          <img alt='img'  className="img-mes" src="/Group 289.png" />
         </div>
         <div className="col-2">
           <div className="message-title">
@@ -40,7 +40,7 @@ function MessageAuth() {
 
       <div className="message-box">
         <div className="message-img">
-          <img className="img-mes" src="/image 76.png" />
+          <img alt='img' className="img-mes" src="/image 76.png" />
         </div>
         <div className="col-2">
           <div className="message-title">
@@ -59,7 +59,7 @@ function MessageAuth() {
 
       <div className="message-box">
         <div className="message-img">
-          <img className="img-mes" src="/Group 289.png" />
+          <img alt='img'  className="img-mes" src="/Group 289.png" />
         </div>
         <div className="col-2">
           <div className="message-title">
@@ -78,7 +78,7 @@ function MessageAuth() {
 
       <div className="message-box">
         <div className="message-img">
-          <img className="img-mes" src="/image 76.png" />
+          <img alt='img'  className="img-mes" src="/image 76.png" />
         </div>
         <div className="col-2">
           <div className="message-title">

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./login.css";
 import { Icon } from "@iconify/react";
-import { Nomal } from "../../../components/TextField/TestComponents";
 
 import axios from "../../../api/axios";
 import { Link } from "react-router-dom";

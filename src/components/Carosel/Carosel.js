@@ -3,9 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import { Carousel } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import axios from "../../api/axios";
-import CardNovelTypesSearch from "../card/CardNovelTypesSearch/CardNovelTypesSearch";
 const TypesNovelURL = "/api/novels/types";
 
 function Carosel({ types }) {
@@ -13,22 +11,13 @@ function Carosel({ types }) {
   const [width, setWidth] = React.useState(window.innerWidth);
   const [Listnovel, setListnovel] = useState();
 
-  useEffect(() => {
-    async function fetchData() {
-      const Listnovel = await callApiNewNovelList();
-      setListnovel(Listnovel);
-    }
-    fetchData();
-  }, []);
-  console.log(types);
-  console.log(Listnovel);
   function callApiNewNovelList() {
     axios
       .post(TypesNovelURL, {
         types: types,
       })
       .then((response) => {
-        if (response.data) {
+        if (response?.data) {
           setListnovel(response.data.novelSameTypes);
         } else {
           alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
@@ -38,6 +27,14 @@ function Carosel({ types }) {
         alert(error.response.data.error);
       })
   }
+  useEffect(() => {
+    async function fetchData() {
+      const Listnovel = await callApiNewNovelList();
+      setListnovel(Listnovel);
+    }
+    fetchData();
+  }, []);
+
 
   React.useEffect(() => {
     function handleResize() {

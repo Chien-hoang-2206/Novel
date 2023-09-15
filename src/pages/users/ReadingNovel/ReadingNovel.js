@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import {
-  ContainerPageContent,
   ImageBanner,
   TransparentBanner,
 } from "../NovelPage/NovelElement";
@@ -15,8 +14,6 @@ import axios from "../../../api/axios";
 import { Introtext } from "../../../components/TextField/TestComponents";
 import Carosel from "../../../components/Carosel/Carosel";
 const SaveChapter_URL = "/api/history/";
-
-
 const AddReview_URL = "/api/comments/";
 function ReadingNovel() {
   const { id } = useParams();
@@ -38,7 +35,6 @@ function ReadingNovel() {
       setIdnovel("");
     }
   }, [state]);
-  const [reload, setReload] = useState(false);
   const [preIDchap, setPreIDchap] = useState();
   const [commentList, setcommentList] = useState();
   const [nextIDchap, setNextIDchap] = useState();
@@ -119,7 +115,6 @@ function ReadingNovel() {
         if (response.data) {
           // Đăng nhập thành công, chuyển hướng đến trang chủ và lưu iduser vào cookies hoặc session
           // ReloadNavBar;
-          setReload(true);
           console.log(response.data)
           window.location.href = `/novel/${Idnovel}`; // Thay đổi đường dẫn tương ứng
           alert('Cảm ơn bạn đã chia sẻ đánh giá');

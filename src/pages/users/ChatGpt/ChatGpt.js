@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./globals.css";
 import "./Homemodule.css";
 import "./chatGpt.css";
@@ -6,15 +6,10 @@ import axios from "axios";
 import TypingAnimation from "../../../components/TypingAnimation/TypingAnimation";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
-// import styles from '@/styles/Home.module.css'
-// import { Inter } from 'next/font/google'
-
-// const inter = Inter({ subsets: ['latin'] })
 
 function ChatGpt() {
   const [inputValue, setInputValue] = useState("");
   const [chatLog, setChatLog] = useState([]);
-  const ChatLogHisSession = sessionStorage.getItem('chatLogHistory');
   const [isLoading, setIsLoading] = useState(false);
   const WelcomMes = "Chào bạn, tôi là trợ lý ảo, tôi có thể giúp gì cho bạn ?";
 
