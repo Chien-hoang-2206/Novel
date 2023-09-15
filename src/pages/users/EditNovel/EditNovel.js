@@ -38,7 +38,6 @@ function EditNovel(props) {
     if (!isNaN(value)) {
       // Nếu giá trị bắt đầu bằng số
       value = parseInt(value) - 1;
-      const index = chapterList[value]; // Tìm kiếm dựa trên indexOf()
       value = parseInt(value) + 1;
       // console.log(value);
     } else {

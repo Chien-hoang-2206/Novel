@@ -11,29 +11,30 @@ function Carosel({ types }) {
   const [width, setWidth] = React.useState(window.innerWidth);
   const [Listnovel, setListnovel] = useState();
 
-  function callApiNewNovelList() {
-    axios
-      .post(TypesNovelURL, {
-        types: types,
-      })
-      .then((response) => {
-        if (response?.data) {
-          setListnovel(response.data.novelSameTypes);
-        } else {
-          alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
-        }
-      })
-      .catch((error) => {
-        alert(error.response.data.error);
-      })
-  }
+
   useEffect(() => {
     async function fetchData() {
       const Listnovel = await callApiNewNovelList();
       setListnovel(Listnovel);
     }
     fetchData();
-  }, []);
+    function callApiNewNovelList() {
+      axios
+        .post(TypesNovelURL, {
+          types: types,
+        })
+        .then((response) => {
+          if (response?.data) {
+            setListnovel(response.data.novelSameTypes);
+          } else {
+            alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
+          }
+        })
+        .catch((error) => {
+          alert(error.response.data.error);
+        })
+    }
+  }, [types]);
 
 
   React.useEffect(() => {
@@ -63,7 +64,7 @@ function Carosel({ types }) {
             </Carousel.Item>
           ))}
 
-       
+
 
       </Carousel>
     );

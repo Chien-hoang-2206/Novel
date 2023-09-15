@@ -49,20 +49,21 @@ function Novel(props) {
         setReviewList(data.reviewList);
         setNumReview(data.reviewList.length);
       });
+    function checkIsBookmark() {
+      axios
+        .get(apiUrlCheckbookmark)
+        .then((response) => {
+          console.log(response);
+          setisbookmark(response.data.isBookmarked);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     checkIsBookmark();
-  }, []);
+  }, [apiUrl, apiUrlCheckbookmark]);
 
-  function checkIsBookmark() {
-    axios
-      .get(apiUrlCheckbookmark)
-      .then((response) => {
-        console.log(response);
-        setisbookmark(response.data.isBookmarked);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+
 
   React.useEffect(() => {
     function handleResize() {

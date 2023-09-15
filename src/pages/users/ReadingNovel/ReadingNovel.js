@@ -59,7 +59,7 @@ function ReadingNovel() {
         }
       });
     savelNovel();
-  }, []);
+  }, [apiUrl,savelNovel]);
   useEffect(() => {
     window.scrollTo(0, 0); // đặt vị trí hiển thị của trang về đầu tiên
   }, []);
