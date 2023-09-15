@@ -38,7 +38,6 @@ import {
 function CardInfoNovel(props) {
   const [isBookmarked, setIsBookmarked] = useState(props.bookmark);
 
-  console.log(isBookmarked);
   const contentNovel = props.intro;
   const [width, setWidth] = React.useState(window.innerWidth);
 

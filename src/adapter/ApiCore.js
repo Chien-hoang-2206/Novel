@@ -19,18 +19,18 @@ const ApiCore = (function () {
                 return apiProvider.post(_this.url, model)
             }
         }
+        if (options.patch) {
+            this.post = function (path, model) {
+                return apiProvider.post(path, model)
+            }
+        }
         if (options.remove) {
             this.remove = function (id) {
                 return apiProvider.remove(_this.url, id)
             }
         }
-        if (options.downloadAsBlod) {
-            this.downloadAsBlod = function (params) {
-                return apiProvider.downloadAsBlod(_this.url, params);
-            };
-        }
         if (options.request) {
-            this.request = function ({ url, data, params, method ,responseType}) {
+            this.request = function ({ url, data, params, method, responseType }) {
                 return apiProvider.request({
                     url: url,
                     method: method,

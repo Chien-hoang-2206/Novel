@@ -30,7 +30,6 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
   else
   accID = "000";
   const [width, setWidth] = React.useState(window.innerWidth);
-  console.log(accID);
   const calculateDaysFromCreatedAt = (createdAt) => {
     if (!createdAt) {
       return 0;

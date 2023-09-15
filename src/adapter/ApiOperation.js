@@ -1,4 +1,5 @@
 import ApiCore from './ApiCore'
+import { BASE_PREFIX } from './ApiConstants'
 
 const ApiOperation = new ApiCore({
     fetchAll: true,
@@ -6,9 +7,8 @@ const ApiOperation = new ApiCore({
     post: true,
     patch: true,
     remove: true,
-    url: '',
+    url: BASE_PREFIX,
     request: true,
-    downloadAsBlod: true,
 })
 
 export default ApiOperation

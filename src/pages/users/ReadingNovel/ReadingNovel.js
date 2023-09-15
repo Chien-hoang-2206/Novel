@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ImageBanner,
   TransparentBanner,
@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import axios from "../../../api/axios";
 import { Introtext } from "../../../components/TextField/TestComponents";
 import Carosel from "../../../components/Carosel/Carosel";
+import factories from "../../../redux/app/factory";
 const SaveChapter_URL = "/api/history/";
 const AddReview_URL = "/api/comments/";
 function ReadingNovel() {
@@ -22,11 +23,10 @@ function ReadingNovel() {
   const [Idnovel, setIdnovel] = useState();
   const [width, setWidth] = React.useState(window.innerWidth);
   const [content, setContent] = useState("");
-  const accID = sessionStorage.getItem("accID") || "" ;
+  const accID = sessionStorage.getItem("accID") || "";
   const novelId = state.Idnovel;
 
   useEffect(() => {
-    console.log(state);
     if (state) {
       setNovelName(state.novelname);
       setIdnovel(state.Idnovel);
@@ -44,27 +44,26 @@ function ReadingNovel() {
     content: "Loading",
     _id: "643a5818c0e71950015fb126",
   });
-  const apiUrl = `http://localhost:5000/api/chapters/${id}`;
-  useEffect(() => {
 
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.chapter) {
-          setcommentList(data.commentList);
-          setchapterInfo(data.chapter);
-          setPreIDchap(data.prev._id)
-          setNextIDchap(data.next._id)
-          setContentNovel(data.chapter.content);
-        }
-      });
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await factories.getNovelChapterInfo(id);
+      setcommentList(response?.commentList);
+      setchapterInfo(response.chapter);
+      setPreIDchap(response.prev?._id)
+      setNextIDchap(response.next?._id)
+      setContentNovel(response.chapter.content);
+    }
+    fetchData();
     savelNovel();
-  }, [apiUrl,savelNovel]);
+  }, [id]);
+
+
   useEffect(() => {
     window.scrollTo(0, 0); // đặt vị trí hiển thị của trang về đầu tiên
   }, []);
 
-  console.log(commentList);
 
   const renderCommentList = () => {
     return (commentList &&
@@ -75,13 +74,11 @@ function ReadingNovel() {
       )))
   }
 
-
   const handleInputChange = (event) => {
     setContent(event.target.value);
   };
 
   function savelNovel() {
-    console.log(id, accID, novelId);
     axios
       .post(SaveChapter_URL, {
         chapterId: id,
@@ -90,12 +87,10 @@ function ReadingNovel() {
       })
       .then((response) => {
         if (response.data) {
-          console.log("da luu");
         } else {
 
           alert('Đăng nhập không thành công');
         }
-        console.log(response);
       })
       .catch((error) => {
       });
@@ -103,7 +98,6 @@ function ReadingNovel() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(accID, novelID, value11,value2,value3,inputValue);
     axios
       .post(AddReview_URL, {
         "content": content,
@@ -336,7 +330,7 @@ function ReadingNovel() {
                   placeholder="Chia sẻ bình luận của bạn về truyện .... "
                 ></textarea>
                 <div className="submitCMT">
-                  <button className="button-comment-post" style={{ position: "relative" , left: 650 }} type="submit">
+                  <button className="button-comment-post" style={{ position: "relative", left: 650 }} type="submit">
                     <span>Đăng</span>
                   </button>
                 </div>
@@ -352,7 +346,7 @@ function ReadingNovel() {
               <div className="Cmt">
                 <h3>Đề xuất cho bạn</h3>
               </div>
-              <Carosel/>
+              <Carosel />
             </div>
           </div>
           <Footer />

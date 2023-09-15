@@ -12,10 +12,7 @@ import CardHomeRecomended from "../../../components/card/CardRecommemded/CardHom
 import CardHomeReading from "../../../components/card/CardReading/CardHomeReading";
 import "./home.css";
 import Footer from "../../../parts/user/footer";
-import axios from "../../../api/axios";
-const HomeNewNoevl_URL = "/api/novels/";
-
-
+import factories from "../../../redux/app/factory";
 
 export default function HomePage(props) {
   const accID = props.accountID;
@@ -25,74 +22,26 @@ export default function HomePage(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const newNovelList = await callApiNewNovelList();
-      if (accID) {
-        const readingNovelList = await callApiReadingNovelList(accID);
-        setReadingNovels(readingNovelList);
-      }
+      const responseRecomendList = await factories.getNovelListHome();
+      const newNovelList = responseRecomendList?.novelList
       setNewNovels(newNovelList);
+      setloading(false)
+    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (accID) {
+        const responseReadinglist = await factories.getReadingNovelList(accID);
+        const newList = responseReadinglist?.historyList
+        setReadingNovels(newList);
+      }
+      setloading(false)
     }
     fetchData();
   }, [accID]);
-  const ListNovelRecomended = () => {
-    // eslint-disable-next-line no-lone-blocks
-    {
-      return (newNovels &&
-        newNovels.map((novels, index) => (
-          <CardHomeRecomended
-            key={index}
-            id={novels._id}
-            image={novels.coverLink}
-            nameComic={novels.title}
-            type1={novels.types[0]}
-            type2={novels.types[1]}
-            content={novels.intro}
-            auth={novels.author}
-          />
-        )))
-    }
-  }
-  const ListNovelReading = () => {
-    {
-      return (readingNovels &&
-        readingNovels.map((novels, index) => (
-          <div className=" py-3  md:ml-5 rounded-md bg-slate-100 shadow-md" >
-          <CardHomeReading
-            key={index}
-            accountID={accID}
-            nameComic={novels.novelInfo.title}
-            id={novels.novelId}
-            chapterID={novels.chapterId}
-            image={novels.novelInfo.coverLink}
-            chaperNum={novels.chapterInfo.index}
-            chaperReading={novels.chapterInfo.index}
-          />
-          </div>
-        )))
-    }
-  }
-  function callApiNewNovelList() {
-    return axios
-      .get(HomeNewNoevl_URL)
-      .then((response) => {
-        setloading(false);
-        return response.data.novelList;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
-  function callApiReadingNovelList(id) {
-    return axios
-      .get(`http://localhost:5000/api/history/${id}`)
-      .then((response) => {
-        return response.data.historyList;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
   return (
     <>
       <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
@@ -105,19 +54,54 @@ export default function HomePage(props) {
                   <div className=" md:w-8/12   ">
                     <Heading1  > Truyện Mới</Heading1>
                     <div className="  md:bg-slate-100 md:shadow-md">
-                      <ListNovelRecomended />
+                      {
+                        newNovels.length > 0 ? (
+                          newNovels.map((novels, index) => (
+                            <>
+                              <CardHomeRecomended
+                                key={index}
+                                id={novels._id}
+                                image={novels.coverLink}
+                                nameComic={novels.title}
+                                type1={novels.types[0]}
+                                type2={novels.types[1]}
+                                content={novels.intro}
+                                auth={novels.author}
+                              />
+                            </>
+                          ))
+
+                        ) : (
+                          <p>Loading...</p>
+                        )
+                      }
                     </div>
                   </div>
                   <div className=" md:w-4/12 md:px-2  ">
                     <Heading1> Đang Đọc</Heading1>
-                      <ListNovelReading />
-              
+                    {
+                      (readingNovels &&
+                        readingNovels.map((novels, index) => (
+                          <div className=" py-3  md:ml-5 rounded-md bg-slate-100 shadow-md" >
+                            <CardHomeReading
+                              key={index}
+                              accountID={accID}
+                              nameComic={novels.novelInfo.title}
+                              id={novels.novelId}
+                              chapterID={novels.chapterId}
+                              image={novels.novelInfo.coverLink}
+                              chaperNum={novels.chapterInfo.index}
+                              chaperReading={novels.chapterInfo.index}
+                            />
+                          </div>
+                        )))
+                    }
                   </div>
                 </div>
               </div>
             </div>
           ) : (<></>)}
-        <Footer />
+          <Footer />
         </TransparentBanner>
       </ImageBanner>
     </>

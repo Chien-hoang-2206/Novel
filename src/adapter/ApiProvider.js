@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid'
 import { setupInterceptersTo } from './AxiosConfig'
+import { BASE_PREFIX } from './ApiConstants'
 
 const BASE_URL = process.env.REACT_APP_API_URL
-export const SIGNALR_URL = process.env.REACT_APP_SIGNALR_URL
+console.log("🚀 ~ file: ApiProvider.js:7 ~ BASE_URL:", BASE_URL)
+// const BASE_URL = 'https://book-api-ayee.onrender.com'
 
 const api = setupInterceptersTo(
     axios.create({
@@ -27,41 +29,30 @@ export const fetchSingle = (path, id) => {
     return api
         .get(`${BASE_URL}/${path}/${id}`)
         .then((resp) => resp.data)
-        .catch((error) => console.log(error))
+        .catch((error) => { console.log(error); throw error })
 }
 
 export const post = (path, model) => {
     return api
         .post(`${BASE_URL}/${path}`, model)
         .then((resp) => resp.data)
-        .catch((error) => console.log(error))
+        .catch((error) => { console.log(error); throw error })
 }
 
 export const patch = (path, model) => {
     return api
         .patch(`${BASE_URL}/${path}`, model)
         .then((resp) => resp.data)
-        .catch((error) => console.log(error))
+        .catch((error) => { console.log(error); throw error })
 }
 
 export const remove = (path, id) => {
     return api
         .delete(`${BASE_URL}/${path}/${id}`)
         .then((resp) => resp.data)
-        .catch((error) => console.log(error))
+        .catch((error) => { console.log(error); throw error })
 }
-
-export const downloadAsBlod = (path, params) => api
-    .request({
-        url: `${BASE_URL}/${path}`,
-        method: 'GET',
-        params,
-        responseType: 'blob',
-    })
-    .then((resp) => resp.data)
-    .catch((error) => console.log(error));
-
-export const request = ({ url = '', method = 'GET', data = {}, params = {} ,responseType = "json"}) => {
+export const request = ({ url = '', method = 'GET', data = {}, params = {}, responseType = "json" }) => {
     return api
         .request({
             url: url,
@@ -71,8 +62,8 @@ export const request = ({ url = '', method = 'GET', data = {}, params = {} ,resp
             responseType: responseType
         })
         .then((resp) => {
-            // console.log("resp.data",resp.data)
+            // console.log("resp.data", resp.data)
             return resp.data
         })
-        .catch((error) => console.log(error))
+        .catch((error) => { console.log(error); throw error })
 }

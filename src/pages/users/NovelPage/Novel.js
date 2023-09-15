@@ -19,6 +19,7 @@ import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../../../api/axios";
+import factories from "../../../redux/app/factory";
 
 
 function Novel(props) {
@@ -36,34 +37,32 @@ function Novel(props) {
   const toggleTab = (index) => {
     setToggleState(index);
   };
-  const apiUrl = `http://localhost:5000/api/novels/${id}`;
-  const apiUrlCheckbookmark = `http://localhost:5000/api/bookmarks/${accountID}/${id}`;
+
   useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setLoading(false);
-        setNovel(data.novelInfo[0]);
-        setchapterList(data.chapterList);
-        setnumBookmard(data.bookmarkNum);
-        setReviewList(data.reviewList);
-        setNumReview(data.reviewList.length);
-      });
-    function checkIsBookmark() {
-      axios
-        .get(apiUrlCheckbookmark)
-        .then((response) => {
-          console.log(response);
-          setisbookmark(response.data.isBookmarked);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    async function fetchData() {
+      const response = await factories.getNovelInfo(id);
+      setNovel(response.novelInfo[0]);
+      setchapterList(response.chapterList);
+      setnumBookmard(response.bookmarkNum);
+      setReviewList(response.reviewList);
+      setNumReview(response.reviewList.length);
+      setLoading(false);
     }
-    checkIsBookmark();
-  }, [apiUrl, apiUrlCheckbookmark]);
+    fetchData();
+  }, [id]);
 
-
+  // function checkIsBookmark() {
+  //   axios
+  //     .get(apiUrlCheckbookmark)
+  //     .then((response) => {
+  //       console.log(response);
+  //       setisbookmark(response.data.isBookmarked);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
+  // checkIsBookmark();
 
   React.useEffect(() => {
     function handleResize() {
