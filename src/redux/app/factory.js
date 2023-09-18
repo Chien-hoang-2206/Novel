@@ -26,5 +26,12 @@ const factories = {
             method: 'GET',
         });
     },
+    addBookmark: (data) => {
+        return ApiOperation.request({
+            url: `${ApiConstants.BOOKMARK}`,
+            method: 'POST',
+            data: data
+        });
+    },
 }
 export default factories;

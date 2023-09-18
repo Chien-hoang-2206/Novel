@@ -34,6 +34,7 @@ import {
   TextInfoNovel,
   TypesDeleteText,
 } from "../../TextField/TestComponents";
+import factories from "../../../redux/app/factory";
 
 function CardInfoNovel(props) {
   const [isBookmarked, setIsBookmarked] = useState(props.bookmark);
@@ -41,28 +42,38 @@ function CardInfoNovel(props) {
   const contentNovel = props.intro;
   const [width, setWidth] = React.useState(window.innerWidth);
 
+  async function fetchDataAdd(data) {
+    const reponseAddBookmark = await factories.addBookmark(data);
+    console.log("🚀 ~ file: CardInfoNovel.js:47 ~ fetchDataAdd ~ reponseAddBookmark:", reponseAddBookmark)
+  }
+
   const handleAddBookmark = () => {
     const accountId = props.accountId;
     const novelId = props.IDNovel;
     const data = { accountId, novelId };
+    fetchDataAdd(data) ; 
+   
 
-    fetch("http://localhost:5000/api/bookmarks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to add bookmark");
-        }
-        setIsBookmarked(true);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // fetch("http://localhost:5000/api/bookmarks", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error("Failed to add bookmark");
+    //     }
+    //     setIsBookmarked(true);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+
   };
+
+
   const handleDelBookmark = () => {
     const id = "643706d98989be92b3af0f7c";
     const apiUrl = `http://localhost:5000/api/bookmarks/${id}`;
