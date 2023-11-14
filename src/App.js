@@ -23,9 +23,9 @@ function App() {
   const accountID = sessionStorage.getItem("accID") || "" ;
   return (
     <>
-        <NavBar />
       <BrowserRouter>
-        {/* <Routes>
+        <NavBar />
+        <Routes>
           <Route path="/" element={<HomePage accountID={accountID} />} />
           <Route path="home" element={<HomePage accountID={accountID} />} />
           <Route path="novel/:id" element={<Novel accountID={accountID} />} />
@@ -60,7 +60,7 @@ function App() {
 
           <Route path="login" element={<Loginmobile />} />
           <Route path="logout" element={<Logout />} />
-        </Routes> */}
+        </Routes>
       </BrowserRouter>
     </>
   );
