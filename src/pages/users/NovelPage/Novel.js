@@ -91,6 +91,7 @@ function Novel(props) {
                     numRead={novel.readCount}
                     srcimage={novel.coverLink}
                     bookmark="false"
+                    firstChapter={chapterList[0]?._id}
                   />
                 )}
               </ContainerInfo>
@@ -134,7 +135,6 @@ function Novel(props) {
                             : "content"
                         }
                       >
-
                         {novel && (
                           <ListChapterTab
                             chapters={chapterList}
@@ -172,10 +172,7 @@ function Novel(props) {
                   </div>
                 </ContainerTabs>
               </Row>
-              {
-                novel &&
-                <Carosel types={novel.types} />
-              }
+              {novel && <Carosel types={novel.types} />}
             </div>
             <Footer />
           </TransparentBanner>

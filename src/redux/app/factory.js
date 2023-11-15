@@ -26,6 +26,13 @@ const factories = {
             method: 'GET',
         });
     },
+    saveReadingNovel: (saveReadingNovel) => {
+        return ApiOperation.request({
+            url: `${ApiConstants.HISTORY}`,
+            method: 'POST',
+            data: saveReadingNovel 
+        });
+    },
     addBookmark: (data) => {
         return ApiOperation.request({
             url: `${ApiConstants.BOOKMARK}`,

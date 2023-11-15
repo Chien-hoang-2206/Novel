@@ -4,9 +4,12 @@
   border-bottom-left-radius: none;
   border-bottom-right-radius: none;
   background: #f7f7f7;
-  width: 20px;
   box-shadow: inset 5px 5px 10px #7a7a7a, inset -5px -5px 10px #ffffff;
+  width: 70%;
+  margin-inline: auto;
+  padding: 30px;
 }
+
 .button-comment-post {
   background: #ddd8c7;
   position: relative;
@@ -15,8 +18,9 @@
   border-radius: 10px;
   padding: 3px 6px;
 }
-.button-comment-post :hover{
-}
+
+.button-comment-post :hover {}
+
 @media (max-width: 1370px) {
   .containerReadingNovel {
     /* các quy tắc CSS cho kích thước màn hình tối đa là 1370px */
@@ -34,23 +38,28 @@
     padding: 3vh;
   }
 }
+
 .comment_Novel {
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 70%;
   margin: 5vh auto;
 }
+
 .commentRD {
   flex: 5;
 }
+
 .newNovel {
   flex: 2;
   margin-left: 2vh;
   margin-bottom: 3vh;
 }
+
 .Cmt {
   margin-bottom: 2vh;
 }
+
 .inputRD {
   border: 2px solid #4f555a;
   width: 100%;
@@ -58,11 +67,13 @@
   padding: 5px 8px;
   font-size: 16px;
 }
+
 .submitCMT {
   position: relative;
   left: 30px;
   top: -45px;
 }
+
 .buttonRD {
   display: flex;
   height: 3em;
@@ -77,18 +88,20 @@
   border: none;
   background: #f7f7f7;
 }
+
 .novel-content {
   text-align: justify;
   padding: 10px 2vh;
 }
-.buttonRD > svg {
+
+.buttonRD>svg {
   margin-right: 5px;
   margin-left: 5px;
   font-size: 20px;
   transition: all 0.4s ease-in;
 }
 
-.buttonRD:hover > svg {
+.buttonRD:hover>svg {
   font-size: 1.2em;
   transform: translateX(-5px);
 }
@@ -104,6 +117,7 @@
   display: flex;
   height: 10vh;
 }
+
 .button-nav-chap-2 {
   text-align: center;
   height: 10vh;
@@ -117,6 +131,7 @@
   margin: 10px;
   font-size: 16px;
 }
+
 .button-nav-chap .buttonRD:first-child {
   float: left;
   /* đặt button đầu tiên vào bên trái */

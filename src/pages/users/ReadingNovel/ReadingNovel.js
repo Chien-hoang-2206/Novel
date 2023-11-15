@@ -8,7 +8,7 @@ import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Footer from "../../../parts/user/footer";
 import Comment from "../../../components/card/Comment/Comment";
 import SimpleBar from "simplebar-react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "../../../api/axios";
 import { Introtext } from "../../../components/TextField/TestComponents";
@@ -21,7 +21,6 @@ function ReadingNovel() {
   const { state } = useLocation()
   const [novelname, setNovelName] = useState();
   const [Idnovel, setIdnovel] = useState();
-  const [width, setWidth] = React.useState(window.innerWidth);
   const [content, setContent] = useState("");
   const accID = sessionStorage.getItem("accID") || "";
   const novelId = state.Idnovel;
@@ -56,7 +55,7 @@ function ReadingNovel() {
       setContentNovel(response.chapter.content);
     }
     fetchData();
-    savelNovel();
+    saveNovel();
   }, [id]);
 
 
@@ -78,22 +77,33 @@ function ReadingNovel() {
     setContent(event.target.value);
   };
 
-  function savelNovel() {
-    axios
-      .post(SaveChapter_URL, {
-        chapterId: id,
-        accountId: accID,
-        novelId: novelId,
-      })
-      .then((response) => {
-        if (response.data) {
-        } else {
 
-          alert('Đăng nhập không thành công');
-        }
-      })
-      .catch((error) => {
-      });
+
+  async function saveNovel() {
+    const data = {
+      chapterId: id,
+      accountId: accID,
+      novelId: novelId,
+    }
+    try {
+      await factories.saveReadingNovel(data);
+    } catch (error) {
+      console.log(error);
+    }
+    // axios
+    //   .post(SaveChapter_URL, {
+    //     chapterId: id,
+    //     accountId: accID,
+    //     novelId: novelId,
+    //   })
+    //   .then((response) => {
+    //     if (response.data) {
+    //     } else {
+    //       alert('Đăng nhập không thành công');
+    //     }
+    //   })
+    //   .catch((error) => {
+    //   });
   }
 
   const handleSubmit = async (e) => {
@@ -130,18 +140,9 @@ function ReadingNovel() {
     window.location.href = `/novel/chapter/${nextIDchap}`;
   }
 
-  React.useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  if (width <= 768) {
-    return (
-      <div className="" >
+  return (
+    <ImageBanner style={{ backgroundImage: "url('image/bgBanner.jpg')" }}>
+      <TransparentBanner>
 
         <div className="containerReadingNovel">
           {/* Dieu huong thu muc  */}
@@ -155,18 +156,28 @@ function ReadingNovel() {
             <Breadcrumb.Item
               style={{ textDecoration: "none", fontWeight: "bold" }}
             >
-              <Link to={`/novel/${Idnovel}`}>  {novelname} </Link>
+              <button to={`/novel/${Idnovel}`}>  {novelname} </button>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item
+              style={{ textDecoration: "none", fontWeight: "bold" }}
+              active
+            >
+              Chapter{chapterInfo?.title}: {chapterInfo?.title}
             </Breadcrumb.Item>
           </Breadcrumb>
+
           {/* Dieu huong chapter */}
-          <div className="button-nav-chap w-full  h-12">
+          <div className="button-nav-chap" style={{ display: "flex", justifyContent: "space-around" }}>
             {/* btn previer chap */}
-            <button onClick={handleClickPreChapter} className="w-1/4 buttonRD" style={{ float: "left", width: "50px" }}>
+
+            <button onClick={handleClickPreChapter}
+              className="buttonRD" style={{ float: "left" }}>
               <i class="fa-solid fa-angle-left"></i>
+              <span style={{ fontWeight: "bold" }}>Chương trước </span>
             </button>
-            <h4 className="w-2/4"> {chapterInfo.title} </h4>
             {/* btn next chap */}
-            <button onClick={handleClickNextChapter} className=" w-1/4 buttonRD" style={{ float: "right", width: "50px" }}>
+            <button onClick={handleClickNextChapter} className="buttonRD" style={{ float: "right" }}>
+              <span style={{ fontWeight: "bold" }} > Chương sau </span>
               <i
                 style={{ marginLeft: "4px" }}
                 class="fa-solid fa-angle-right"
@@ -175,7 +186,6 @@ function ReadingNovel() {
           </div>
 
           {/* area readding novel  */}
-
           {contentNovel &&
             <Introtext>
               <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
@@ -184,9 +194,7 @@ function ReadingNovel() {
 
         </div>
 
-
-
-        <div className=" button-nav-chap-2 flex items-center" style={{ width: "100%" }} >
+        <div className="button-nav-chap-2" style={{ width: "70%" }}>
           <button
             onClick={handleClickPreChapter}
             className="buttonRD"
@@ -195,12 +203,15 @@ function ReadingNovel() {
             <i class="fa-solid fa-angle-left"></i>
             <span style={{ fontWeight: "bold" }} >Chương trước </span>
           </button>
-          <div className="w-1/5 text-4xl border-1 border-gray-400"> <i class="fa-solid fa-list"></i> </div>
-          <button onClick={handleClickNextChapter} className="w-2/5 buttonRD w-32 " style={{ float: "right" }}>
+
+          <button onClick={handleClickNextChapter} className="buttonRD" style={{ float: "right" }}>
             <span style={{ fontWeight: "bold" }} >Chương sau </span>
+            <i
+              style={{ marginLeft: "4px" }}
+              class="fa-solid fa-angle-right"
+            ></i>
           </button>
         </div>
-
 
         <div className="comment_Novel">
           <div className="commentRD">
@@ -208,17 +219,14 @@ function ReadingNovel() {
               <h3>Bình luận</h3>
             </div>
 
-            <form method="post" onSubmit={handleSubmit} >
+            <form method="post">
               <textarea
                 className="inputRD"
                 name="message"
-                type="text"
-                // value=""
-                onChange={handleInputChange}
                 placeholder="Chia sẻ bình luận của bạn về truyện .... "
               ></textarea>
               <div className="submitCMT">
-                <button className="button-io" type="submit">
+                <button className="button-comment-post" style={{ position: "relative", left: 650 }} type="submit">
                   <span>Đăng</span>
                 </button>
               </div>
@@ -234,126 +242,13 @@ function ReadingNovel() {
             <div className="Cmt">
               <h3>Đề xuất cho bạn</h3>
             </div>
-            {/* <Carosel/> */}
+            <Carosel />
           </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <ImageBanner style={{ backgroundImage: "url('image/bgBanner.jpg')" }}>
-        <TransparentBanner>
-
-          <div className="containerReadingNovel">
-            {/* Dieu huong thu muc  */}
-            <Breadcrumb>
-              <Breadcrumb.Item
-                style={{ textDecoration: "none", fontWeight: "bold" }}
-                href="/home"
-              >
-                <i class="fa-solid fa-house"></i>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item
-                style={{ textDecoration: "none", fontWeight: "bold" }}
-              >
-                <button to={`/novel/${Idnovel}`}>  {novelname} </button>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item
-                style={{ textDecoration: "none", fontWeight: "bold" }}
-                active
-              >
-                Chapter{chapterInfo.title}: {chapterInfo.title}
-              </Breadcrumb.Item>
-            </Breadcrumb>
-
-            {/* Dieu huong chapter */}
-            <div className="button-nav-chap" style={{ display: "flex", justifyContent: "space-around" }}>
-              {/* btn previer chap */}
-
-              <button onClick={handleClickPreChapter}
-                className="buttonRD" style={{ float: "left" }}>
-                <i class="fa-solid fa-angle-left"></i>
-                <span style={{ fontWeight: "bold" }}>Chương trước </span>
-              </button>
-              {/* btn next chap */}
-              <button onClick={handleClickNextChapter} className="buttonRD" style={{ float: "right" }}>
-                <span style={{ fontWeight: "bold" }} > Chương sau </span>
-                <i
-                  style={{ marginLeft: "4px" }}
-                  class="fa-solid fa-angle-right"
-                ></i>
-              </button>
-            </div>
-
-            {/* area readding novel  */}
-            {contentNovel &&
-              <Introtext>
-                <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
-              </Introtext>}
-
-
-          </div>
-
-
-
-          <div className="button-nav-chap-2" style={{ width: "90%" }}>
-
-            <button
-              onClick={handleClickPreChapter}
-              className="buttonRD"
-              style={{ float: "left" }}
-            >
-              <i class="fa-solid fa-angle-left"></i>
-              <span style={{ fontWeight: "bold" }} >Chương trước </span>
-            </button>
-
-            <button onClick={handleClickNextChapter} className="buttonRD" style={{ float: "right" }}>
-              <span style={{ fontWeight: "bold" }} >Chương sau </span>
-              <i
-                style={{ marginLeft: "4px" }}
-                class="fa-solid fa-angle-right"
-              ></i>
-            </button>
-          </div>
-
-
-          <div className="comment_Novel">
-            <div className="commentRD">
-              <div className="Cmt">
-                <h3>Bình luận</h3>
-              </div>
-
-              <form method="post">
-                <textarea
-                  className="inputRD"
-                  name="message"
-                  placeholder="Chia sẻ bình luận của bạn về truyện .... "
-                ></textarea>
-                <div className="submitCMT">
-                  <button className="button-comment-post" style={{ position: "relative", left: 650 }} type="submit">
-                    <span>Đăng</span>
-                  </button>
-                </div>
-              </form>
-              <div className="comments">
-                <SimpleBar style={{ maxHeight: "85vh" }}>
-                  {renderCommentList}
-                </SimpleBar>
-              </div>
-            </div>
-
-            <div className="newNovel">
-              <div className="Cmt">
-                <h3>Đề xuất cho bạn</h3>
-              </div>
-              <Carosel />
-            </div>
-          </div>
-          <Footer />
-        </TransparentBanner>
-      </ImageBanner>
-    )
-  }
+        <Footer />
+      </TransparentBanner>
+    </ImageBanner>
+  )
 }
 ReadingNovel.defaultProps = {
   novelid: "11111",

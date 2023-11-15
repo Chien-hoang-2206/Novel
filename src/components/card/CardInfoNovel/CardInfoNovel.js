@@ -36,6 +36,7 @@ import {
 } from "../../TextField/TestComponents";
 import factories from "../../../redux/app/factory";
 import ButtonType from "../../button/ButtonChoosedType/ButtonChoosedType";
+import { useNavigate } from "react-router-dom";
 
 function CardInfoNovel(props) {
   const [isBookmarked, setIsBookmarked] = useState(props.bookmark);
@@ -73,7 +74,6 @@ function CardInfoNovel(props) {
 
   };
 
-
   const handleDelBookmark = () => {
     const id = "643706d98989be92b3af0f7c";
     const apiUrl = `http://localhost:5000/api/bookmarks/${id}`;
@@ -102,7 +102,12 @@ function CardInfoNovel(props) {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
+  const navigator = useNavigate();
+  function handleChapter() {
+    navigator(`/novel/chapter/${props?.firstChapter}`, {
+      state: { chapterId: props?.nameNovel, novelId: props.IDNovel, accountId: props?.accountId },
+    });
+  }
   return (
     <ContainerCard>
       {/* image */}
@@ -126,7 +131,7 @@ function CardInfoNovel(props) {
 
 
         {/* info  */}
-        <RowInfo style={{height: 80}}>
+        <RowInfo style={{ height: 80 }}>
           <ColInfo>
             <TextInfoNovel>Chương </TextInfoNovel>
             <NomalDiv>
@@ -148,17 +153,15 @@ function CardInfoNovel(props) {
         </RowInfo>
 
         <RowAuth>
-          <ColStar>
-            <ContainerStar>
-              <ContainerStarIcon>
-                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-              </ContainerStarIcon>
-              <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
-            </ContainerStar>
-          </ColStar>
+          <ContainerStar>
+            <ContainerStarIcon>
+              <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+              <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+              <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+              <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+            </ContainerStarIcon>
+            <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
+          </ContainerStar>
           <ColAuth>
             <AuthName> Tác giả: {props.nameAuth} </AuthName>
           </ColAuth>
@@ -174,8 +177,7 @@ function CardInfoNovel(props) {
           </SimpleBar>
         </RowIntro> */}
         <ButtonContainer>
-          <BtnRead>Đọc truyện</BtnRead>
-
+          <BtnRead onClick={handleChapter}>Đọc truyện</BtnRead>
           <BtnBookmarked
             onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
           >
@@ -195,5 +197,6 @@ CardInfoNovel.defaultProps = {
   numBookmark: "999",
   numRead: "000",
   srcimage: "image/demoImg.webp",
+  firstChapter: '',
 };
 export default CardInfoNovel;

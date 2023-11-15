@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 export const Row1 = styled.div`
   position: relative;
+  padding:10px;
 `;
 export const ColButton = styled.div`
   position: absolute;

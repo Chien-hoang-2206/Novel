@@ -64,7 +64,7 @@ export const RowIntro = styled.div`
 `;
 export const RowInfo = styled.div`
   display: flex;
-  gap: 40px;
+  gap: 20px;
 `;
 export const ColAuth = styled.div`
   flex: 2;
@@ -79,6 +79,7 @@ export const NomalDiv = styled.div`
 export const ColInfo = styled.div`
   max-height: 5vh;
   max-width: 27vh;
+  max-width: 160px;
   flex: 3;
 `;
 export const RowStar = styled(Row)`
@@ -86,13 +87,12 @@ export const RowStar = styled(Row)`
 `;
 export const ContainerStar = styled.div`
   display: flex;
-  align-items: center;
+  align-items: left;
 `;
 export const ContainerStarIcon = styled.div`
-  padding: 0.4rem 1rem;
   display: flex;
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 1.5rem;
+  text-align: left;
 `;
 export const ReviewText = styled.div`
   padding: 0rem 1rem;
