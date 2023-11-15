@@ -8,8 +8,8 @@
     filter: blur(50px);
     transform: rotate(-5.67deg);
     @media screen and (max-width: 1368px) {
-        width: 150px;
-        height: 290px;
+        width: 120px;
+        height: 210px;
         left: 25px;
         top: 89.78px;
     }

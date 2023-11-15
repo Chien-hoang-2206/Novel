@@ -4,6 +4,8 @@ import { BtnRead, ButtonContainerPost, Col1, Col2, ColAuth, ColInfo, ColStar, Co
 import { AuthName, Introtext, Nomal, NovelName, TextInfoNovel } from '../../TextField/TestComponents';
 import SimpleBar from 'simplebar-react';
 import "simplebar-react/dist/simplebar.min.css";
+import { Button } from '@mui/material';
+import ButtonChoosedType from '../../button/ButtonChoosedType/ButtonChoosedType';
 
 function CardInfoNovelPost(props) {
     const contentNovel = props.intro;
@@ -42,7 +44,7 @@ function CardInfoNovelPost(props) {
   
             {/* intro */}
             <RowIntro>
-             <SimpleBar style={{     height: "160px" }}>
+             <SimpleBar style={{height: "160px" }}>
                 <Introtext>
                   <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
                 </Introtext>
@@ -53,9 +55,9 @@ function CardInfoNovelPost(props) {
             <RowType>
               {props.types &&
                 props.types.map((types, index) => (
-                  <button
+                  <ButtonChoosedType
                     key={index}
-                  >{types} </button>
+                  >{types} </ButtonChoosedType>
                 ))}
             </RowType>
   

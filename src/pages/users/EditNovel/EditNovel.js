@@ -15,6 +15,7 @@ import {
   ContentEdit1,
   ContentEdit2,
 } from "../../../components/TextField/TestComponents";
+import factories from "../../../redux/app/factory";
 
 function EditNovel(props) {
   const [novel, setNovel] = useState();
@@ -22,6 +23,7 @@ function EditNovel(props) {
   const [chapterListSort, setchapterListSort] = useState();
   const [numBookmard, setnumBookmard] = useState();
   const { id } = useParams();
+  console.log("🚀 ~ file: EditNovel.js:25 ~ EditNovel ~ id:", id)
   const [sortOrder, setSortOrder] = useState(false);
 
   function handleSortClick() {
@@ -62,16 +64,16 @@ function EditNovel(props) {
     return diffInDays;
   };
 
-  const apiUrl = `http://localhost:5000/api/novels/${id}`;
   useEffect(() => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setNovel(data.novelInfo[0]);
-        setchapterList(data.chapterList);
-        setnumBookmard(data.bookmarkNum);
-      });
-  }, []);
+    async function fetchData() {
+      const response = await factories.getNovelInfo(id);
+        setNovel(response?.novelInfo[0]);
+        setchapterList(response?.chapterList);
+        setnumBookmard(response?.bookmarkNum);
+    } 
+    fetchData();
+  }, [id]);
+
   return (
     <>
       {novel && (

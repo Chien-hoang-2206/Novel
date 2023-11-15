@@ -30,13 +30,11 @@ function CardHomeRecomended(props) {
         <div className="w-5/6 mx-2 md:mx-0  ">
           <div className="flex">
             <div className="w-1/2">
-              {/* <LinkRoute to="/novel"> */}
               <LinkRoute to={`/novel/${props.id}`}>
-                <p className="text-sm md:text-2xl " > {props.nameComic}</p>
+                <p className="text-sm md:sm " > {props.nameComic}</p>
               </LinkRoute>
             </div>
             <div className="w-1/2 flex  justify-end">
-
               <button className="text-xs px-1 py-0 h-5 rounded-md border-2 border-red-300 hover:bg-red-300 "              >
                 {props.type1}
               </button>

@@ -102,64 +102,13 @@ function CardInfoNovel(props) {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  if (width <= 768)
-    return (
-      <div className="my-4">
-        <p className="text-2xl w-4/6 mx-auto  text-center font-serift font-extrabold">{props.nameNovel}</p>
-        <div className="w-2/4 h-56 mx-auto my-2">
-          <img alt='' className="border-2 border-slate-400 rounded-lg shadow-md object-fill h-56 mx-auto w-3/4  " src={props.srcimage}></img>
-        </div>
-        <div className="px-3 align-middle  justify-center">
-          <div className="flex selection: ">
-            <p className="w-2/4 text-lg font-bold " > Tác giả: </p>
-            <p className="w-2/4  flex " >  {props.nameAuth} </p>
-          </div>
-          <div className="flex  justify-center">
-            <p className="w-2/4 text-lg font-bold " > Tình trạng: </p>
-            <p className="w-2/4 flex " >  Đang tiến hành  </p>
-          </div>
-          <div className="flex ">
-            <p className="w-2/4 text-lg font-bold " > Thê loại: </p>
-            <p className="w-2/4 flex mr-1" >
-              {props.types &&
-                props.types.map((type, index) => (
-                  <button key={index} className='mx-1 hover:bg-slate-400 hover:text-white '>
-                    <TypesDeleteText>{type}</TypesDeleteText>
-                  </button>
-                ))} </p>
-          </div>
-          <div className="flex  ">
-            <p className="w-2/4 text-lg font-bold " > Lượt đánh dấu: </p>
-            <p className="w-2/4   flex " >  {props.numBookmark}  </p>
-          </div>
 
-          <div className="flex mx-auto w-3/4 justify-center">
-            <BtnReadMobile>Đọc truyện</BtnReadMobile>
-            <BtnBookmarkedMobile
-              onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
-            >
-              {isBookmarked ? "Đã lưu" : "Đánh dấu"}
-            </BtnBookmarkedMobile>
-          </div>
-          <div className="" >
-            <p className="font-bold text-xl "> Nội dung</p>
-            <SimpleBar autoHide={true} style={{ padding: "5px 5px", maxHeight: 160, maxWidth: "100%", scrollbarWidth: "none" }}>
-              <Introtext>
-                <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
-              </Introtext>
-            </SimpleBar>
-          </div>
-        </div>
-
-      </div>
-    )
-  else
-    return (
+  return (
       <div>
         <ContainerCard>
           {/* image */}
           <Col1>
-            <ImgNovel style={{ margin: "10px 10px" }} src={props.srcimage}></ImgNovel>
+            <ImgNovel  style={{ margin: "10px 10px" }} src={props.srcimage}></ImgNovel>
           </Col1>
           {/* info */}
           <Col2>
@@ -170,7 +119,7 @@ function CardInfoNovel(props) {
             {/* auth */}
             <RowAuth>
               <ColAuth>
-                <AuthName> {props.nameAuth} </AuthName>
+                <AuthName> Tác giả: {props.nameAuth} </AuthName>
               </ColAuth>
 
               <ColStar>
@@ -243,7 +192,7 @@ function CardInfoNovel(props) {
           </Col2>
         </ContainerCard>
       </div>
-    );
+  );
 }
 CardInfoNovel.defaultProps = {
   nameNovel: "Thieu nieen trung sinh",

@@ -33,5 +33,12 @@ const factories = {
             data: data
         });
     },
+    addChapter: data => {
+        return ApiOperation.request({
+            url: `${ApiConstants.CHAPTER_NOVEL}`,
+            method: 'POST',
+            data: data
+        });
+    }
 }
 export default factories;

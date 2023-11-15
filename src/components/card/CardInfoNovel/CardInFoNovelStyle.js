@@ -7,11 +7,12 @@ export const ContainerCard = styled.div`
 
 export const Col1 = styled.div`
   flex: 2;
+  padding: 5px 0px;
 `;
 
 export const Col2 = styled.div`
-  flex: 5;
-    padding: 10px 25px;
+  flex: 7;
+    padding: 10px 25px 0px 0px;
 `;
 
 export const ImgNovel = styled.img`
@@ -19,8 +20,8 @@ export const ImgNovel = styled.img`
   border: 6px solid rgba(159, 153, 156, 0.76);
   border: 2px solid rgb(95, 189, 211, 0.9);
   box-shadow: 0 5px 10px rgb(95, 189, 211, 0.9);
-  width: 270px;
-  height: 390px;
+  width: 190px;
+  height: 260px;
   object-fit: fill;
 `;
 export const ImgNovelPost = styled.img`
@@ -28,13 +29,13 @@ export const ImgNovelPost = styled.img`
   border: 3px solid rgba(159, 153, 156, 0.76);
   transform: rotate(-5.84deg);
   position: absolute;
-  width: 236px;
+  width: 200px;
   height: 348px;
   left: 15px;
   top: 98.78px;
   @media screen and (max-width: 1368px) {
-    width: 203px;
-    height: 303px;
+    width: 170px;
+    height: 243px;
     left: 8px;
     top: 69.78px;
   }

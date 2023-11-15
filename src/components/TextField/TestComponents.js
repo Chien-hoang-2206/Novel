@@ -118,8 +118,9 @@ export const NumFeelingMObile= styled.p`
 `;
 export const AuthName = styled.p`
   text-align: left;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
+  margin-top: 5px;
 `;
 export const AuthNameCard = styled.p`
   text-align: left;

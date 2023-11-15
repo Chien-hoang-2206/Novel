@@ -2,11 +2,27 @@ import React, { useState } from "react";
 import "./mynovel.css";
 import { TabName } from "../../../components/TextField/TestComponents";
 import { Link, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import factories from "../../../redux/app/factory";
 function MyNovel() {
   const [toggleState, setToggleState] = useState(1);
+  const [NovelsList, setNovelsList] = useState();
+  console.log("🚀 ~ file: MyNovel.js:10 ~ MyNovel ~ NovelsList:", NovelsList)
+  const [loading, setloading] = useState();
   const toggleTab = (index) => {
     setToggleState(index);
   };
+  useEffect(() => {
+    setloading(true);
+    async function fetchData() {
+      const responseRecomendList = await factories.getNovelListHome();
+      const newNovelList = responseRecomendList?.novelList
+      setNovelsList(newNovelList);
+      setloading(false)
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="box-post-novel">
       {/* tu truyen */}
@@ -50,17 +66,19 @@ function MyNovel() {
                   <Outlet />
             </div>
             <div className="containerDST">
-              <div className="novel">
-                <div className="img-div">
-                  <img alt='img' className="img-novel-post" src="/demoImg.webp" />
-                </div>
-                <div className="text-novel-name">
-                  <Link to="/post-novel/mynovel/643c1ba9846d4044a2b45786">
-                    {" "}
-                    <h5> Thiên Long Bát Bộ </h5>
-                  </Link>
-                </div>
+              {NovelsList?.map((item,index)=>(
+                <div className="novel" key={index}>
+                  <div className="img-div">
+                    <img alt='img' className="img-novel-post" src={item?.coverLink ?? ''} />
+                  </div>
+                  <div className="text-novel-name">
+                  <Link style={{ textDecoration: 'none' }} to={`/post-novel/mynovel/${item?._id}`}>
+                      <h4 style={{textDecoration: 'none'}}> {item?.title}</h4>
+                    </Link>
+                  </div>
               </div>
+              ))}
+             
             </div>
           </div>
 
@@ -70,7 +88,7 @@ function MyNovel() {
               toggleState === 2 ? "content  active-content" : "content"
             }
           >
-            <h1>asds</h1>
+            <h1>Đang phê duyệt</h1>
           </div>
 
           {/* Binh luan */}
@@ -79,7 +97,7 @@ function MyNovel() {
               toggleState === 3 ? "content  active-content" : "content"
             }
           >
-            <h1>asds</h1>
+            <h1>Bình luận</h1>
           </div>
         </div>
       </div>

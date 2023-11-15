@@ -34,8 +34,8 @@
     object-fit: cover;
 }
 .img-novel-post:hover {
-    transition: 0.4s ease-in;
-    transform: translateY(-10px) rotate(15deg);
+    transition: 0.3s ease-in;
+    transform: translateY(-5px) rotate(7deg);
     box-shadow: 2px 35px 32px -8px rgba(0,0,0,0.75);
 
 }

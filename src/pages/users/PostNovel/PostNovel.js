@@ -6,7 +6,7 @@ import ChatBox from "../ChatBox/ChatBox";
 function PostNovel(props) {
   const [showChatbox, setShowChatbox] = useState(false);
   const handleClick = () => {
-    setShowChatbox(!showChatbox);
+    setShowChatbox(!showChatbox); 
   };
   return (
     <div className="container-page">
@@ -28,12 +28,12 @@ function PostNovel(props) {
       </div>
      
       <div className="row-container">
-      <div className="icon-chatbox">
+      {/* <div className="icon-chatbox">
         <button className={`btn-chatbox ${showChatbox ? "show" : ""}`}  onClick={handleClick}>
         <i class="fa-brands fa-facebook-messenger" style= {{ color: "#5c89d6" }}></i>
         </button>
         {showChatbox && <ChatBox />}
-      </div>
+      </div> */}
         <div className="col-sm-1">
           <div className="avatar-area">
             <div className="frame-avt">
