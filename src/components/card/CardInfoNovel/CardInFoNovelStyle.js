@@ -12,7 +12,10 @@ export const Col1 = styled.div`
 
 export const Col2 = styled.div`
   flex: 7;
-    padding: 10px 25px 0px 0px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px 0px 0px;
 `;
 
 export const ImgNovel = styled.img`
@@ -20,8 +23,8 @@ export const ImgNovel = styled.img`
   border: 6px solid rgba(159, 153, 156, 0.76);
   border: 2px solid rgb(95, 189, 211, 0.9);
   box-shadow: 0 5px 10px rgb(95, 189, 211, 0.9);
-  width: 190px;
-  height: 260px;
+  width: 210px;
+  height: 270px;
   object-fit: fill;
 `;
 export const ImgNovelPost = styled.img`
@@ -61,6 +64,7 @@ export const RowIntro = styled.div`
 `;
 export const RowInfo = styled.div`
   display: flex;
+  gap: 40px;
 `;
 export const ColAuth = styled.div`
   flex: 2;
@@ -69,8 +73,8 @@ export const ColStar = styled.div`
   flex: 4;
 `;
 export const NomalDiv = styled.div`
-  height: 50%;
-  margin: 15px 5px;
+  margin: 25px 0px;
+  font-size: 30px;
 `;
 export const ColInfo = styled.div`
   max-height: 5vh;

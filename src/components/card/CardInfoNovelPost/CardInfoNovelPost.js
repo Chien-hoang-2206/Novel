@@ -5,7 +5,7 @@ import { AuthName, Introtext, Nomal, NovelName, TextInfoNovel } from '../../Text
 import SimpleBar from 'simplebar-react';
 import "simplebar-react/dist/simplebar.min.css";
 import { Button } from '@mui/material';
-import ButtonChoosedType from '../../button/ButtonChoosedType/ButtonChoosedType';
+import ButtonType from '../../button/ButtonChoosedType/ButtonChoosedType';
 
 function CardInfoNovelPost(props) {
     const contentNovel = props.intro;
@@ -55,9 +55,9 @@ function CardInfoNovelPost(props) {
             <RowType>
               {props.types &&
                 props.types.map((types, index) => (
-                  <ButtonChoosedType
+                  <ButtonType
                     key={index}
-                  >{types} </ButtonChoosedType>
+                  >{types} </ButtonType>
                 ))}
             </RowType>
   

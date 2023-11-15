@@ -35,6 +35,7 @@ import {
   TypesDeleteText,
 } from "../../TextField/TestComponents";
 import factories from "../../../redux/app/factory";
+import ButtonType from "../../button/ButtonChoosedType/ButtonChoosedType";
 
 function CardInfoNovel(props) {
   const [isBookmarked, setIsBookmarked] = useState(props.bookmark);
@@ -44,15 +45,14 @@ function CardInfoNovel(props) {
 
   async function fetchDataAdd(data) {
     const reponseAddBookmark = await factories.addBookmark(data);
-    console.log("🚀 ~ file: CardInfoNovel.js:47 ~ fetchDataAdd ~ reponseAddBookmark:", reponseAddBookmark)
   }
 
   const handleAddBookmark = () => {
     const accountId = props.accountId;
     const novelId = props.IDNovel;
     const data = { accountId, novelId };
-    fetchDataAdd(data) ; 
-   
+    fetchDataAdd(data);
+
 
     // fetch("http://localhost:5000/api/bookmarks", {
     //   method: "POST",
@@ -104,94 +104,87 @@ function CardInfoNovel(props) {
   }, []);
 
   return (
-      <div>
-        <ContainerCard>
-          {/* image */}
-          <Col1>
-            <ImgNovel  style={{ margin: "10px 10px" }} src={props.srcimage}></ImgNovel>
-          </Col1>
-          {/* info */}
-          <Col2>
-            {/* title   */}
-            <RowTitle>
-              <NovelName> {props.nameNovel} </NovelName>
-            </RowTitle>
-            {/* auth */}
-            <RowAuth>
-              <ColAuth>
-                <AuthName> Tác giả: {props.nameAuth} </AuthName>
-              </ColAuth>
+    <ContainerCard>
+      {/* image */}
+      <Col1>
+        <ImgNovel style={{ margin: "10px 10px" }} src={props.srcimage}></ImgNovel>
+      </Col1>
+      {/* info */}
+      <Col2>
+        {/* title   */}
+        <RowTitle>
+          <NovelName> {props.nameNovel} </NovelName>
+        </RowTitle>
 
-              <ColStar>
-                <ContainerStar>
-                  <ContainerStarIcon>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                  </ContainerStarIcon>
-                  <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
-                </ContainerStar>
-              </ColStar>
-            </RowAuth>
+        {/* type  */}
+        <RowType style={{ marginTop: "10px" }}>
+          {props.types &&
+            props.types.map((type, index) => (
+              <ButtonType >{type}</ButtonType>
+            ))}
+        </RowType>
 
-            {/* intro */}
-            <RowIntro>
-              <SimpleBar autoHide={true} style={{ maxHeight: "160px", maxWidth: "100%", scrollbarWidth: "none" }}>
-                <Introtext>
-                  <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
-                </Introtext>
-              </SimpleBar>
-            </RowIntro>
 
-            {/* type  */}
-            <RowType style={{ marginTop: "10px" }}>
-              {props.types &&
-                props.types.map((type, index) => (
-                  <button key={index} className='rounded-md px-1 bg-slate-300 hover:bg-slate-400 hover:text-white mx-2'>
-                    <TypesDeleteText>{type}</TypesDeleteText>
-                  </button>
-                ))}
-            </RowType>
+        {/* info  */}
+        <RowInfo style={{height: 80}}>
+          <ColInfo>
+            <TextInfoNovel>Chương </TextInfoNovel>
+            <NomalDiv>
+              <Nomal>{props.chaperNum}</Nomal>{" "}
+            </NomalDiv>
+          </ColInfo>
+          <ColInfo>
+            <TextInfoNovel>Lượt lưu </TextInfoNovel>
+            <NomalDiv>
+              <Nomal>{'12322'}</Nomal>{" "}
+            </NomalDiv>
+          </ColInfo>
+          <ColInfo>
+            <TextInfoNovel>Lượt đọc</TextInfoNovel>
+            <NomalDiv>
+              <Nomal>{'232332'}</Nomal>{" "}
+            </NomalDiv>
+          </ColInfo>
+        </RowInfo>
 
-            {/* info  */}
-            <RowInfo>
-              <ColInfo>
-                <TextInfoNovel>Chương: </TextInfoNovel>
+        <RowAuth>
+          <ColStar>
+            <ContainerStar>
+              <ContainerStarIcon>
+                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+              </ContainerStarIcon>
+              <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
+            </ContainerStar>
+          </ColStar>
+          <ColAuth>
+            <AuthName> Tác giả: {props.nameAuth} </AuthName>
+          </ColAuth>
+        </RowAuth>
 
-                <NomalDiv>
-                  <Nomal>{props.chaperNum}</Nomal>{" "}
-                </NomalDiv>
-              </ColInfo>
 
-              <ColInfo>
-                <TextInfoNovel>Lượt lưu: </TextInfoNovel>
-                <NomalDiv>
-                  <Nomal>{props.numBookmark}</Nomal>{" "}
-                </NomalDiv>
-              </ColInfo>
+        {/* intro */}
+        {/* <RowIntro>
+          <SimpleBar autoHide={true} style={{ maxHeight: "160px", maxWidth: "100%", scrollbarWidth: "none" }}>
+            <Introtext>
+              <div dangerouslySetInnerHTML={{ __html: contentNovel }}></div>
+            </Introtext>
+          </SimpleBar>
+        </RowIntro> */}
+        <ButtonContainer>
+          <BtnRead>Đọc truyện</BtnRead>
 
-              <ColInfo>
-                <TextInfoNovel>Lượt đọc: </TextInfoNovel>
-                <NomalDiv>
-                  <Nomal>{props.numRead}</Nomal>{" "}
-                </NomalDiv>
-              </ColInfo>
-            </RowInfo>
+          <BtnBookmarked
+            onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
+          >
+            {isBookmarked ? "Đã lưu" : "Đánh dấu"}
+          </BtnBookmarked>
+        </ButtonContainer>
 
-            <ButtonContainer>
-              <BtnRead>Đọc truyện</BtnRead>
-
-              <BtnBookmarked
-                onClick={isBookmarked ? handleDelBookmark : handleAddBookmark}
-              >
-                {isBookmarked ? "Đã lưu" : "Đánh dấu"}
-              </BtnBookmarked>
-            </ButtonContainer>
-
-          </Col2>
-        </ContainerCard>
-      </div>
+      </Col2>
+    </ContainerCard>
   );
 }
 CardInfoNovel.defaultProps = {

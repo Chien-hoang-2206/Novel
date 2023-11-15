@@ -1,18 +1,18 @@
 import React from 'react'
 import "./ButtonChoosedTypeSytle.css"
 import { TypesDeleteText } from '../../TextField/TestComponents'
-function ButtonChoosedType(props) {
+function ButtonType(props) {
   return (
-    <button className='btn-choosed-types'>
-      <TypesDeleteText>{props.name}</TypesDeleteText>
+    <button style={{marginRight: 5}} class="rounded-2xl  text-gray-500 px-3 py-1 h-7 hover:bg-yellow-200 mb-2 border border-gray-500 ">
+      <TypesDeleteText>{props?.children}</TypesDeleteText>
       {props?.isCanDel && 
         <button className='btn-delete' ><i class="fa-solid fa-xmark"></i></button>
       }
     </button>
   )
 }
-ButtonChoosedType.defaultProps={
-  name: "Thể loại 1",
+ButtonType.defaultProps={
+  children: "Thể loại 1",
   isCanDel: false,
 }
-export default ButtonChoosedType
+export default ButtonType

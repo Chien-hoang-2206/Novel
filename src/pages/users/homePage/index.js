@@ -49,26 +49,24 @@ export default function HomePage(props) {
           {loading === false ? (
             <div className="  md:w-3/4 rounded-md shadow-lg md:my-32 md:mx-auto bg-slate-50">
               {/* Title  */}
-              <div className="px-2 py-2 md:py-4 md:mx-4 ">
+              <div className="px-2 md:py-4 md:mx-4 ">
                 <div className=" md:flex ">
-                  <div className=" md:w-8/12   ">
-                    <Heading1  > Truyện Mới</Heading1>
-                    <div className="  md:bg-slate-100 md:shadow-md">
+                  <div className="md:w-8/12   ">
+                    <Heading1 style={{ maxHeight: 30 }} > Truyện Mới</Heading1>
+                    <div className="flex flex-wrap ">
                       {
                         newNovels.length > 0 ? (
                           newNovels.map((novels, index) => (
-                            <>
-                              <CardHomeRecomended
-                                key={index}
-                                id={novels._id}
-                                image={novels.coverLink}
-                                nameComic={novels.title}
-                                type1={novels.types[0]}
-                                type2={novels.types[1]}
-                                content={novels.intro}
-                                auth={novels.author}
-                              />
-                            </>
+                            <CardHomeRecomended
+                              key={index}
+                              id={novels._id}
+                              image={novels.coverLink}
+                              nameComic={novels.title}
+                              type1={novels.types[0]}
+                              type2={novels.types[1]}
+                              content={novels.intro}
+                              auth={novels.author}
+                            />
                           ))
 
                         ) : (

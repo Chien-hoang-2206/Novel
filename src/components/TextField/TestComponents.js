@@ -26,8 +26,9 @@ export const TextCenter = styled.p`
   text-align: center;
 `;
 export const Nomal = styled.p`
-  font-size: 15px;
-  text-align: center;
+  font-weight: 600;
+  font-size: 26px;
+  text-align: left;
 `;
 export const TypesDeleteText = styled.p`
   font-size: 0.8rem;
@@ -54,7 +55,7 @@ export const TextInfoNovel = styled.p`
   font-size: 1rem;
   max-height: 15%;
   margin-top: 1vh;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
 `;
 export const TextNumInfoNovel = styled.p`
