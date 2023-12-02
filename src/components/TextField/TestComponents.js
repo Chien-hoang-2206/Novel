@@ -31,7 +31,7 @@ export const Nomal = styled.p`
   text-align: left;
 `;
 export const TypesDeleteText = styled.p`
-  font-size: 0.8rem;
+  font-size: 10px;
 `;
 export const TypesText = styled.p`
   font-size: 0.8rem;
@@ -125,7 +125,7 @@ export const AuthName = styled.p`
 `;
 export const AuthNameCard = styled.p`
   text-align: left;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: bold;
   max-height: 1vh;
 `;

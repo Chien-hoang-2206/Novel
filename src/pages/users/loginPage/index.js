@@ -1,14 +1,12 @@
 import { useState } from "react";
 import "./login.css";
 import { Icon } from "@iconify/react";
-
-import axios from "../../../api/axios";
 import { Link } from "react-router-dom";
+import axios from "../../../api/axios";
 const LOGIN_URL = "/api/accounts/login";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
