@@ -31,7 +31,7 @@ export const Nomal = styled.p`
   text-align: left;
 `;
 export const TypesDeleteText = styled.p`
-  font-size: 10px;
+  font-size: 11px;
 `;
 export const TypesText = styled.p`
   font-size: 0.8rem;
