@@ -23,12 +23,12 @@ function ReadingNovel() {
   const [Idnovel, setIdnovel] = useState();
   const [content, setContent] = useState("");
   const accID = sessionStorage.getItem("accID") || "";
-  const novelId = state.Idnovel;
+  const novelId = state?.Idnovel;
 
   useEffect(() => {
     if (state) {
       setNovelName(state.novelname);
-      setIdnovel(state.Idnovel);
+      setIdnovel(state?.Idnovel);
     } else {
       setNovelName("");
       setIdnovel("");
@@ -37,6 +37,7 @@ function ReadingNovel() {
   const [preIDchap, setPreIDchap] = useState();
   const [commentList, setcommentList] = useState();
   const [nextIDchap, setNextIDchap] = useState();
+  console.log("🚀 ~ file: ReadingNovel.js:40 ~ ReadingNovel ~ nextIDchap:", nextIDchap)
   const [contentNovel, setContentNovel] = useState();
   const [chapterInfo, setchapterInfo] = useState({
     title: "Loading",
@@ -134,10 +135,14 @@ function ReadingNovel() {
   };
 
   function handleClickPreChapter() {
-    window.location.href = `/novel/chapter/${preIDchap}`;
+    if (preIDchap) {
+      window.location.href = `/novel/chapter/${preIDchap}`;
+     }
   }
   function handleClickNextChapter() {
-    window.location.href = `/novel/chapter/${nextIDchap}`;
+    if (nextIDchap) {
+      window.location.href = `/novel/chapter/${nextIDchap}`;
+    }
   }
 
   return (
@@ -219,14 +224,15 @@ function ReadingNovel() {
               <h3>Bình luận</h3>
             </div>
 
-            <form method="post">
+            <form method="post" style={{width: '100%'}}>
+
+              <div className="commentForm">
               <textarea
                 className="inputRD"
                 name="message"
                 placeholder="Chia sẻ bình luận của bạn về truyện .... "
               ></textarea>
-              <div className="submitCMT">
-                <button className="button-comment-post" style={{ position: "relative", left: 650 }} type="submit">
+                <button className="button-comment-post" type="submit">
                   <span>Đăng</span>
                 </button>
               </div>

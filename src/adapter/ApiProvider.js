@@ -4,7 +4,6 @@ import { setupInterceptersTo } from './AxiosConfig'
 import { BASE_PREFIX } from './ApiConstants'
 
 const BASE_URL = process.env.REACT_APP_API_URL
-console.log("🚀 ~ file: ApiProvider.js:7 ~ BASE_URL:", BASE_URL)
 // const BASE_URL = 'https://book-api-ayee.onrender.com'
 
 const api = setupInterceptersTo(

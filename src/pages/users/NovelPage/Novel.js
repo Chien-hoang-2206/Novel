@@ -45,7 +45,7 @@ function Novel(props) {
       setchapterList(response.chapterList);
       setnumBookmard(response.bookmarkNum);
       setReviewList(response.reviewList);
-      setNumReview(response.reviewList.length);
+      setNumReview(response.reviewList?.length);
       setLoading(false);
     }
     fetchData();
@@ -84,7 +84,7 @@ function Novel(props) {
                     IDNovel={novel._id}
                     accountId={props.accountID}
                     nameAuth={novel.author}
-                    chaperNum={chapterList.length}
+                    chaperNum={chapterList?.length}
                     intro={novel.intro}
                     types={novel.types}
                     numBookmark={numBookmard}

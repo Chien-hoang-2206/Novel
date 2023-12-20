@@ -11,15 +11,16 @@
 }
 
 .button-comment-post {
-  background: #ddd8c7;
-  position: relative;
-  left: 750px;
+  float: right;
+  background: blue;
   border: 1px solid gray;
   border-radius: 10px;
   padding: 3px 6px;
+  width: 120px;
 }
 
-.button-comment-post :hover {}
+.button-comment-post :hover {
+}
 
 @media (max-width: 1370px) {
   .containerReadingNovel {
@@ -68,10 +69,12 @@
   font-size: 16px;
 }
 
-.submitCMT {
-  position: relative;
-  left: 30px;
-  top: -45px;
+.commentForm {
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .buttonRD {
@@ -94,14 +97,14 @@
   padding: 10px 2vh;
 }
 
-.buttonRD>svg {
+.buttonRD > svg {
   margin-right: 5px;
   margin-left: 5px;
   font-size: 20px;
   transition: all 0.4s ease-in;
 }
 
-.buttonRD:hover>svg {
+.buttonRD:hover > svg {
   font-size: 1.2em;
   transform: translateX(-5px);
 }
