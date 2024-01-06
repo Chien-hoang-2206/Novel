@@ -5,7 +5,6 @@ import { BtnAuthLink, BtnLink } from "../../../pages/users/chartPage/ListChart/L
 function CardChartNovel(props) {
   const contentNovel = props.content;
   const index = props.index + 1;
-  console.log(index);
   return (
     <div className="box-list">
       <div className="image-novel-chart">
