@@ -129,9 +129,9 @@ function SignUp(props) {
         </div>
         <div className="icon-link-su mx-auto">
           <div className="px-auto">
-            <i class="fa-brands fa-facebook" style={{ color: "#075ced", marginLeft: "28px", fontSize: 40 }}></i>
+            <i className="fa-brands fa-facebook" style={{ color: "#075ced", marginLeft: "28px", fontSize: 40 }}></i>
             <i
-              class="fa-brands fa-google-plus"
+              className="fa-brands fa-google-plus"
               style={{ color: "#ff0505", marginLeft: "30px", fontSize: 40 }}
             ></i>
           </div>

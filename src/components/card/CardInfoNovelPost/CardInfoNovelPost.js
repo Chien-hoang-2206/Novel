@@ -32,10 +32,10 @@ function CardInfoNovelPost(props) {
               <ColStar>
                 <ContainerStar>
                   <ContainerStarIcon>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
-                    <i class="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i className="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i className="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i className="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
+                    <i className="fa-solid fa-star" style={{ color: "#ecf000" }}></i>
                   </ContainerStarIcon>
                   <ReviewText>4.45/5 ( 32 đánh giá) </ReviewText>
                 </ContainerStar>

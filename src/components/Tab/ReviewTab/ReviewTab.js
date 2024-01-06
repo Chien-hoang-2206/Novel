@@ -197,7 +197,7 @@ function ReviewTab(props) {
               <UserEditNote className="mx-auto">
                 <div className="flex w-11/12  items-center bg-yellow-100  mx-auto my-2 h-10">
                   <div className="w-1/12 pl-3  justify-center items-center">
-                    <i class="fa-solid fa-dragon"></i>
+                    <i className="fa-solid fa-dragon"></i>
                   </div>
                   <div className="w-6/12 items-center">
                     <AuthName>Tính cách nhân vật</AuthName>
@@ -216,7 +216,7 @@ function ReviewTab(props) {
                 </div>
                 <div className="flex  w-11/12 items-center bg-yellow-100 mx-auto my-2 h-10">
                   <div className="w-1/12 pl-3  justify-center items-center">
-                    <i class="fa-solid fa-dragon"></i>
+                    <i className="fa-solid fa-dragon"></i>
                   </div>
                   <div className="w-6/12 items-center">
                     <AuthName>Nội dung cốt truyện</AuthName>
@@ -235,7 +235,7 @@ function ReviewTab(props) {
                 </div>
                 <div className="flex  w-11/12 items-center bg-yellow-100  mx-auto  my-2 h-10">
                   <div className="w-1/12 pl-3  justify-center items-center">
-                    <i class="fa-solid fa-dragon"></i>
+                    <i className="fa-solid fa-dragon"></i>
                   </div>
                   <div className="w-6/12 items-center">
                     <AuthName>Bố cục thế giới</AuthName>
@@ -260,7 +260,7 @@ function ReviewTab(props) {
                   placeholder="Nhập đánh giá về bộ truyện của bạn"
                   onChange={handleInputChange}
                 ></textarea>
-                <button class="cssbuttons-io " style={{ top: -40, left: 640 }} type="submit">
+                <button className="cssbuttons-io " style={{ top: -40, left: 640 }} type="submit">
                   <span>
                     Đăng
                   </span>
@@ -290,7 +290,7 @@ function ReviewTab(props) {
           <Col sm={3}>
             <Heading2>
               {" "}
-              <i class="fa-solid fa-triangle-exclamation"></i> Lưu ý khi đánh giá !
+              <i className="fa-solid fa-triangle-exclamation"></i> Lưu ý khi đánh giá !
             </Heading2>
             <Note>
               <NoteText>

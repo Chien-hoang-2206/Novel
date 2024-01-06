@@ -149,7 +149,7 @@ function ChatGpt() {
            */}
         </div>
         <form className="box-typing" onSubmit={handleSubmit}>
-          <div class="input-container">
+          <div className="input-container">
             <textarea
               type="text"
               className="input-field"
@@ -167,7 +167,7 @@ function ChatGpt() {
             style={{ background: "transparent", border: "none" }}
           >
             <i
-              class="fa-sharp fa-solid fa-paper-plane"
+              className="fa-sharp fa-solid fa-paper-plane"
               style={{ color: "#3972d5" }}
             ></i>
           </button>

@@ -89,7 +89,7 @@ function NewNovel(props) {
         <form onSubmit={handleSubmit}>
           <div className="row-sm">
             <div className="col-type">
-              <i class="fa-solid fa-book-journal-whills"></i>
+              <i className="fa-solid fa-book-journal-whills"></i>
               <h8>Tên Truyện</h8>
             </div>
             <div className="col-input">
@@ -106,7 +106,7 @@ function NewNovel(props) {
 
           <div className="row-sm">
             <div className="col-type">
-              <i class="fa-solid fa-file"></i>
+              <i className="fa-solid fa-file"></i>
               <h8>Giới thiệu</h8>
             </div>
             <div className="col-input">
@@ -171,7 +171,7 @@ function NewNovel(props) {
 
           <div className="row-sm">
             <div className="col-type">
-              <i class="fa-solid fa-file"></i>
+              <i className="fa-solid fa-file"></i>
               <h8>Thể Loại</h8>
             </div>
 
@@ -224,7 +224,7 @@ function NewNovel(props) {
 
           <div className="row-sm">
             <div className="col-type">
-              <i class="fa-solid fa-book-journal-whills"></i>
+              <i className="fa-solid fa-book-journal-whills"></i>
               <h8>Loại Truyện</h8>
             </div>
             <div className="col-input">
@@ -243,7 +243,7 @@ function NewNovel(props) {
 
           <div className="row-sm">
             <div className="col-type">
-              <i class="fa-solid fa-book-journal-whills"></i>
+              <i className="fa-solid fa-book-journal-whills"></i>
               <h8>Tác Giả</h8>
             </div>
             <div className="col-input">
@@ -266,7 +266,7 @@ function NewNovel(props) {
             </div>
           </div>
           <div className="post-novel">
-            <button type="submit" class="btn">
+            <button type="submit" className="btn">
               Đăng Truyện
             </button>
           </div>

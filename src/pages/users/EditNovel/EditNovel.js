@@ -92,11 +92,11 @@ function EditNovel(props) {
         />
       )}
 
-      <div class="list-chapter">
-        <div class="list-chapter-content">
+      <div className="list-chapter">
+        <div className="list-chapter-content">
           <h4>Danh sách chương </h4>
           <LinkChapter to={`chapter/add`}>
-            <i class="fa fa-plus"></i>{" "}
+            <i className="fa fa-plus"></i>{" "}
           </LinkChapter>
         </div>
         <Outlet />
@@ -122,9 +122,9 @@ function EditNovel(props) {
               }}
             >
               {sortOrder === true ? (
-                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                <i className="fa-solid fa-arrow-down-short-wide"></i>
               ) : (
-                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                <i className="fa-solid fa-arrow-up-wide-short"></i>
               )}
             </button>
           </div>

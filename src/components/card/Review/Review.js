@@ -22,11 +22,11 @@ function Review(props) {
           <div className="star-date">
             <div className="review-header-stars">
               {star}
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
-              <i class="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
+              <i className="fa-solid fa-star"></i>
             </div>
             <div className="review-header-date">
               {date} ngày trước
@@ -46,13 +46,13 @@ function Review(props) {
         </div>
         <div className="review-body-actions">
           <div className="review-body-likes">
-            {like} <i class="fa-solid fa-heart"></i> 120
+            {like} <i className="fa-solid fa-heart"></i> 120
           </div>
           <div className="review-body-reply">
-            {reply}  <i class="fa-sharp fa-solid fa-reply"></i> Trả lời
+            {reply}  <i className="fa-sharp fa-solid fa-reply"></i> Trả lời
           </div>
           <div className="review-body-report">
-            {report} <i class="fa-solid fa-flag"></i> Báo xấu
+            {report} <i className="fa-solid fa-flag"></i> Báo xấu
           </div>
         </div>
       </div>

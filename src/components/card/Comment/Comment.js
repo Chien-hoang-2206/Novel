@@ -40,13 +40,13 @@ function Comment(props) {
         </div>
         <div className="comment-body-actions">
           <div className="comment-body-likes">
-            {like} <i class="fa-solid fa-heart"></i> 120
+            {like} <i className="fa-solid fa-heart"></i> 120
           </div>
           <div className="comment-body-reply">
-            {reply}  <i class="fa-sharp fa-solid fa-reply"></i> Trả lời
+            {reply}  <i className="fa-sharp fa-solid fa-reply"></i> Trả lời
           </div>
           <div className="comment-body-report">
-            {report} <i class="fa-solid fa-flag"></i> Báo xấu
+            {report} <i className="fa-solid fa-flag"></i> Báo xấu
           </div>
         </div>
       </div>

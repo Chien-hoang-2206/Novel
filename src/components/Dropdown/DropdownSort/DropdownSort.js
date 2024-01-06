@@ -34,7 +34,7 @@ function DropdownSort(props) {
   return (
     <div className="dropdown" onClick={toggleDropdown} ref={ref}>
       <span>{props.title}</span>
-      <i class="fa-sharp fa-solid fa-arrow-down-wide-short" style={{marginLeft: "4px"}}></i>
+      <i className="fa-sharp fa-solid fa-arrow-down-wide-short" style={{marginLeft: "4px"}}></i>
       {isOpen && (
         <ul className="dropdown-list">
           <li onClick={(e) => handleItemClick(e, " {props.item1}")}>

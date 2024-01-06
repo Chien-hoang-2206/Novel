@@ -69,7 +69,7 @@ function IntroduceTab() {
             <Row>
               <Col2Row2>
                 <i
-                  class="fa-sharp fa-solid fa-book fa-2xl"
+                  className="fa-sharp fa-solid fa-book fa-2xl"
                   style={{ paddingLeft: "4vh" }}
                 ></i>
                 <TextInfoNovel style={{ paddingTop: "4vh" }}>
@@ -78,7 +78,7 @@ function IntroduceTab() {
                 <TextInfoNovel style={{ marginTop: "-8vh" }}> 122</TextInfoNovel>
               </Col2Row2>
               <Col2Row2>
-              <i class="fa-solid fa-list fa-2xl" style={{ paddingLeft: "4vh" }}></i>
+              <i className="fa-solid fa-list fa-2xl" style={{ paddingLeft: "4vh" }}></i>
                 <TextInfoNovel style={{ paddingTop: "4vh" }}>
                   Số Chương
                 </TextInfoNovel>
@@ -86,7 +86,7 @@ function IntroduceTab() {
               </Col2Row2>
               <Col2Row2>
                 <i
-                  class="fa-solid fa-crown fa-2xl"
+                  className="fa-solid fa-crown fa-2xl"
                   style={{ paddingLeft: "4vh" }}
                 ></i>
                 <TextInfoNovel style={{ paddingTop: "4vh" }}>
