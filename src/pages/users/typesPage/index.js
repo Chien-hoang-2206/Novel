@@ -19,15 +19,15 @@ const HomeNewNoevl_URL = "/api/novels/";
 
 function TypesPage() {
   const [types, setTypes] = useState([]);
-  const typesForChoose = [ "Tiên Hiệp",
-  "Kiếm Hiệp",
-  "Huyễn Huyền",
-  "Vô Địch",
-  "Điềm Đạm",
-  "Tưởng Tu",
-  "Nhẹ Nhàng",
-  "Đô Thị",
-  "Dị Giới"]
+  const typesForChoose = ["Tiên Hiệp",
+    "Kiếm Hiệp",
+    "Huyễn Huyền",
+    "Vô Địch",
+    "Điềm Đạm",
+    "Tưởng Tu",
+    "Nhẹ Nhàng",
+    "Đô Thị",
+    "Dị Giới"]
   const [Listnovel, setListnovel] = useState();
   console.log(Listnovel);
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -88,7 +88,7 @@ function TypesPage() {
         .catch((error) => {
           alert(error.response.data.error);
         });
-  
+
       setTypes(() => newTypes);
     } else {
       alert("This type is already selected.");
@@ -105,8 +105,17 @@ function TypesPage() {
         if (response.data) {
           setListnovel(response.data.novelSameTypes);
           setTypes(newTypes);
+          if (newTypes.length === 0) {
+            axios
+              .get(HomeNewNoevl_URL)
+              .then((response) => {
+                setListnovel(response.data.novelList);
+              })
+              .catch((error) => {
+                alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
+              });
+          }
         } else {
-          // Đăng nhập thất bại, hiển thị thông báo lỗi
           alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
         }
       })
@@ -295,7 +304,7 @@ function TypesPage() {
                             >
                               {type}
                             </TypesDeleteText>
-                              <i className="fa-solid fa-xmark"></i>
+                            <i className="fa-solid fa-xmark"></i>
                           </button>
                         ))}
                     </div>
@@ -351,10 +360,10 @@ function TypesPage() {
                       </button>
                     </div>
                   </div>
-                  <div className="hot-novel">
+                  {/* <div className="hot-novel">
                     {" "}
                     <TitleText>Hot</TitleText>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-sort-novel">
                   {/* <div className="sort">
