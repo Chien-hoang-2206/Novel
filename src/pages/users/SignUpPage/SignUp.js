@@ -3,7 +3,7 @@ import "./SignUp.css";
 import { Icon } from "@iconify/react";
 import { Nomal } from "../../../components/TextField/TestComponents";
 import axios from "../../../api/axios";
-const SignUP_URL = "/api/accounts/signup";
+const SignUP_URL = "/api/accounts/sign-up";
 function SignUp(props) {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
