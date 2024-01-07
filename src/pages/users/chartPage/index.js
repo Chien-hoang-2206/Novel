@@ -77,28 +77,28 @@ const ChartPage = () => {
                   <div className="col-1-sticky">
                     <LinkChart to="/charts/trend">
                       <div className="icon-name">
-                        <i className="fa-solid fa-arrow-trend-up"></i>
+                        <i className="fa-solid fa-arrow-trend-up" style={{minWidth: 25}}></i>
                         <h5 className="text-tab">Thịnh hành</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/read">
                       <div className="icon-name">
-                        <i className="fa-solid fa-book"></i>
-                        <h5 className="text-tab">Đọc nhiều</h5>
+                        <i className="fa-solid fa-book" style={{minWidth: 25}}></i>
+                        <h5 className="text-tab"   > Đọc nhiều</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/like">
                       <div className="icon-name">
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star" style={{minWidth: 25}}></i>
                         <h5 className="text-tab">Điểm số</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/bookmark">
                       <div className="icon-name">
-                        <i className="fa-brands fa-gratipay"></i>
+                        <i className="fa-brands fa-gratipay" style={{minWidth: 25}}></i>
                         <h5 className="text-tab">Lượt đánh giá</h5>
                       </div>
                     </LinkChart>
