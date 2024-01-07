@@ -15,7 +15,7 @@ import CardNovelTypesSearch from "../../../components/card/CardNovelTypesSearch/
 
 import axios from "../../../api/axios";
 const TypesNovelURL = "/api/novels/types";
-const HomeNewNoevl_URL = "/api/novels/";
+const HomeNewNovel_URL = "/api/novels/";
 
 function TypesPage() {
   const [types, setTypes] = useState([]);
@@ -48,7 +48,7 @@ function TypesPage() {
 
   function callApiNewNovelList() {
     return axios
-      .get(HomeNewNoevl_URL)
+      .get(HomeNewNovel_URL)
       .then((response) => {
         return response.data.novelList;
       })

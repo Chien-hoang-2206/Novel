@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./ListChart.css";
 import CardChartNovel from "../../../../components/card/CardChartNovel/CardChartNovel";
 import axios from "../../../../api/axios";
-const HomeNewNoevl_URL = "/api/ranking/readcount";
+import { useLocation } from 'react-router-dom';
+const apiEndpoints = {
+  'trend': 'read-rank',
+  'read': 'read-rank',
+  'like': 'score-rank',
+  'bookmark': 'review-rank'
+};
 
-
-function callApiNewNovelList() {
+function callApiNewNovelList(lastSegment) {
+  const apiEndpoint = apiEndpoints[lastSegment];
   return axios
-    .get(HomeNewNoevl_URL)
+    .get(`/api/ranking/${apiEndpoint}`)
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch((error) => {
@@ -18,25 +23,29 @@ function callApiNewNovelList() {
 }
 
 function ListChart() {
+  const location = useLocation();
+  const path = location.pathname;
+  const segments = path.split('/');
+  const lastSegment = segments[segments.length - 1];
   const [newNovels, setNewNovels] = useState([]);
+  
   useEffect(() => {
     async function fetchData() {
-      const newNovelList = await callApiNewNovelList();
-      console.log("truyen doc");
+      const newNovelList = await callApiNewNovelList(lastSegment);
       setNewNovels(newNovelList);
     }
     fetchData();
-  }, []);
+  }, [lastSegment]);
 
   return (
     <>
-      <div className="list">
+      {/* <div className="list">
         <select className="button-list">
           <option> Theo tuần </option>
           <option> Theo tháng </option>
           <option> Theo năm </option>
         </select>
-      </div>
+      </div> */}
       <div className="container-list">
             {/* list novel */}
             {newNovels &&

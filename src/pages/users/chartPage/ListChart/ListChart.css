@@ -123,7 +123,7 @@
 }
 
 .row-intro {
-    height: 80px;
+    height: 4.5rem;
     overflow: hidden;
 }
 
@@ -155,13 +155,13 @@
 
 .type-chart {
     padding: 2px 10px;
-    background-color: transparent;
     border: 1px solid #b78a28;
+    background-color: #b78a28;
 }
 
 .type-chart:hover {
     padding: 2px 10px;
-    background-color: #b78a28;
+    background-color: transparent;
     color: #fff;
     border: 1px solid #b78a28;
 }

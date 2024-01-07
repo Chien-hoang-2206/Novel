@@ -47,7 +47,7 @@ export const TabName = styled.p`
   margin-bottom: -0.3vh;
   font-weight: bold;
 `;
-export const Introtext = styled.p`
+export const Introtext = styled.div`
   font-size: 1rem;
   text-align: justify;
 `;

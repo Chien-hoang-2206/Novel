@@ -31,6 +31,7 @@ const ChartPage = () => {
                     <i className="fa-solid fa-arrow-trend-up"></i>
                     <h5 className="text-tab">Thịnh hành</h5>
                   </div>
+                  <h5 className="text-tab">Thịnh hành</h5>
                 </LinkChart>
 
                 <LinkChart to="/charts/read">
@@ -38,6 +39,7 @@ const ChartPage = () => {
                     <i className="fa-solid fa-book"></i>
                     <h5 className="text-tab">Đọc nhiều</h5>
                   </div>
+                  <h5 className="text-tab">Đọc nhiều</h5>
                 </LinkChart>
 
                 <LinkChart to="/charts/like">
@@ -45,6 +47,7 @@ const ChartPage = () => {
                     <i className="fa-brands fa-gratipay"></i>
                     <h5 className="text-tab">Yêu thích</h5>
                   </div>
+                    <h5 className="text-tab">Yêu thích</h5>
                 </LinkChart>
 
                 <LinkChart to="/charts/bookmark">
@@ -52,6 +55,7 @@ const ChartPage = () => {
                     <i className="fa-solid fa-bookmark"></i>
                     <h5 className="text-tab">Đánh dấu nhiều</h5>
                   </div>
+                    <h5 className="text-tab">Đánh dấu nhiều</h5>
                 </LinkChart>
               </div>
             </div>
