@@ -194,3 +194,6 @@
 .post-novel .btn:active {
   transform: scale(0.9);
 }
+.ql-container.ql-snow {
+  height: 200px;
+}
