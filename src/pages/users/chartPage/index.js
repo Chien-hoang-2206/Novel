@@ -28,29 +28,32 @@ const ChartPage = () => {
               <div className="col-1-sticky">
                 <LinkChart to="/charts/trend">
                   <div className="icon-name">
-                    <i class="fa-solid fa-arrow-trend-up"></i>
-                    
+                    <i className="fa-solid fa-arrow-trend-up"></i>
+                    <h5 className="text-tab">Thịnh hành</h5>
                   </div>
                   <h5 className="text-tab">Thịnh hành</h5>
                 </LinkChart>
 
                 <LinkChart to="/charts/read">
                   <div className="icon-name">
-                    <i class="fa-solid fa-book"></i>
+                    <i className="fa-solid fa-book"></i>
+                    <h5 className="text-tab">Đọc nhiều</h5>
                   </div>
                   <h5 className="text-tab">Đọc nhiều</h5>
                 </LinkChart>
 
                 <LinkChart to="/charts/like">
                   <div className="icon-name">
-                    <i class="fa-brands fa-gratipay"></i>
+                    <i className="fa-brands fa-gratipay"></i>
+                    <h5 className="text-tab">Yêu thích</h5>
                   </div>
                     <h5 className="text-tab">Yêu thích</h5>
                 </LinkChart>
 
                 <LinkChart to="/charts/bookmark">
                   <div className="icon-name">
-                    <i class="fa-solid fa-bookmark"></i>
+                    <i className="fa-solid fa-bookmark"></i>
+                    <h5 className="text-tab">Đánh dấu nhiều</h5>
                   </div>
                     <h5 className="text-tab">Đánh dấu nhiều</h5>
                 </LinkChart>
@@ -73,29 +76,29 @@ const ChartPage = () => {
                 <div className="col-1">
                   <div className="col-1-sticky">
                     <LinkChart to="/charts/trend">
-                      <div className="icon-name"> 
-                        <i class="fa-solid fa-arrow-trend-up"></i>
+                      <div className="icon-name">
+                        <i className="fa-solid fa-arrow-trend-up"></i>
                         <h5 className="text-tab">Thịnh hành</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/read">
                       <div className="icon-name">
-                        <i class="fa-solid fa-book"></i>
+                        <i className="fa-solid fa-book"></i>
                         <h5 className="text-tab">Đọc nhiều</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/like">
                       <div className="icon-name">
-                        <i class="fa-brands fa-gratipay"></i>
+                        <i className="fa-brands fa-gratipay"></i>
                         <h5 className="text-tab">Yêu thích</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/bookmark">
                       <div className="icon-name">
-                        <i class="fa-solid fa-bookmark"></i>
+                        <i className="fa-solid fa-bookmark"></i>
                         <h5 className="text-tab">Đánh dấu nhiều</h5>
                       </div>
                     </LinkChart>

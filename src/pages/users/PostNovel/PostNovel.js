@@ -30,7 +30,7 @@ function PostNovel(props) {
       <div className="row-container">
       {/* <div className="icon-chatbox">
         <button className={`btn-chatbox ${showChatbox ? "show" : ""}`}  onClick={handleClick}>
-        <i class="fa-brands fa-facebook-messenger" style= {{ color: "#5c89d6" }}></i>
+        <i className="fa-brands fa-facebook-messenger" style= {{ color: "#5c89d6" }}></i>
         </button>
         {showChatbox && <ChatBox />}
       </div> */}
@@ -47,25 +47,25 @@ function PostNovel(props) {
           <div className="nav-col">
             <div className="option-nav">
               <Link to={"/post-novel/profile"}>
-                <i class="fa-solid fa-address-card"></i>
+                <i className="fa-solid fa-address-card"></i>
                 Thông tin{" "}
               </Link>
             </div>
             <div className="option-nav">
               <Link to={"/post-novel/post-new-novel"}>
-                <i class="fa-sharp fa-solid fa-cloud-arrow-up"></i>
+                <i className="fa-sharp fa-solid fa-cloud-arrow-up"></i>
                 Đăng truyện mới
               </Link>
             </div>
             <div className="option-nav">
               <Link to={"/post-novel/mynovel"}>
-                <i class="fa-sharp fa-solid fa-cloud-arrow-up"></i>
+                <i className="fa-sharp fa-solid fa-cloud-arrow-up"></i>
                 Tủ truyện
               </Link>
             </div>
             <div className="option-nav">
               <Link to={"/post-novel/message"}>
-                <i class="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
                 Tin nhắn
               </Link>
             </div>

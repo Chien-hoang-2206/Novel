@@ -80,7 +80,7 @@ function EdiChaptertModel() {
           <form onSubmit={handleSubmitAddChapter}>
             <div className="row-sm">
               <div className="col-type">
-                <i class="fa-solid fa-book-journal-whills"></i>
+                <i className="fa-solid fa-book-journal-whills"></i>
                 <h8>Tên chương</h8>
               </div>
               <div className="col-input">
@@ -96,7 +96,7 @@ function EdiChaptertModel() {
 
             <div className="row-sm">
               <div className="col-type">
-                <i class="fa-solid fa-file"></i>
+                <i className="fa-solid fa-file"></i>
                 <h8>Nội dung chương</h8>
               </div>
             <div className="col-input">

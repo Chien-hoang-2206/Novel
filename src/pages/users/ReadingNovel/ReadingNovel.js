@@ -156,7 +156,7 @@ function ReadingNovel() {
               style={{ textDecoration: "none", fontWeight: "bold" }}
               href="/home"
             >
-              <i class="fa-solid fa-house"></i>
+              <i className="fa-solid fa-house"></i>
             </Breadcrumb.Item>
             <Breadcrumb.Item
               style={{ textDecoration: "none", fontWeight: "bold" }}
@@ -177,7 +177,7 @@ function ReadingNovel() {
 
             <button onClick={handleClickPreChapter}
               className="buttonRD" style={{ float: "left" }}>
-              <i class="fa-solid fa-angle-left"></i>
+              <i className="fa-solid fa-angle-left"></i>
               <span style={{ fontWeight: "bold" }}>Chương trước </span>
             </button>
             {/* btn next chap */}
@@ -185,7 +185,7 @@ function ReadingNovel() {
               <span style={{ fontWeight: "bold" }} > Chương sau </span>
               <i
                 style={{ marginLeft: "4px" }}
-                class="fa-solid fa-angle-right"
+                className="fa-solid fa-angle-right"
               ></i>
             </button>
           </div>
@@ -205,7 +205,7 @@ function ReadingNovel() {
             className="buttonRD"
             style={{ float: "left" }}
           >
-            <i class="fa-solid fa-angle-left"></i>
+            <i className="fa-solid fa-angle-left"></i>
             <span style={{ fontWeight: "bold" }} >Chương trước </span>
           </button>
 
@@ -213,7 +213,7 @@ function ReadingNovel() {
             <span style={{ fontWeight: "bold" }} >Chương sau </span>
             <i
               style={{ marginLeft: "4px" }}
-              class="fa-solid fa-angle-right"
+              className="fa-solid fa-angle-right"
             ></i>
           </button>
         </div>

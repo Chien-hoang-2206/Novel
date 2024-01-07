@@ -19,15 +19,15 @@ const HomeNewNovel_URL = "/api/novels/";
 
 function TypesPage() {
   const [types, setTypes] = useState([]);
-  const typesForChoose = [ "Tiên Hiệp",
-  "Kiếm Hiệp",
-  "Huyễn Huyền",
-  "Vô Địch",
-  "Điềm Đạm",
-  "Tưởng Tu",
-  "Nhẹ Nhàng",
-  "Đô Thị",
-  "Dị Giới"]
+  const typesForChoose = ["Tiên Hiệp",
+    "Kiếm Hiệp",
+    "Huyễn Huyền",
+    "Vô Địch",
+    "Điềm Đạm",
+    "Tưởng Tu",
+    "Nhẹ Nhàng",
+    "Đô Thị",
+    "Dị Giới"]
   const [Listnovel, setListnovel] = useState();
   console.log(Listnovel);
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -72,8 +72,8 @@ function TypesPage() {
 
 
   const handleAddType = (choose) => {
-    const newTypes = [...types, choose];
-    setTypes((types) => {
+    if (!types.includes(choose)) {
+      const newTypes = [...types, choose];
       axios
         .post(TypesNovelURL, {
           types: newTypes,
@@ -88,8 +88,11 @@ function TypesPage() {
         .catch((error) => {
           alert(error.response.data.error);
         });
-      return newTypes;
-    });
+
+      setTypes(() => newTypes);
+    } else {
+      alert("This type is already selected.");
+    }
   };
 
   const handleDelete = (type) => {
@@ -102,8 +105,17 @@ function TypesPage() {
         if (response.data) {
           setListnovel(response.data.novelSameTypes);
           setTypes(newTypes);
+          if (newTypes.length === 0) {
+            axios
+              .get(HomeNewNoevl_URL)
+              .then((response) => {
+                setListnovel(response.data.novelList);
+              })
+              .catch((error) => {
+                alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
+              });
+          }
         } else {
-          // Đăng nhập thất bại, hiển thị thông báo lỗi
           alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
         }
       })
@@ -140,7 +152,7 @@ function TypesPage() {
                           {type}
                         </TypesDeleteText>
                         <button className="btn-delete mx-1  ">
-                          <i class="fa-solid fa-xmark"></i>
+                          <i className="fa-solid fa-xmark"></i>
                         </button>
                       </button>
                     ))}
@@ -285,16 +297,14 @@ function TypesPage() {
                     <div className="choosed-type">
                       {types &&
                         types.map((type, index) => (
-                          <button className="flex  rounded-sm px-2 py-1 max-h-7 mx-1 my-1 bg-gray-400 text-gray-100 ">
+                          <button key={index} onClick={() => handleDelete(type)} className="flex  rounded-sm px-2 py-1 max-h-7 mx-1 my-1 bg-gray-400 text-gray-100 ">
                             <TypesDeleteText
                               key={index}
                               onClick={() => handleDelete(type)}
                             >
                               {type}
                             </TypesDeleteText>
-                            <button className="btn-delete mx-1  ">
-                              <i class="fa-solid fa-xmark"></i>
-                            </button>
+                            <i className="fa-solid fa-xmark"></i>
                           </button>
                         ))}
                     </div>
@@ -350,13 +360,13 @@ function TypesPage() {
                       </button>
                     </div>
                   </div>
-                  <div className="hot-novel">
+                  {/* <div className="hot-novel">
                     {" "}
                     <TitleText>Hot</TitleText>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-sort-novel">
-                  <div className="sort">
+                  {/* <div className="sort">
                     <DropdownSort
                       title="Mới đăng"
                       item1="Chua doc"
@@ -392,7 +402,7 @@ function TypesPage() {
                       item1="Chua doc"
                       item2="da doc"
                     />
-                  </div>
+                  </div> */}
                   <div className="my-2 ml-2 pt-1   inline-flex    flex-wrap ">
                     {Listnovel &&
                       Listnovel.map((novel, index) => (

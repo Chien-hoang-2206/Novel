@@ -35,13 +35,13 @@ function CardChartNovel(props) {
 
         <div className="row-2-chart">
           <BtnAuthLink className="row-auth">
-            <i style={{ marginRight: "3px" }} class="fa-solid fa-user"></i>
+            <i style={{ marginRight: "3px" }} className="fa-solid fa-user"></i>
             {props.auth}
           </BtnAuthLink>
           <div className="row-read">
             <i
               style={{ marginRight: "3px" }}
-              class="fa-solid fa-book-open-reader"
+              className="fa-solid fa-book-open-reader"
             ></i>
             {props.numRead} 2000
           </div>

@@ -35,7 +35,7 @@ function CardNovelTypesSearch(props) {
         </Row>
         <Row>
           <Chapter >
-            <i class="fa-solid fa-list"></i>
+            <i className="fa-solid fa-list"></i>
             <Nomal>Chương: 102</Nomal>
           </Chapter>
 
