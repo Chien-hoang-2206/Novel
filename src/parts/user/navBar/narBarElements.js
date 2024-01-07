@@ -94,7 +94,7 @@ export const NavBtnLink = styled(Link)`
     color: #583f3f;
     display: flex;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     height: 80%;
     text-decoration: none;
     margin-top: 1vh;
@@ -109,7 +109,9 @@ export const NavBtnLink = styled(Link)`
       height: 80%;
       transition: all 0.2s ease-out;
   }
-
+  @media screen and (max-width: 768px) {
+    font-size:0.7rem;
+  }
 `;
 
 export const NavSearchContainer = styled.div`
