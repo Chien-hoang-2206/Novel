@@ -7,6 +7,7 @@ import "./Readingnovel.css";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
 import Footer from "../../../parts/user/footer";
 import Comment from "../../../components/card/Comment/Comment";
+import ProgressBar from "../../../components/ProgressBar/ProgressBar";
 import SimpleBar from "simplebar-react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -137,7 +138,7 @@ function ReadingNovel() {
   function handleClickPreChapter() {
     if (preIDchap) {
       window.location.href = `/novel/chapter/${preIDchap}`;
-     }
+    }
   }
   function handleClickNextChapter() {
     if (nextIDchap) {
@@ -252,6 +253,7 @@ function ReadingNovel() {
           </div>
         </div>
         <Footer />
+        <ProgressBar/>
       </TransparentBanner>
     </ImageBanner>
   )
