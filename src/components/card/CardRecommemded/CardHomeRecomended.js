@@ -19,14 +19,14 @@ function CardHomeRecomended(props) {
   return (
     <div className="my-2 px-2 h-24 md:w-1/2 sm:w-1/2 w-full rounded-md md:h-28  hover:bg-slate-200  ">
       <div className="flex px-1 gap-2 py-1">
-        <div className=" w-1/4 h-5/6 md:h-5/6 flex items-center ">
+        <div className=" w-1/4 sm:w-1/3 lg:w-1/5 h-5/6 md:h-5/6 xs:w-1/3 flex items-center ">
           <img
             alt="img"
-            className="w-20 h-20 md:h-24  md:w-30 flex object-cover rounded-md  "
+            className="w-20 h-20 md:h-24 md:w-30 flex object-cover rounded-md  "
             src={props.image}
           />
         </div>
-        <div className="w-3/4 mx-2 md:w-3/5 md:mx-0 flex flex-col justify-between ">
+        <div className="w-3/4 mx-2 md:w-3/5 xs:w-2/3 md:mx-0 flex flex-col justify-between ">
           <div>
             <div className="flex">
               <LinkRoute to={`/novel/${props.id}`}>

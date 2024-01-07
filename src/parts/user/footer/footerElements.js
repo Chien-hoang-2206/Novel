@@ -18,6 +18,7 @@ export const ContainerFooter = styled.div`
     padding-top: 30px;
     padding-bottom: 10px;
     min-height: 20vh;
+    width: 100%;
 `
 export const ContainerFooterColumn = styled.div`
 `
@@ -27,7 +28,7 @@ export const FooterColumn = styled.div`
   margin-left: 200px;
 `;
 export const FooterColumnIcon = styled.div`
-  margin-left: 200px;
+  // margin-left: 200px;
   display: flex;
 `;
 
