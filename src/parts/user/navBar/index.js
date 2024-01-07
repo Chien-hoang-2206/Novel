@@ -154,19 +154,6 @@ function NarBar() {
                 <li>
                   <div className="dropdown-bxh">
                     <NavBtnLink to="/charts/trend">Bảng Xếp Hạng</NavBtnLink>
-                    <div className="dropdown-content">
-                      <div className="grid-content">
-                        <a href="/home">Tất cả</a>
-                        <a href="/home">Huyễn huyền</a>
-                        <a href="/home">Tiên hiệp</a>
-                        <a href="/home">Khoa Huyễn</a>
-                        <a href="/home">Đô thị</a>
-                        <a href="/home">Huyễn Nghi</a>
-                        <a href="/home">Kỳ Ảo</a>
-                        <a href="/home">Kiếm hiệp</a>
-                        <a href="/home">Đồng nhân</a>
-                      </div>
-                    </div>
                   </div>
                 </li>
               </ul>

@@ -91,15 +91,15 @@ const ChartPage = () => {
 
                     <LinkChart to="/charts/like">
                       <div className="icon-name">
-                        <i className="fa-brands fa-gratipay"></i>
-                        <h5 className="text-tab">Yêu thích</h5>
+                        <i class="fa-solid fa-star"></i>
+                        <h5 className="text-tab">Điểm số</h5>
                       </div>
                     </LinkChart>
 
                     <LinkChart to="/charts/bookmark">
                       <div className="icon-name">
-                        <i className="fa-solid fa-bookmark"></i>
-                        <h5 className="text-tab">Đánh dấu nhiều</h5>
+                        <i className="fa-brands fa-gratipay"></i>
+                        <h5 className="text-tab">Lượt đánh giá</h5>
                       </div>
                     </LinkChart>
                   </div>
