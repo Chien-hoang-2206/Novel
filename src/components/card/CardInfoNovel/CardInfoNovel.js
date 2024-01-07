@@ -125,7 +125,7 @@ function CardInfoNovel(props) {
         <RowType style={{ marginTop: "10px" }}>
           {props.types &&
             props.types.map((type, index) => (
-              <ButtonType >{type}</ButtonType>
+              <ButtonType>{type}</ButtonType>
             ))}
         </RowType>
 
