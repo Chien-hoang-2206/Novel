@@ -101,7 +101,7 @@ function CommentTab() {
         </Col>
         <Col sm={3}>
           <Heading2>
-            <i class="fa-solid fa-triangle-exclamation"></i> Lưu ý khi đánh giá !
+            <i className="fa-solid fa-triangle-exclamation"></i> Lưu ý khi đánh giá !
           </Heading2>
           <Note>
             <NoteText>

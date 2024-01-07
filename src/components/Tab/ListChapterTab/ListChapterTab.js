@@ -84,9 +84,9 @@ const ListChapterTab = ({ chapters, nameNovel, IDNovel, accountId }) => {
               }}
             >
               {sortOrder === true ? (
-                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                <i className="fa-solid fa-arrow-down-short-wide"></i>
               ) : (
-                <i class="fa-solid fa-arrow-up-wide-short"></i>
+                <i className="fa-solid fa-arrow-up-wide-short"></i>
               )}
             </button>
           </ColButton>

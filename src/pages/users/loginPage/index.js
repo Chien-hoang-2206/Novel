@@ -70,9 +70,9 @@ const Login = () => {
       <Link  className="flex justify-end my-3 bg-transparent" to="forgot-pass"> Quên mật khẩu ? </Link>
       <div className="mx-auto  my-8">
         <div className="flex justify-center my-2 items-center text-2xl">
-          <i class="fa-brands fa-facebook" style={{ color: "#075ced" , fontSize: 40}}></i>
+          <i className="fa-brands fa-facebook" style={{ color: "#075ced" , fontSize: 40}}></i>
           <i
-            class="fa-brands fa-google-plus"
+            className="fa-brands fa-google-plus"
             style={{ color: "#ff0505", marginLeft: "5vh"  , fontSize: 40 }}
           ></i>
         </div>
