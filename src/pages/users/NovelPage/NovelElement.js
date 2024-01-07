@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 export const ImageBanner = styled.div`
   font-family: "Roboto", sans-serif;
-  height:100vh;
   border: none;
   background-size: cover;
   box-sizing: border-box;
   display: grid;
   place-items: center;
+  background-position: center;
+  height: fit-content;
 `;
 export const TransparentBanner = styled.div`
   margin-top: 100px;
