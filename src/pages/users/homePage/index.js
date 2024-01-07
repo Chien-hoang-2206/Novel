@@ -47,11 +47,11 @@ export default function HomePage(props) {
       <ImageBanner style={{ backgroundImage: "url('/bgBanner.jpg')" }}>
         <TransparentBanner >
           {loading === false ? (
-            <div className="  md:w-3/4 rounded-md shadow-lg md:my-32 md:mx-auto bg-slate-50">
+            <div className="  md:w-5/6 sm:w-5/6 sm:mx-auto rounded-md shadow-lg md:my-32 md:mx-auto bg-slate-50 mt-1">
               {/* Title  */}
-              <div className="px-2 md:py-4 md:mx-4 ">
-                <div className=" md:flex ">
-                  <div className="md:w-8/12   ">
+              <div className="px-2 md:py-2 md:mx-4 ">
+                <div className=" md:flex">
+                  <div className="md:w-8/12 sm:w-100">
                     <Heading1 style={{ maxHeight: 30 }} > Truyện Mới</Heading1>
                     <div className="flex flex-wrap ">
                       {
@@ -75,7 +75,7 @@ export default function HomePage(props) {
                       }
                     </div>
                   </div>
-                  <div className=" md:w-4/12 md:px-2  ">
+                  <div className=" md:w-4/12 md:px-2 ">
                     <Heading1> Đang Đọc</Heading1>
                     {
                       (readingNovels &&

@@ -51,7 +51,7 @@ export const RowAuth = styled.div`
   display: flex;
 `;
 export const RowType = styled.div`
-  max-height: 30px;
+  // max-height: 30px;
   display: flex;
 `;
 export const RowIntro = styled.div`
