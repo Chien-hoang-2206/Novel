@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import "./Navbar.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   NavAfterLogin,
   Navbar,
@@ -13,6 +13,9 @@ import {
 import LoginModal from "../../../pages/users/LoginModal/LoginModal";
 import isLoggedIn from "../../../context/isLoggedIn";
 import { Link } from "react-router-dom";
+import DataSearch from "../../../components/DataSearch";
+import factories from "../../../redux/app/factory";
+import { debounce } from "@mui/material";
 
 function NarBar() {
   const username = sessionStorage.getItem("username");
@@ -21,6 +24,8 @@ function NarBar() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const loggedIn = isLoggedIn();
   const [width, setWidth] = React.useState(window.innerWidth);
+  const [searchKey, setSearchKey] = useState("");
+  const [newNovels, setNewNovels] = useState([]);
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -41,6 +46,27 @@ function NarBar() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const debouncedSetParam = debounce((searchKey) => {
+    setSearchKey(searchKey);
+  }, 500);
+
+  const onChangeValue = (e) => {
+    debouncedSetParam(e.target.value);
+  };
+
+  const getData = async () => {
+    if (searchKey) {
+      const res = await factories.postSearchNovel({searchName: searchKey});
+      setNewNovels(res?.searchResult);
+    } else {
+      setNewNovels([]);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, [searchKey]);
+
   if (width <= 736) {
     return (
       <>
@@ -55,13 +81,13 @@ function NarBar() {
 
           <div className="mx-20  flex w-8/12  items-center    justify-center rounded-2xl h-6 px-1 py-1">
             <input
-              className=" text-xs  h-6 w-full pr-8  pl-5 bg-white  rounded-2xl border-transparent  relative "
+              className=" text-xs  h-6 w-full pr-8  pl-2 bg-white  rounded-2xl border-transparent  relative "
               placeholder="Tìm kiếm"
               name="SearchValue"
+              onChange={(value) => onChangeValue(value)}
             />
             <Link to="/search" className="relative right-7 ">
-              {" "}
-              <Icon icon="material-symbols:search-rounded" />{" "}
+              <Icon icon="material-symbols:search-rounded" />
             </Link>
           </div>
           <div className="w-2/12 flex items-center" onClick={handleClick}>
@@ -154,6 +180,19 @@ function NarBar() {
                 <li>
                   <div className="dropdown-bxh">
                     <NavBtnLink to="/charts/trend">Bảng Xếp Hạng</NavBtnLink>
+                    <div className="dropdown-content">
+                      <div className="grid-content">
+                        <a href="/home">Tất cả</a>
+                        <a href="/home">Huyễn huyền</a>
+                        <a href="/home">Tiên hiệp</a>
+                        <a href="/home">Khoa Huyễn</a>
+                        <a href="/home">Đô thị</a>
+                        <a href="/home">Huyễn Nghi</a>
+                        <a href="/home">Kỳ Ảo</a>
+                        <a href="/home">Kiếm hiệp</a>
+                        <a href="/home">Đồng nhân</a>
+                      </div>
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -164,15 +203,15 @@ function NarBar() {
                   className=" text-xs  h-6 w-full pr-8  pl-2 bg-white  rounded-2xl border-transparent  relative "
                   placeholder="Tìm kiếm"
                   name="SearchValue"
+                  onChange={(value) => onChangeValue(value)}
                 />
 
                 <Link to="/search" className="relative right-7 ">
-                  {" "}
-                  <Icon icon="material-symbols:search-rounded" />{" "}
+                  <Icon icon="material-symbols:search-rounded" />
                 </Link>
               </div>
             ) : (
-              <div className=" flex  w-9/12 items-center px-2 justify-end  rounded-2xl h-6  py-1">
+              <div className=" flex  w-9/12 items-center   px-2 justify-end  rounded-2xl h-6  py-1">
                 <input
                   className=" text-xs  h-6 w-full pr-8  pl-2 bg-white  rounded-2xl border-transparent  relative "
                   placeholder="Tìm kiếm"
@@ -255,6 +294,10 @@ function NarBar() {
           </NavbarContainer>
           {showLoginModal && <LoginModal onClose={handleCloseModal} />}
         </Navbar>
+        {newNovels?.length > 0 &&
+          newNovels?.map((item) => (
+            <DataSearch img={item.coverLink} title={item.title} id={item._id} />
+          ))}
       </>
     );
   }

@@ -64,6 +64,13 @@ const factories = {
             method: 'POST',
             data: data
         });
+    },
+    postSearchNovel: (searchName) => {
+        return ApiOperation.request({
+            url: `${ApiConstants.HOME}/search`,
+            method: 'POST',
+            data: searchName
+        })
     }
 }
 export default factories;
