@@ -29,7 +29,6 @@ function Novel(props) {
   const [numBookmard, setnumBookmard] = useState();
   const [isbookmark, setisbookmark] = useState();
   const [reviewList, setReviewList] = useState();
-  const [numReview, setNumReview] = useState();
   const { id } = useParams();
   const accountID = sessionStorage.getItem("accID") || "";
   const [toggleState, setToggleState] = useState(1);
@@ -38,31 +37,30 @@ function Novel(props) {
     setToggleState(index);
   };
 
+  async function fetchDataNovel() {
+    const response = await factories.getNovelInfo(id);
+    setNovel(response.novelInfo[0]);
+    setchapterList(response.chapterList);
+    setnumBookmard(response.bookmarkNum);
+    setLoading(false);
+  }
+  async function fetchDataNovelReview() {
+    const response = await factories.getNovelReviewInfo(id);
+    setReviewList(response?.reviewInfo?.reviewList);
+    setLoading(false);
+  }
   useEffect(() => {
-    async function fetchData() {
-      const response = await factories.getNovelInfo(id);
-      setNovel(response.novelInfo[0]);
-      setchapterList(response.chapterList);
-      setnumBookmard(response.bookmarkNum);
-      setReviewList(response.reviewList);
-      setNumReview(response.reviewList?.length);
-      setLoading(false);
+    fetchDataNovel();
+    fetchDataNovelReview();
+    if ( accountID){
+      checkIsBookmark();
     }
-    fetchData();
   }, [id]);
 
-  // function checkIsBookmark() {
-  //   axios
-  //     .get(apiUrlCheckbookmark)
-  //     .then((response) => {
-  //       console.log(response);
-  //       setisbookmark(response.data.isBookmarked);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-  // checkIsBookmark();
+  async function checkIsBookmark() {
+    const response = await factories.getstatusBookmark(accountID,id);
+    setisbookmark(response?.isBookmarked)
+  }
 
   React.useEffect(() => {
     function handleResize() {
@@ -91,6 +89,7 @@ function Novel(props) {
                     numRead={novel.readCount}
                     srcimage={novel.coverLink}
                     bookmark="false"
+                    isBookmark={isbookmark ?? false}
                     firstChapter={chapterList[0]?._id}
                   />
                 )}
@@ -114,9 +113,9 @@ function Novel(props) {
                         onClick={() => toggleTab(2)}
                       >
                         <TabName>Đánh giá</TabName>
-                        <div className="number-border"> {numReview}</div>
+                        <div className="number-border"> {reviewList?.length ?? 0}</div>
                       </div>
-                      <div
+                      {/* <div
                         className={
                           toggleState === 3 ? "tabs active-tabs" : "tabs"
                         }
@@ -124,7 +123,7 @@ function Novel(props) {
                       >
                         <TabName>Bình luận</TabName>
                         <div className="number-border">3037</div>
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="content-tabs">
@@ -159,7 +158,7 @@ function Novel(props) {
                         />
                       </div>
 
-                      <div
+                      {/* <div
                         className={
                           toggleState === 3
                             ? "content  active-content"
@@ -167,7 +166,7 @@ function Novel(props) {
                         }
                       >
                         <CommentTab />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </ContainerTabs>

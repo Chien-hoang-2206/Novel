@@ -20,6 +20,18 @@ const factories = {
             method: 'GET',
         });
     },
+    getstatusBookmark: (accId,id) => {
+        return ApiOperation.request({
+            url: `${ApiConstants.BOOKMARK}/${accId}/${id}`,
+            method: 'GET',
+        });
+    },
+    getNovelReviewInfo: (id) => {
+        return ApiOperation.request({
+            url: `${ApiConstants.REVIEW}/${id}`,
+            method: 'GET',
+        });
+    },
     getNovelChapterInfo: (id) => {
         return ApiOperation.request({
             url: `${ApiConstants.CHAPTER_NOVEL}/${id}`,
@@ -38,6 +50,12 @@ const factories = {
             url: `${ApiConstants.BOOKMARK}`,
             method: 'POST',
             data: data
+        });
+    },
+    deleteBookmark: (accId,id) => {
+        return ApiOperation.request({
+            url: `${ApiConstants.BOOKMARK}/${accId}/${id}`,
+            method: 'DELETE',
         });
     },
     addChapter: data => {
