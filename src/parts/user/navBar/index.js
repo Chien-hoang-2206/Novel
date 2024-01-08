@@ -70,7 +70,7 @@ function NarBar() {
   if (width <= 736) {
     return (
       <>
-        <div className="flex h-12 px-3 items-center justify-center ">
+        <div className="flex h-20 px-3 items-center justify-center ">
           <Link to="/home" className="w-2/12" onClick={closeMobileMenu}>
             <img
               alt=""
@@ -198,7 +198,7 @@ function NarBar() {
               </ul>
             </div>
             {showPostNewnovel ? (
-              <div className="mx-20  flex w-4/12 items-center    justify-center rounded-2xl h-6 px-1 py-1">
+              <div className="flex w-4/12 items-center justify-center rounded-2xl h-6">
                 <input
                   className=" text-xs  h-6 w-full pr-8  pl-2 bg-white  rounded-2xl border-transparent  relative "
                   placeholder="Tìm kiếm"
@@ -255,7 +255,7 @@ function NarBar() {
             )}
 
             {showPostNewnovel && (
-              <div className="flex justify-end w-1/4">
+              <div className="flex justify-end w-5/12">
                 {loggedIn ? (
                   <div className="flex">
                     <NavBtnLink to="/post-novel/post-new-novel">

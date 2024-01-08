@@ -14,8 +14,9 @@ import DropdownSort from "../../../components/Dropdown/DropdownSort/DropdownSort
 import CardNovelTypesSearch from "../../../components/card/CardNovelTypesSearch/CardNovelTypesSearch";
 
 import axios from "../../../api/axios";
+import factories from "../../../redux/app/factory";
 const TypesNovelURL = "/api/novels/types";
-const HomeNewNoevl_URL = "/api/novels/";
+const HomeNewNovel_URL = "/api/novels/";
 
 function TypesPage() {
   const [types, setTypes] = useState([]);
@@ -40,22 +41,23 @@ function TypesPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const Listnovel = await callApiNewNovelList();
-      setListnovel(Listnovel);
+      const responseRecomendList = await factories.getNovelListHome();
+      const newNovelList = responseRecomendList?.novelList
+      setListnovel(newNovelList);
     }
     fetchData();
   }, []);
 
-  function callApiNewNovelList() {
-    return axios
-      .get(HomeNewNoevl_URL)
-      .then((response) => {
-        return response.data.novelList;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // function callApiNewNovelList() {
+  //   return axios
+  //     .get(HomeNewNovel_URL)
+  //     .then((response) => {
+  //       return response.data.novelList;
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
 
   function moveTouch(e) {
     if (!startX) {
@@ -80,13 +82,12 @@ function TypesPage() {
         })
         .then((response) => {
           if (response.data) {
-            setListnovel(response.data.novelSameTypes);
+            setListnovel(response?.data?.novelSameTypes);
           } else {
             alert("Hệ thống đang bị lỗi, vui lòng thử lại sau.");
           }
         })
         .catch((error) => {
-          alert(error.response.data.error);
         });
 
       setTypes(() => newTypes);
@@ -107,7 +108,7 @@ function TypesPage() {
           setTypes(newTypes);
           if (newTypes.length === 0) {
             axios
-              .get(HomeNewNoevl_URL)
+              .get(HomeNewNovel_URL)
               .then((response) => {
                 setListnovel(response.data.novelList);
               })

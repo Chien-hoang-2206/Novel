@@ -5,6 +5,7 @@ import "react-quill/dist/quill.snow.css";
 
 import LoginModal from "../LoginModal/LoginModal";
 import axios from "../../../api/axios";
+import ButtonType from "../../../components/button/ButtonChoosedType/ButtonChoosedType";
 const PostNovel = "/api/novels/";
 
 function NewNovel(props) {
@@ -45,7 +46,7 @@ function NewNovel(props) {
       .then((response) => {
         console.log(response.data);
         if (response.data) {
-          window.location.href = "/post-novel"; // Thay đổi đường dẫn tương ứng
+          window.location.href = "/post-novel/mynovel"; // Thay đổi đường dẫn tương ứng
           alert(
             "Đăng truyện thành công, hệ thống đang phê duyệt truyện của bạn"
           );
@@ -111,61 +112,6 @@ function NewNovel(props) {
             </div>
             <div className="col-input">
               <ReactQuill value={content} onChange={handleChange} />
-
-              {/* {isTranslated === true ? (
-                <input
-                  type="button"
-                  className="translater-btn"
-                  name="OCR"
-                  value="VN-EN"
-                  style={{
-                    backgground: "transparent",
-                    paddingLeft: "5px",
-                    width: "70px",
-                  }}
-                  onClick={handleTranslate}
-                />
-              ) : (
-                <input
-                  type="button"
-                  className="translater-btn"
-                  name="OCR"
-                  value="EN-VN"
-                  style={{
-                    backgground: "transparent",
-                    paddingLeft: "5px",
-                    width: "70px",
-                  }}
-                  onClick={handleTranslate}
-                />
-              )}
-              <input
-                type="file"
-                className="ocr-import"
-                name="OCR"
-
-                style={{
-                  backgground: "transparent",
-                  paddingLeft: "5px",
-                  width: "150px",
-                }}
-                onChange={(event) => {
-                  setImageUpload(event.target.files[0]);
-                }}
-              />
-
-              <input
-                type="button"
-                className="translater-btn2"
-                name="upload"
-                style={{
-                  backgground: "transparent",
-                  marginLeft: "25px",
-                  width: "100px",
-                }}
-                value="Upload"
-                onClick={uploadFile}
-              /> */}
             </div>
           </div>
 
@@ -202,9 +148,9 @@ function NewNovel(props) {
 
             <div className="col-input-btn">
               {types.map((type, index) => (
-                <button key={index} >
+                <ButtonType key={index} >
                   {type}
-                </button>
+                </ButtonType>
               ))}
             </div>
           </div>
@@ -251,6 +197,7 @@ function NewNovel(props) {
                 <input
                   type="text"
                   value={AuthName}
+                  className="input-name-novel"
                   name="AuthName"
                   id="AuthName"
                 />
@@ -258,6 +205,7 @@ function NewNovel(props) {
                 <input
                   type="text"
                   name="AuthName"
+                  className="input-name-novel"
                   onChange={(e) => setAuthName(e.target.value)}
                   id="AuthName"
                   placeholder={"Nhập tên tác giả"}

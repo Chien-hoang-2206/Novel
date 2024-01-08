@@ -85,41 +85,41 @@ function Footer() {
           <ImageFooter>
             <TransparentBanner>
               <ContainerFooter>
-                <Row >
-                  <Col sm={3} >
+                <Row style={{width: "100%"}}>
+                  <Col style={{padding: "0"}} md={2} sm={3} >
                     <FooterLogo  alt="" src={LoGo} >
                     </FooterLogo>
                   </Col>
-                  <Col>
+                  <Col style={{padding: "0"}} md={2} sm={3}>
                     <Heading>Product</Heading>
                     <FooterLink>Features</FooterLink>
                     <FooterLink>Pricing</FooterLink>
                   </Col>
-                  <Col>
+                  <Col style={{padding: "0"}} md={2} sm={3}>
                     <Heading>Resources</Heading>
                     <FooterLink>Blog</FooterLink>
                     <FooterLink>User guides</FooterLink>
                     <FooterLink>Wen binars</FooterLink>
                   </Col>
-                  <Col>
+                  <Col style={{padding: "0"}} md={2} sm={3}>
                     <Heading>Community</Heading>
                     <FooterLink>Developers</FooterLink>
                     <FooterLink>User </FooterLink>
                   </Col>
-                  <Col>
+                  <Col style={{padding: "0"}} md={2} sm={3}>
                     <Heading>Company</Heading>
                     <FooterLink>About us</FooterLink>
                     <FooterLink>John us</FooterLink>
                   </Col>
-                  <Col>
+                  <Col style={{padding: "0"}} md={2} sm={3}>
                     <Heading>Support</Heading>
                     <FooterLink>Help center</FooterLink>
                     <FooterLink>Chat support</FooterLink>
                   </Col>
                 </Row>
-                <Row>
+                <Row style={{width: "100%"}}>
                   <FooterContainer>
-                    <Col sm={8}>
+                    <Col md={8} sm={8}>
                       <FooterColumn>
                         <FooterLinkSmall>2022 Brand,Inc.</FooterLinkSmall>
                         <FooterLinkSmall>~Privacy</FooterLinkSmall>
@@ -127,7 +127,7 @@ function Footer() {
                         <FooterLinkSmall>~Sitemap</FooterLinkSmall>
                       </FooterColumn>
                     </Col>
-                    <Col sm={4}>
+                    <Col style={{display: "flex", justifyContent:"flex-end"}} md={4} sm={4}>
                       <FooterColumnIcon>
                         <FooterLinkSmall><Icon icon="ion:logo-twitter" width="30" height="30" /></FooterLinkSmall>
                         <FooterLinkSmall><Icon icon="mdi:facebook" width="30" height="30" /></FooterLinkSmall>

@@ -260,11 +260,22 @@ function ReviewTab(props) {
                   placeholder="Nhập đánh giá về bộ truyện của bạn"
                   onChange={handleInputChange}
                 ></textarea>
-                <button className="cssbuttons-io " style={{ top: -40, left: 640 }} type="submit">
+                <div className="flex w-11/12  mx-auto rounded-md h-28  py-2 px-2">
+
+                <button style={{
+                  border: '1px solid #111',
+                  padding: '0px 20px', 
+                  background: '#C58940',
+                  float: 'right',
+                  color: '#fff',
+                  borderRadius: 10,
+                  height: 30
+                }} type="submit">
                   <span>
                     Đăng
                   </span>
                 </button>
+                </div>
               </UserEditNote>
             </form>
 

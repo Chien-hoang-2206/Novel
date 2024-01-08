@@ -29,7 +29,7 @@ function CardNovelTypesSearch(props) {
         <Row>
           <ContainerRowContent>
             <RowContent>
-              <Content>{props.content}</Content>
+              <Content>{props.content.replace(/<\/?[^>]+(>|$)/g, '')}</Content>
             </RowContent>
           </ContainerRowContent>
         </Row>
