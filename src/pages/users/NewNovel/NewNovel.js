@@ -45,7 +45,7 @@ function NewNovel(props) {
       .then((response) => {
         console.log(response.data);
         if (response.data) {
-          window.location.href = "/post-novel"; // Thay đổi đường dẫn tương ứng
+          window.location.href = "/post-novel/mynovel"; // Thay đổi đường dẫn tương ứng
           alert(
             "Đăng truyện thành công, hệ thống đang phê duyệt truyện của bạn"
           );
