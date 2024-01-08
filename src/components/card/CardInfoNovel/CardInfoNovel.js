@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
@@ -39,59 +39,33 @@ import ButtonType from "../../button/ButtonChoosedType/ButtonChoosedType";
 import { useNavigate } from "react-router-dom";
 
 function CardInfoNovel(props) {
-  const [isBookmarked, setIsBookmarked] = useState(props.bookmark);
-
-  const contentNovel = props.intro;
+  const [isBookmarked, setIsBookmarked] = useState();
   const [width, setWidth] = React.useState(window.innerWidth);
+  const accountID = sessionStorage.getItem("accID") || "";
 
+  useEffect(()=>{
+    setIsBookmarked(props.isBookmark)
+  },[props.isBookmark])
   async function fetchDataAdd(data) {
-    const reponseAddBookmark = await factories.addBookmark(data);
+    const reps = await factories.addBookmark(data);
+    if (reps?.newBookmark?.accountId){
+      setIsBookmarked(true);
+    }
   }
-
+  
   const handleAddBookmark = () => {
     const accountId = props.accountId;
     const novelId = props.IDNovel;
     const data = { accountId, novelId };
     fetchDataAdd(data);
-
-
-    // fetch("http://localhost:5000/api/bookmarks", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Failed to add bookmark");
-    //     }
-    //     setIsBookmarked(true);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-
   };
 
-  const handleDelBookmark = () => {
-    const id = "643706d98989be92b3af0f7c";
-    const apiUrl = `http://localhost:5000/api/bookmarks/${id}`;
-    fetch(apiUrl, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to del bookmark");
-        }
-        setIsBookmarked(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleDelBookmark = async () => {
+    const reps = await factories.deleteBookmark(accountID,props?.IDNovel);
+    console.log("🚀 ~ file: CardInfoNovel.js:63 ~ handleDelBookmark ~ reps:", reps)
+    if (reps?.deleteBookmark?.accountId){
+      setIsBookmarked(false);
+    }
   };
   React.useEffect(() => {
     function handleResize() {
